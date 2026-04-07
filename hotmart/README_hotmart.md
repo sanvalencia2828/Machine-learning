@@ -34,6 +34,9 @@
 | 7B | PLE Aplicado: Alpha, Hedging, CAPM | 55 min | Premium | notebook_ch07_pymc_ensembles.md |
 | 7C | Retrodiccion, HMC y Evaluacion PLEs | 50 min | Premium | notebook_ch07_pymc_ensembles.md |
 | 8 | Decisiones: Kelly, GVaR, Ergodicidad | 60 min | Premium | notebook_ch08_kelly_capital_allocation.md |
+| 8B | Loss Functions, Volatility Drag, ES | 50 min | Premium | notebook_ch08_stress_testing.md |
+| 8C | GVaR, GES y GTR: Riesgo Generativo | 45 min | Premium | notebook_ch08_kelly_capital_allocation.md |
+| 8D | MPT, CAPM y Critica Probabilistica | 50 min | Premium | notebook_ch08_kelly_capital_allocation.md |
 
 ---
 

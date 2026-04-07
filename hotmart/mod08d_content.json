@@ -1,0 +1,70 @@
+{
+  "module_id": "mod08d_mpt_capm_critique",
+  "module_number": "8D",
+  "title": {
+    "es": "MPT, CAPM y su Critica Probabilistica",
+    "en": "MPT, CAPM and their Probabilistic Critique"
+  },
+  "summary_es": "Este modulo examina la Modern Portfolio Theory y CAPM, sus 5 fallas fundamentales (normalidad, covarianzas inestables, sensibilidad a inputs, volatilidad como riesgo, ergodicidad), y las alternativas. Se demuestra que MPT es un 'estimation error maximizer' donde perturbaciones de 0.01% en retornos esperados cambian pesos drasticamente. Se compara MPT con naive diversification (1/N) fuera de muestra, mostrando que 1/N frecuentemente supera a MPT. Se demuestra que las correlaciones aumentan en crisis, destruyendo la diversificacion cuando mas se necesita. Se presentan ensambles probabilisticos de portafolios como alternativa: distribuciones de pesos en vez de un punto unico.",
+  "summary_en": "This module examines Modern Portfolio Theory and CAPM, their 5 fundamental failures (normality, unstable covariances, input sensitivity, volatility as risk, ergodicity), and alternatives. MPT is shown to be an 'estimation error maximizer' where 0.01% perturbations in expected returns drastically change weights. MPT is compared with naive diversification (1/N) out-of-sample, showing 1/N frequently outperforms MPT. Crisis correlations increasing and destroying diversification are demonstrated. Probabilistic portfolio ensembles are presented as alternative: weight distributions instead of single points.",
+  "learning_objectives_es": [
+    "Explicar las 5 fallas fundamentales de MPT en mercados financieros reales",
+    "Demostrar la sensibilidad extrema de MPT a errores de estimacion",
+    "Comparar MPT vs 1/N fuera de muestra con simulaciones",
+    "Mostrar como las correlaciones cambian en crisis destruyendo diversificacion",
+    "Presentar ensambles probabilisticos de portafolios como alternativa"
+  ],
+  "learning_objectives_en": [
+    "Explain MPT's 5 fundamental failures in real financial markets",
+    "Demonstrate MPT's extreme sensitivity to estimation errors",
+    "Compare MPT vs 1/N out-of-sample with simulations",
+    "Show how crisis correlations destroy diversification",
+    "Present probabilistic portfolio ensembles as alternative"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod08d_mpt_capm_critique.md",
+  "notebook": "notebooks/notebook_ch08_kelly_capital_allocation.md",
+  "visualization": "hotmart/viz_mpt_critique.py",
+  "visualization_output": "hotmart/mpt_critique.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod08d_mpt_capm.md",
+  "exercises_count": 6,
+  "src_script": "src/mpt_capm_critique_demo.py",
+  "hotmart_tier": "premium",
+  "prerequisites": ["mod08_decisions_kelly"],
+  "keywords": [
+    "MPT",
+    "Modern Portfolio Theory",
+    "CAPM",
+    "efficient frontier",
+    "naive diversification",
+    "1/N",
+    "estimation error",
+    "crisis correlations",
+    "beta",
+    "alpha",
+    "portfolio ensemble",
+    "Markowitz"
+  ],
+  "parameters": [
+    {
+      "id": "p_specification_errors",
+      "name": "MPT Estimation Error",
+      "relevance": "alta",
+      "origin_phrase": "MPT is an estimation error maximizer - tiny input changes cause huge weight shifts"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Naive Diversification",
+      "relevance": "alta",
+      "origin_phrase": "1/N frequently outperforms MPT out-of-sample by avoiding estimation error"
+    },
+    {
+      "id": "p_nonstationary",
+      "name": "Crisis Correlations",
+      "relevance": "alta",
+      "origin_phrase": "Correlations increase in crisis, destroying diversification when most needed"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

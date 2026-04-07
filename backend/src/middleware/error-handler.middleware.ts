@@ -14,12 +14,14 @@ export interface ErrorResponse {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler = (
   error: Error | AppError,
   req: Request,
   res: Response,
-  next: NextFunction
-) => {
+  _next: NextFunction
+): void => {
+  void _next;
   const correlationId = req.id || 'unknown';
   const timestamp = new Date().toISOString();
 
@@ -44,7 +46,8 @@ export const errorHandler = (
       }
     };
 
-    return res.status(500).json(response);
+    res.status(500).json(response);
+    return;
   }
 
   // Si es AppError
@@ -72,7 +75,8 @@ export const errorHandler = (
       }
     };
 
-    return res.status(error.statusCode).json(response);
+    res.status(error.statusCode).json(response);
+    return;
   }
 
   // Unexpected error
@@ -100,6 +104,7 @@ export const errorHandler = (
   };
 
   res.status(500).json(response);
+  return;
 };
 
 // Capturar rutas no encontradas

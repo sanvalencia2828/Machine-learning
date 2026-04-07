@@ -8,7 +8,7 @@ import logger from './lib/logger';
 import { correlationIdMiddleware } from './middleware/correlation-id.middleware';
 import { loggingMiddleware } from './middleware/logging.middleware';
 import { errorHandler, notFoundHandler } from './middleware/error-handler.middleware';
-import { generalLimiter, authLimiter, apiLimiter } from './middleware/rate-limit.middleware';
+import { generalLimiter, authLimiter } from './middleware/rate-limit.middleware';
 import healthRouter from './routes/health.routes';
 import { asyncHandler } from './utils/async-handler';
 
