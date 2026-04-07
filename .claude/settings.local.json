@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(python hotmart/viz_monty_hall_mcs.py)",
+      "Bash(python -m http.server 8080)",
+      "Bash(python hotmart/viz_induction_problem.py)",
+      "Bash(python src/lln_clt_mcs_demo.py)",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/scripts_video/\"*mod04* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/ejercicios/\"*mod04* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/\"mod04* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/\"viz_prosecutor*)",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/notebooks/\"*ch04*)",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*nhst* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*pvalue* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*prosecutor*)"
+    ]
+  }
+}

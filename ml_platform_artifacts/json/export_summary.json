@@ -1,0 +1,35 @@
+{
+  "project": "ML Platform - Preface to Products",
+  "export_date": "2026-03-27T03:07:27.549535",
+  "content_sources": {
+    "book": "Probabilistic Machine Learning for Finance and Investment",
+    "author": "Benjamin Cornish",
+    "section": "Preface"
+  },
+  "artifacts_generated": {
+    "json_files": 5,
+    "csv_files": 1
+  },
+  "product_variants": {
+    "count": 3,
+    "types": [
+      "ebook_001",
+      "course_001",
+      "mentoring_001"
+    ]
+  },
+  "pricing_tiers": {
+    "count": 4,
+    "levels": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "parameters_detected": 7,
+  "price_range_total": {
+    "min": 0,
+    "max": 5000
+  }
+}

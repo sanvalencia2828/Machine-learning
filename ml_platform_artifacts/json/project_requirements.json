@@ -1,0 +1,185 @@
+{
+  "jupyter_notebooks_required": [
+    {
+      "id": "nb_01_intro_bayes",
+      "title": "01 - Introducción a Inferencia Bayesiana (ES/EN)",
+      "repo": "https://github.com/user/ml-finance-course/blob/main/notebooks/01_intro_bayesian_inference.ipynb",
+      "estimated_duration_min": 30,
+      "language": [
+        "es",
+        "en"
+      ],
+      "dependencies": [
+        "numpy",
+        "scipy",
+        "matplotlib"
+      ],
+      "learning_objectives": [
+        "Understand Bayes theorem fundamentals",
+        "Work with posterior distributions",
+        "Implement basic Bayesian models"
+      ]
+    },
+    {
+      "id": "nb_02_uncertainty_quant",
+      "title": "02 - Cuantificación de Incertidumbre (ES/EN)",
+      "repo": "https://github.com/user/ml-finance-course/blob/main/notebooks/02_uncertainty_quantification.ipynb",
+      "estimated_duration_min": 45,
+      "language": [
+        "es",
+        "en"
+      ],
+      "dependencies": [
+        "scipy",
+        "sklearn"
+      ],
+      "learning_objectives": [
+        "Generate prediction intervals",
+        "Calibrate probabilistic forecasts",
+        "Assess prediction uncertainty"
+      ]
+    },
+    {
+      "id": "nb_03_counterfactual_sim",
+      "title": "03 - Simulación Contrafactual (ES/EN)",
+      "repo": "https://github.com/user/ml-finance-course/blob/main/notebooks/03_counterfactual_simulation.ipynb",
+      "estimated_duration_min": 60,
+      "language": [
+        "es",
+        "en"
+      ],
+      "dependencies": [
+        "pymc",
+        "arviz"
+      ],
+      "learning_objectives": [
+        "Design what-if scenarios",
+        "Run counterfactual simulations",
+        "Interpret causal inference results"
+      ]
+    }
+  ],
+  "datasets_required": [
+    {
+      "id": "ds_001_finance_historical",
+      "name": "Historical Finance Data (2015-2024)",
+      "source": "public/kaggle",
+      "format": "csv",
+      "url": "https://www.kaggle.com/datasets/...",
+      "rows": 250000,
+      "features": 50,
+      "usage": "course_01_02_03",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "id": "ds_002_credit_default",
+      "name": "Credit Default Predictions (Proprietary)",
+      "source": "internal/s3",
+      "format": "parquet",
+      "s3_path": "s3://ml-datasets/credit_default_2024.parquet",
+      "rows": 100000,
+      "features": 45,
+      "usage": "course_mentoring",
+      "license": "proprietary"
+    }
+  ],
+  "qa_checklist": [
+    {
+      "category": "Content Validation",
+      "checks": [
+        "content.json validates against schema",
+        "All required fields present (product_id, title_es, title_en, etc)",
+        "Parameters array non-empty and valid",
+        "Pricing tiers have valid price ranges",
+        "No null/undefined values in critical fields"
+      ]
+    },
+    {
+      "category": "Bilingual Consistency",
+      "checks": [
+        "ES and EN titles both present and different",
+        "Descriptions translated in both languages",
+        "Parameter names in ES and EN",
+        "Character count ratio ES/EN within tolerance (±20%)",
+        "No untranslated placeholders in EN content"
+      ]
+    },
+    {
+      "category": "Pricing Model Validation",
+      "checks": [
+        "Each tier has ≥2 new parameters vs previous tier",
+        "Price ranges non-overlapping between tiers",
+        "Features count increases with price tier",
+        "Resources (hours, support) scale correctly",
+        "CSV export matches JSON definitions"
+      ]
+    },
+    {
+      "category": "Product Integrity",
+      "checks": [
+        "Ebook: deliverables match variant definition",
+        "Course: chapter count and duration documented",
+        "Mentoring: session count and resource hours specified",
+        "All product IDs unique",
+        "No circular dependencies between variants"
+      ]
+    },
+    {
+      "category": "File Export",
+      "checks": [
+        "All JSON files valid and properly formatted",
+        "CSV file readable and contains expected rows",
+        "Markdown files generated without syntax errors",
+        "Output directory structure complete",
+        "Export summary accurate"
+      ]
+    }
+  ],
+  "ci_cd_pipeline": {
+    "trigger": "on_push_to_main",
+    "stages": [
+      {
+        "stage": "Extract & Parse",
+        "script": "jupyter nbconvert --to notebook --execute ml_platform_preface_to_products.ipynb",
+        "timeout_secs": 300,
+        "on_failure": "notify_slack"
+      },
+      {
+        "stage": "Validate Schema",
+        "script": "python tests/validate_content_schema.py",
+        "timeout_secs": 60,
+        "checks": [
+          "json_valid",
+          "required_fields",
+          "type_validation"
+        ]
+      },
+      {
+        "stage": "Check Bilingual",
+        "script": "python tests/validate_translations.py",
+        "timeout_secs": 60,
+        "checks": [
+          "es_en_present",
+          "char_count_ratio",
+          "no_placeholder_text"
+        ]
+      },
+      {
+        "stage": "Validate Pricing",
+        "script": "python tests/validate_pricing.py",
+        "timeout_secs": 60,
+        "checks": [
+          "tier_progression",
+          "parameter_activation",
+          "price_ranges"
+        ]
+      },
+      {
+        "stage": "Export to CMS",
+        "script": "python scripts/export_to_strapi.py",
+        "timeout_secs": 120,
+        "target": "staging-cms.example.com"
+      }
+    ]
+  }
+}

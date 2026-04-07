@@ -1,0 +1,76 @@
+{
+  "module_id": "mod06_mle_vs_pml",
+  "module_number": 6,
+  "title": {
+    "es": "Peligros de la IA Convencional (MLE vs PML)",
+    "en": "Dangers of Conventional AI (MLE vs PML)"
+  },
+  "summary_es": "Este modulo demuestra que los sistemas MLE y deep learning hacen predicciones puntuales con total confianza, especialmente peligrosas con datasets pequenos. Se compara MLE (punto unico sin incertidumbre) vs PML (distribucion completa con prior) para prediccion de earnings corporativos, mostrando que PML es 3x mas robusto a outliers. Se exponen las correlaciones espurias que emergen en datasets financieros con muchas variables y se demuestra que un modelo de ML las explotaria como si fueran reales. Se implementa grid approximation como alternativa numerica a conjugados analiticos, y MCMC Metropolis para estimar los grados de libertad (nu) de una Student-t, confirmando fat tails con nu ~ 4. Se argumenta que PML es superior porque cuantifica incertidumbre, regulariza con priors, y hace supuestos explicitos.",
+  "summary_en": "This module demonstrates that MLE and deep learning systems make point predictions with total confidence, especially dangerous with small datasets. MLE (single point, no uncertainty) is compared with PML (complete distribution with prior) for corporate earnings prediction, showing PML is 3x more robust to outliers. Spurious correlations emerging in multi-variable financial datasets are exposed, showing that ML models would exploit them as if real. Grid approximation is implemented as a numerical alternative to analytical conjugates, and MCMC Metropolis estimates Student-t degrees of freedom (nu), confirming fat tails with nu ~ 4. PML is argued superior because it quantifies uncertainty, regularizes with priors, and makes assumptions explicit.",
+  "learning_objectives_es": [
+    "Comparar MLE (punto unico) vs PML (distribucion completa) con datos financieros",
+    "Demostrar correlaciones espurias en datasets multivariados",
+    "Implementar grid approximation para posteriors no analiticos",
+    "Estimar nu de Student-t con MCMC Metropolis",
+    "Explicar por que PML es superior a MLE/deep learning para finanzas"
+  ],
+  "learning_objectives_en": [
+    "Compare MLE (point estimate) vs PML (full distribution) with financial data",
+    "Demonstrate spurious correlations in multivariate datasets",
+    "Implement grid approximation for non-analytical posteriors",
+    "Estimate Student-t nu with MCMC Metropolis",
+    "Explain why PML is superior to MLE/deep learning for finance"
+  ],
+  "video_duration_min": 55,
+  "video_script": "hotmart/scripts_video/script_mod06_mle_vs_pml.md",
+  "notebook": "notebooks/notebook_ch06_mle_vs_probabilistic.md",
+  "visualization": "hotmart/viz_mle_vs_probabilistic.py",
+  "visualization_output": "hotmart/mle_vs_pml.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod06_mle_vs_pml.md",
+  "exercises_count": 6,
+  "src_script": "src/mle_vs_pml_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod05_pml_framework"],
+  "keywords": [
+    "MLE",
+    "maximum likelihood",
+    "deep learning",
+    "spurious correlations",
+    "causality",
+    "grid approximation",
+    "MCMC",
+    "Metropolis",
+    "Student-t",
+    "degrees of freedom",
+    "overfitting",
+    "small datasets"
+  ],
+  "parameters": [
+    {
+      "id": "p_specification_errors",
+      "name": "MLE Overconfidence",
+      "relevance": "alta",
+      "origin_phrase": "MLE makes absurd predictions with complete confidence on small datasets"
+    },
+    {
+      "id": "p_robustez",
+      "name": "PML Robustness",
+      "relevance": "alta",
+      "origin_phrase": "Priors protect against outliers and small-sample overfitting"
+    },
+    {
+      "id": "p_transparencia",
+      "name": "Transparent Assumptions",
+      "relevance": "alta",
+      "origin_phrase": "PML makes every assumption explicit; deep learning is a black box"
+    },
+    {
+      "id": "p_non_gaussian",
+      "name": "Fat Tails via MCMC",
+      "relevance": "alta",
+      "origin_phrase": "MCMC Metropolis estimates nu ~ 4 confirming fat tails in financial returns"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

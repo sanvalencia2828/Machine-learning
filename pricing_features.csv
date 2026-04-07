@@ -1,0 +1,5 @@
+Level,Tier_Name,Price_Min_USD,Price_Max_USD,Chapter_Scope,Parameters_Activated,Features_Activated,Deliverables,Notebooks_Included,Content_Hours,Support_Level
+1,Basico,0,30,preface+ch01,2,"p_transparencia,p_incertidumbre","ebook auto-draft,basic content.json",0,0.5,none
+2,Estandar,30,150,ch01-ch04,6,"p_transparencia,p_incertidumbre,p_simulacion,p_non_gaussian,p_trifecta_errors,p_riesgo_no_prob","curso corto,1 notebook,1 viz","nb_ch01,nb_ch03",8,email
+3,Premium,150,800,ch01-ch07,9,"p_transparencia,p_incertidumbre,p_simulacion,p_non_gaussian,p_trifecta_errors,p_riesgo_no_prob,p_incorporacion_conocimiento,p_robustez,p_tech_ecosystem","curso completo,4 notebooks,3 viz,5h mentoring","nb_ch01,nb_ch02,nb_ch03,nb_ch04,nb_ch05,nb_ch06,nb_ch07",20,priority
+4,Enterprise,800,999999,ch01-ch08 all,20,all 20 params,"mentoring extendida,repo privado,doc regulatoria",all 8 notebooks,40+,dedicated

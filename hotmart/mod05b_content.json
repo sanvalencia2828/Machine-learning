@@ -1,0 +1,70 @@
+{
+  "module_id": "mod05b_hy_default",
+  "module_number": "5B",
+  "title": {
+    "es": "Inferencia Bayesiana para Default de Bonos High-Yield",
+    "en": "Bayesian Inference for High-Yield Bond Default"
+  },
+  "summary_es": "Este modulo aplica el framework PML al caso practico de estimar probabilidad de default en bonos high-yield. Se parametrizan priors Beta segun rating crediticio (BBB a CCC), se modelan eventos de rating (downgrades, upgrades, neutrales) como pseudo-observaciones que actualizan el posterior, y se implementa actualizacion secuencial trimestral. Se construye un portafolio de 15 bonos con historiales individuales de ratings y se genera la distribucion predictiva de defaults futuros, comparando con el enfoque frecuentista de tasa fija. El modelo bayesiano captura que bonos recientemente downgraded tienen mayor riesgo que la media historica sugiere.",
+  "summary_en": "This module applies the PML framework to the practical case of estimating default probability for high-yield bonds. Beta priors are parameterized by credit rating (BBB to CCC), rating events (downgrades, upgrades, neutrals) are modeled as pseudo-observations updating the posterior, and quarterly sequential updating is implemented. A 15-bond portfolio with individual rating histories is built and the predictive distribution of future defaults is generated, compared against the frequentist fixed-rate approach. The Bayesian model captures that recently downgraded bonds carry higher risk than historical averages suggest.",
+  "learning_objectives_es": [
+    "Parametrizar priors Beta por rating crediticio para P(default)",
+    "Modelar downgrades y upgrades como evidencia bayesiana",
+    "Implementar actualizacion secuencial trimestral de P(default)",
+    "Generar distribucion predictiva de defaults para un portafolio completo",
+    "Comparar gestion de riesgo bayesiana vs frecuentista en bonos HY"
+  ],
+  "learning_objectives_en": [
+    "Parameterize Beta priors by credit rating for P(default)",
+    "Model downgrades and upgrades as Bayesian evidence",
+    "Implement quarterly sequential updating of P(default)",
+    "Generate predictive default distribution for a complete portfolio",
+    "Compare Bayesian vs frequentist risk management for HY bonds"
+  ],
+  "video_duration_min": 45,
+  "video_script": "hotmart/scripts_video/script_mod05b_hy_default.md",
+  "notebook": "notebooks/notebook_ch05b_hy_default.md",
+  "visualization": "hotmart/viz_hy_default.py",
+  "visualization_output": "hotmart/hy_default.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod05b_hy_default.md",
+  "exercises_count": 6,
+  "src_script": "src/hy_default_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod05_pml_framework"],
+  "keywords": [
+    "high-yield bonds",
+    "credit default",
+    "Beta-Binomial",
+    "credit rating",
+    "downgrade",
+    "upgrade",
+    "sequential updating",
+    "portfolio risk",
+    "predictive distribution",
+    "Moody's",
+    "S&P",
+    "rating transition"
+  ],
+  "parameters": [
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Rating-Based Priors",
+      "relevance": "alta",
+      "origin_phrase": "Credit ratings encode domain knowledge as informative priors"
+    },
+    {
+      "id": "p_generative_ai",
+      "name": "Predictive Default Distribution",
+      "relevance": "alta",
+      "origin_phrase": "Posterior predictive generates portfolio-level default scenarios"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Dynamic Risk Assessment",
+      "relevance": "alta",
+      "origin_phrase": "Sequential updating captures recent downgrades that fixed-rate models miss"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-01"
+}

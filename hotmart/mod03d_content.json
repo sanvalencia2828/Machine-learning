@@ -1,0 +1,70 @@
+{
+  "module_id": "mod03d_lln_clt_mcs",
+  "module_number": "3D",
+  "title": {
+    "es": "LGN, TLC y los Fundamentos de Monte Carlo",
+    "en": "LLN, CLT and the Foundations of Monte Carlo"
+  },
+  "summary_es": "Este modulo explica los dos teoremas que hacen posible la simulacion Monte Carlo: la Ley de Grandes Numeros (LGN) que garantiza convergencia del promedio muestral al valor esperado, y el Teorema del Limite Central (TLC) que garantiza que el error de estimacion es Normal y medible. Se demuestra la tasa de convergencia 1/sqrt(N), se construyen intervalos de confianza para estimaciones MCS, y se aplica a pricing de opciones. Se presenta el contra-ejemplo de Cauchy donde TLC falla por tener varianza infinita, estableciendo las condiciones necesarias. Se conecta LGN+TLC con distribuciones financieras reales (fat tails) para construir un pipeline MCS completo y robusto.",
+  "summary_en": "This module explains the two theorems that make Monte Carlo simulation possible: the Law of Large Numbers (LLN) guaranteeing convergence of sample means to expected values, and the Central Limit Theorem (CLT) guaranteeing estimation error is Normal and measurable. The 1/sqrt(N) convergence rate is demonstrated, confidence intervals for MCS estimates are constructed, and applied to options pricing. The Cauchy counter-example where CLT fails due to infinite variance is presented, establishing necessary conditions. LLN+CLT are connected with real financial distributions (fat tails) to build a complete and robust MCS pipeline.",
+  "learning_objectives_es": [
+    "Demostrar la LGN con convergencia del promedio muestral para multiples distribuciones",
+    "Verificar el TLC: medias muestrales son Normales aunque los datos no lo sean",
+    "Calcular intervalos de confianza para estimaciones MCS usando TLC",
+    "Identificar cuando TLC falla (Cauchy, varianza infinita, dependencia)",
+    "Aplicar MCS con IC a pricing de opciones y estimacion de probabilidades"
+  ],
+  "learning_objectives_en": [
+    "Demonstrate LLN with sample mean convergence for multiple distributions",
+    "Verify CLT: sample means are Normal even when data is not",
+    "Calculate confidence intervals for MCS estimates using CLT",
+    "Identify when CLT fails (Cauchy, infinite variance, dependence)",
+    "Apply MCS with CI to options pricing and probability estimation"
+  ],
+  "video_duration_min": 45,
+  "video_script": "hotmart/scripts_video/script_mod03d_lln_clt_mcs.md",
+  "notebook": "notebooks/notebook_ch03d_lln_clt_mcs.md",
+  "visualization": "hotmart/viz_lln_clt_mcs.py",
+  "visualization_output": "hotmart/lln_clt_mcs.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod03d_lln_clt.md",
+  "exercises_count": 6,
+  "src_script": "src/lln_clt_mcs_demo.py",
+  "hotmart_tier": "basico",
+  "prerequisites": ["mod03_monte_carlo", "mod03c_normal_vs_reality"],
+  "keywords": [
+    "Law of Large Numbers",
+    "Central Limit Theorem",
+    "LLN",
+    "CLT",
+    "convergence rate",
+    "confidence interval",
+    "Monte Carlo",
+    "Cauchy distribution",
+    "options pricing",
+    "sample mean",
+    "variance",
+    "1/sqrt(N)"
+  ],
+  "parameters": [
+    {
+      "id": "p_simulacion",
+      "name": "MCS Foundations",
+      "relevance": "alta",
+      "origin_phrase": "LLN and CLT provide the theoretical guarantee that MCS converges"
+    },
+    {
+      "id": "p_incertidumbre",
+      "name": "Uncertainty Quantification",
+      "relevance": "alta",
+      "origin_phrase": "CLT enables confidence intervals for MCS estimates"
+    },
+    {
+      "id": "p_non_gaussian",
+      "name": "Non-Gaussian Awareness",
+      "relevance": "media",
+      "origin_phrase": "CLT fails with Cauchy; fat-tailed distributions slow convergence"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

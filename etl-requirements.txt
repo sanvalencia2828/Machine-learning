@@ -1,0 +1,61 @@
+# ETL Pipeline for ML Course Content Processing
+# requirements.txt
+
+# Core dependencies
+python==3.11.*
+pip>=23.0
+
+# PDF Processing
+PyMuPDF==1.23.8  # pdf extraction
+pdfminer.six==20221105  # text extraction
+pypdf==3.17.4  # PDF utilities
+
+# Document Processing
+python-docx==0.8.11  # DOCX support
+nbconvert==7.12.1  # Jupyter notebook conversion
+
+# NLP & Text Processing
+spacy==3.7.2  # NLP
+transformers==4.35.2  # Hugging Face transformers
+torch==2.1.1  # PyTorch
+nltk==3.8.1  # NLTK
+PyYAML==6.0.1
+
+# Data Processing
+pandas==2.1.3
+numpy==1.26.2
+Pillow==10.1.0  # Image processing
+
+# Database
+psycopg2-binary==2.9.9  # PostgreSQL driver
+SQLAlchemy==2.0.23
+alembic==1.13.0  # Database migrations
+
+# Cloud Storage
+boto3==1.29.7  # AWS SDK
+python-dotenv==1.0.0
+
+# Orchestration & Scheduling
+apache-airflow==2.7.2  # OR Prefect
+prefect==2.14.11
+
+# API & HTTP
+requests==2.31.0
+httpx==0.25.2
+
+# Utilities
+python-dateutil==2.8.2
+pytz==2023.3
+tqdm==4.66.1  # Progress bars
+loguru==0.7.2  # Logging
+
+# Testing & Dev
+pytest==7.4.3
+pytest-cov==4.1.0
+black==23.12.0
+flake8==6.1.0
+mypy==1.7.0
+
+# Optional: Translation
+deepl==1.16.0  # DeepL API
+google-cloud-translate==3.14.0  # Google Translate

@@ -1,0 +1,70 @@
+{
+  "module_id": "mod03c_normal_vs_reality",
+  "module_number": "3C",
+  "title": {
+    "es": "Normal vs Realidad en Retornos Financieros",
+    "en": "Normal vs Reality in Financial Returns"
+  },
+  "summary_es": "Este modulo demuestra formalmente que los retornos financieros no siguen una distribucion Normal. Se generan retornos sinteticos tipo S&P 500 con colas pesadas y asimetria negativa, y se aplican tres tests de normalidad: Jarque-Bera, Shapiro-Wilk y Anderson-Darling. Se usa el QQ-plot como diagnostico visual clave. Se ajustan distribuciones Normal y Student-t via MLE y se comparan con AIC/BIC, demostrando que Student-t es estrictamente superior. Se cuantifica el impacto: el VaR Normal subestima el riesgo en 20-40%, y los eventos de 4+ sigma son 80-100x mas frecuentes que lo que la Normal predice. Se presentan las implicaciones para pricing de opciones, gestion de riesgo y cumplimiento regulatorio.",
+  "summary_en": "This module formally demonstrates that financial returns do not follow a Normal distribution. Synthetic S&P 500-like returns with fat tails and negative skewness are generated, and three normality tests are applied: Jarque-Bera, Shapiro-Wilk, and Anderson-Darling. QQ-plots serve as the key visual diagnostic. Normal and Student-t distributions are fitted via MLE and compared with AIC/BIC, showing Student-t is strictly superior. The impact is quantified: Normal VaR underestimates risk by 20-40%, and 4+ sigma events are 80-100x more frequent than Normal predicts. Implications for options pricing, risk management, and regulatory compliance are presented.",
+  "learning_objectives_es": [
+    "Demostrar formalmente la no-normalidad de retornos con 3 tests estadisticos",
+    "Interpretar QQ-plots para diagnosticar fat tails y asimetria",
+    "Ajustar Student-t vs Normal via MLE y comparar con AIC/BIC",
+    "Cuantificar el error de VaR por asumir normalidad",
+    "Construir la tabla de eventos extremos: observados vs esperados"
+  ],
+  "learning_objectives_en": [
+    "Formally demonstrate non-normality of returns with 3 statistical tests",
+    "Interpret QQ-plots to diagnose fat tails and asymmetry",
+    "Fit Student-t vs Normal via MLE and compare with AIC/BIC",
+    "Quantify VaR error from assuming normality",
+    "Build the extreme events table: observed vs expected"
+  ],
+  "video_duration_min": 40,
+  "video_script": "hotmart/scripts_video/script_mod03c_normal_vs_reality.md",
+  "notebook": "notebooks/notebook_ch03c_normal_vs_reality.md",
+  "visualization": "hotmart/viz_normal_vs_reality.py",
+  "visualization_output": "hotmart/normal_vs_reality.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod03c_normal_vs_reality.md",
+  "exercises_count": 6,
+  "src_script": "src/normal_vs_reality_demo.py",
+  "hotmart_tier": "basico",
+  "prerequisites": ["mod03_monte_carlo", "mod03b_stat_concepts"],
+  "keywords": [
+    "normality test",
+    "Jarque-Bera",
+    "Shapiro-Wilk",
+    "Anderson-Darling",
+    "QQ-plot",
+    "fat tails",
+    "Student-t",
+    "MLE",
+    "AIC",
+    "BIC",
+    "VaR error",
+    "S&P 500"
+  ],
+  "parameters": [
+    {
+      "id": "p_non_gaussian",
+      "name": "Non-Gaussian Financial Returns",
+      "relevance": "alta",
+      "origin_phrase": "Three formal tests reject normality of financial returns with p << 0.001"
+    },
+    {
+      "id": "p_specification_errors",
+      "name": "Specification Error",
+      "relevance": "alta",
+      "origin_phrase": "Assuming normality is a specification error that underestimates risk by 20-40%"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Model Robustness",
+      "relevance": "alta",
+      "origin_phrase": "Student-t with nu~4 captures tail risk 100x better than Normal"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

@@ -1,0 +1,72 @@
+{
+  "module_id": "mod04b_nhst_applied",
+  "module_number": "4B",
+  "title": {
+    "es": "NHST Aplicado: OLS, Base Rates e Indicadores Economicos",
+    "en": "Applied NHST: OLS, Base Rates and Economic Indicators"
+  },
+  "summary_es": "Este modulo aplica las lecciones sobre peligros de NHST a tres casos practicos. Primero, se construye un modelo OLS de mercado (Apple vs S&P 500) con Statsmodels, se interpretan p-values, R-squared e intervalos de confianza, y se ejecutan tests diagnosticos que demuestran que los p-values son invalidos con residuales fat-tailed. Segundo, se simulan datos de recesiones tipo NBER para calcular base rates y se construye la confusion matrix de un indicador economico (tipo yield curve), demostrando que una sensibilidad de 85% se traduce en un PPV de solo 43% con base rate de 15%. Tercero, se genera un grafico de PPV vs FPR para diferentes base rates, mostrando que el base rate domina la utilidad real del indicador. Se conecta con la falacia del fiscal aplicada a backtesting financiero.",
+  "summary_en": "This module applies NHST danger lessons to three practical cases. First, an OLS market model (Apple vs S&P 500) is built with Statsmodels, interpreting p-values, R-squared, and confidence intervals, with diagnostic tests showing p-values are invalid with fat-tailed residuals. Second, NBER-like recession data is simulated to calculate base rates and build a confusion matrix for an economic indicator (yield curve type), showing 85% sensitivity translates to only 43% PPV with 15% base rate. Third, PPV vs FPR curves for different base rates demonstrate that the base rate dominates indicator utility. Connected to the prosecutor's fallacy in financial backtesting.",
+  "learning_objectives_es": [
+    "Construir un modelo OLS con Statsmodels e interpretar summary y diagnosticos",
+    "Calcular base rates historicos de recesiones y aplicar Bayes a indicadores",
+    "Construir y analizar la confusion matrix de un indicador economico",
+    "Cuantificar como el base rate domina el valor predictivo positivo (PPV)",
+    "Distinguir P(senal|recesion) de P(recesion|senal) en la practica"
+  ],
+  "learning_objectives_en": [
+    "Build an OLS model with Statsmodels and interpret summary and diagnostics",
+    "Calculate historical recession base rates and apply Bayes to indicators",
+    "Build and analyze the confusion matrix of an economic indicator",
+    "Quantify how base rate dominates positive predictive value (PPV)",
+    "Distinguish P(signal|recession) from P(recession|signal) in practice"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod04b_nhst_applied.md",
+  "notebook": "notebooks/notebook_ch04b_nhst_applied.md",
+  "visualization": "hotmart/viz_nhst_applied.py",
+  "visualization_output": "hotmart/nhst_applied.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod04b_nhst_applied.md",
+  "exercises_count": 6,
+  "src_script": "src/nhst_applied_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod04_nhst_dangers"],
+  "keywords": [
+    "OLS",
+    "Statsmodels",
+    "base rate",
+    "confusion matrix",
+    "PPV",
+    "NPV",
+    "sensitivity",
+    "specificity",
+    "false positive rate",
+    "recession indicator",
+    "yield curve",
+    "NBER",
+    "FRED",
+    "diagnostic tests"
+  ],
+  "parameters": [
+    {
+      "id": "p_nhst_fallacies",
+      "name": "Applied Inverse Fallacy",
+      "relevance": "alta",
+      "origin_phrase": "85% sensitivity translates to only 43% PPV with 15% base rate"
+    },
+    {
+      "id": "p_specification_errors",
+      "name": "OLS Assumption Violations",
+      "relevance": "alta",
+      "origin_phrase": "Fat-tailed residuals invalidate OLS p-values and confidence intervals"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Base Rate Integration",
+      "relevance": "alta",
+      "origin_phrase": "Bayes naturally incorporates base rates that NHST ignores"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

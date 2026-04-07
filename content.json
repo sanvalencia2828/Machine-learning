@@ -1,0 +1,1087 @@
+[
+  {
+    "chapter_id": "preface",
+    "chapter_number": 0,
+    "title": {
+      "es": "Prefacio",
+      "en": "Preface"
+    },
+    "summary_es": "El prefacio establece la motivacion central del libro: las finanzas convencionales y la estadistica frecuentista han fallado repetidamente en modelar la incertidumbre inherente a los mercados financieros. El autor argumenta que el aprendizaje automatico probabilistico (PML) ofrece un marco superior porque permite integrar de forma transparente el conocimiento previo del dominio, cuantificar la incertidumbre en cada etapa del modelado y generar simulaciones contrafactuales para la toma de decisiones. Se destaca la importancia de la transparencia y explicabilidad en industrias reguladas como la financiera. El ecosistema tecnologico recomendado incluye PyMC, Stan, TensorFlow Probability y Pyro. El libro esta dirigido a profesionales que piensan criticamente sobre sus modelos y desean ir mas alla de las cajas negras. Kanungo explica como navegar el libro y por que integrar conocimiento personal, empirico e institucional es fundamental para construir modelos financieros robustos y utiles.",
+    "summary_en": "The preface establishes the book's central motivation: conventional finance and frequentist statistics have repeatedly failed to model the inherent uncertainty of financial markets. The author argues that probabilistic machine learning (PML) offers a superior framework because it transparently integrates prior domain knowledge, quantifies uncertainty at every modeling stage, and generates counterfactual simulations for decision-making. The importance of transparency and explicability in regulated industries like finance is emphasized. The recommended technology ecosystem includes PyMC, Stan, TensorFlow Probability, and Pyro. The book targets thinking practitioners who want to move beyond black-box models. Kanungo explains how to navigate the book and why integrating personal, empirical, and institutional knowledge is essential for building robust and useful financial models. He highlights the flaws of conventional approaches that treat financial systems as if they were governed by deterministic physical laws.",
+    "learning_objectives_es": [
+      "Comprender por que las finanzas convencionales necesitan un enfoque probabilistico",
+      "Identificar las tres fuentes de conocimiento que PML puede integrar: personal, empirico e institucional",
+      "Conocer el ecosistema tecnologico de PML: PyMC, Stan, TensorFlow Probability, Pyro",
+      "Entender la importancia de la transparencia y explicabilidad en modelos financieros regulados"
+    ],
+    "learning_objectives_en": [
+      "Understand why conventional finance needs a probabilistic approach",
+      "Identify the three knowledge sources PML can integrate: personal, empirical, and institutional",
+      "Know the PML technology ecosystem: PyMC, Stan, TensorFlow Probability, Pyro",
+      "Understand the importance of transparency and explicability in regulated financial models"
+    ],
+    "parameters": [
+      {
+        "id": "p_generative_ai",
+        "name": "Generative AI and PML",
+        "relevance": "alta",
+        "origin_phrase": "Generative AI models can simulate plausible financial scenarios",
+        "features": ["generative_models", "simulation", "pml_framework"]
+      },
+      {
+        "id": "p_transparencia",
+        "name": "Transparency in Models",
+        "relevance": "alta",
+        "origin_phrase": "Transparency is essential in regulated financial industries",
+        "features": ["model_transparency", "regulatory_compliance"]
+      },
+      {
+        "id": "p_explicabilidad",
+        "name": "Explicability",
+        "relevance": "alta",
+        "origin_phrase": "Explicability of model assumptions and outputs is a regulatory requirement",
+        "features": ["model_explicability", "interpretability"]
+      },
+      {
+        "id": "p_incorporacion_conocimiento",
+        "name": "Knowledge Integration",
+        "relevance": "alta",
+        "origin_phrase": "Integrate personal, empirical, and institutional knowledge into models",
+        "features": ["prior_knowledge", "domain_expertise", "bayesian_priors"]
+      },
+      {
+        "id": "p_simulacion",
+        "name": "Counterfactual Simulation",
+        "relevance": "alta",
+        "origin_phrase": "Simulate counterfactual scenarios to stress-test financial decisions",
+        "features": ["monte_carlo", "scenario_generation", "counterfactual"]
+      },
+      {
+        "id": "p_tech_ecosystem",
+        "name": "Technology Ecosystem",
+        "relevance": "media",
+        "origin_phrase": "PyMC, Stan, TensorFlow Probability, and Pyro form the core PML toolkit",
+        "features": ["pymc", "stan", "tensorflow_probability", "pyro"]
+      },
+      {
+        "id": "p_audience",
+        "name": "Target Audience",
+        "relevance": "media",
+        "origin_phrase": "This book is written for the thinking practitioner",
+        "features": ["practitioners", "critical_thinking"]
+      },
+      {
+        "id": "p_riesgo_no_prob",
+        "name": "Non-Probabilistic Risk Flaws",
+        "relevance": "alta",
+        "origin_phrase": "Conventional finance treats risk with non-probabilistic tools that obscure uncertainty",
+        "features": ["risk_management", "frequentist_flaws"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch00_01",
+        "file": "preface_ecosystem_overview.ipynb",
+        "description_es": "Panoramica del ecosistema PML: instalacion y prueba rapida de PyMC, ArviZ y TensorFlow Probability",
+        "description_en": "PML ecosystem overview: installation and quick test of PyMC, ArviZ, and TensorFlow Probability"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch00_01",
+        "type": "diagram",
+        "description": "Diagram showing the three knowledge sources (personal, empirical, institutional) feeding into the PML framework"
+      }
+    ],
+    "keywords": [
+      "probabilistic machine learning",
+      "finance",
+      "transparency",
+      "explicability",
+      "knowledge integration",
+      "counterfactual simulation",
+      "PyMC",
+      "Stan",
+      "TensorFlow Probability",
+      "Pyro",
+      "regulated industries"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch01",
+    "chapter_number": 1,
+    "title": {
+      "es": "La Necesidad del Aprendizaje Automatico Probabilistico",
+      "en": "The Need for Probabilistic Machine Learning"
+    },
+    "summary_es": "Este capitulo establece el argumento fundamental de que las finanzas no son fisica: los modelos economicos no pueden aspirar a la precision de las leyes naturales porque operan sobre sistemas sociales complejos y no estacionarios. Se analiza el desastre de LTCM como caso emblematico de arrogancia academica, donde premios Nobel confiaron ciegamente en modelos gaussianos que ignoraban la incertidumbre real. En contraste, Renaissance Technologies demostro que reconocer la incertidumbre y adaptar los modelos continuamente produce resultados superiores. El capitulo introduce la trifecta de errores de modelado -- especificacion, parametros y adaptacion estructural -- que afectan a todos los modelos financieros convencionales. Se utiliza el ejemplo de tasas de tarjetas de credito con distribuciones binomiales para ilustrar como el enfoque probabilistico cuantifica la incertidumbre en lugar de ocultarla. Finalmente se presentan las caracteristicas fundamentales del PML como marco alternativo robusto.",
+    "summary_en": "This chapter establishes the fundamental argument that finance is not physics: economic models cannot aspire to the precision of natural laws because they operate on complex, non-stationary social systems. The LTCM disaster is analyzed as an emblematic case of academic arrogance, where Nobel laureates blindly trusted Gaussian models that ignored real uncertainty. In contrast, Renaissance Technologies demonstrated that acknowledging uncertainty and continuously adapting models produces superior results. The chapter introduces the trifecta of modeling errors -- specification, parameter, and structural adaptation -- that afflict all conventional financial models. A credit card rate example using binomial distributions illustrates how the probabilistic approach quantifies uncertainty instead of hiding it. The chapter closes by presenting the fundamental characteristics of PML as a robust alternative framework that can incorporate domain knowledge, generate predictive distributions, and adapt to changing market conditions.",
+    "learning_objectives_es": [
+      "Comprender por que los modelos financieros no pueden tratarse como leyes fisicas",
+      "Analizar la trifecta de errores de modelado: especificacion, parametros y adaptacion estructural",
+      "Contrastar los enfoques de LTCM y Renaissance Technologies frente a la incertidumbre",
+      "Identificar las caracteristicas clave del aprendizaje automatico probabilistico"
+    ],
+    "learning_objectives_en": [
+      "Understand why financial models cannot be treated as physical laws",
+      "Analyze the trifecta of modeling errors: specification, parameter, and structural adaptation",
+      "Contrast LTCM and Renaissance Technologies approaches to uncertainty",
+      "Identify the key characteristics of probabilistic machine learning"
+    ],
+    "parameters": [
+      {
+        "id": "p_trifecta_errors",
+        "name": "Trifecta of Modeling Errors",
+        "relevance": "alta",
+        "origin_phrase": "The trifecta of modeling errors: specification error, parameter error, and structural adaptation error",
+        "features": ["specification_error", "parameter_error", "structural_adaptation"]
+      },
+      {
+        "id": "p_specification_errors",
+        "name": "Specification Errors",
+        "relevance": "alta",
+        "origin_phrase": "Specification errors arise from choosing the wrong model structure for the problem",
+        "features": ["model_selection", "functional_form", "misspecification"]
+      },
+      {
+        "id": "p_parameter_errors",
+        "name": "Parameter Errors",
+        "relevance": "alta",
+        "origin_phrase": "Parameter errors result from using point estimates instead of probability distributions",
+        "features": ["point_estimates", "parameter_uncertainty", "overfitting"]
+      },
+      {
+        "id": "p_nonstationary",
+        "name": "Non-Stationarity",
+        "relevance": "alta",
+        "origin_phrase": "Financial markets are fundamentally non-stationary systems",
+        "features": ["regime_change", "structural_breaks", "time_varying"]
+      },
+      {
+        "id": "p_trinomial_adapt",
+        "name": "Structural Adaptation Errors",
+        "relevance": "alta",
+        "origin_phrase": "Models must adapt to structural changes in markets or become dangerously misleading",
+        "features": ["model_adaptation", "regime_detection", "online_learning"]
+      },
+      {
+        "id": "p_ltcm",
+        "name": "LTCM Disaster",
+        "relevance": "alta",
+        "origin_phrase": "Long-Term Capital Management's spectacular failure demonstrated the dangers of model overconfidence",
+        "features": ["case_study", "model_failure", "leverage_risk"]
+      },
+      {
+        "id": "p_renaissance",
+        "name": "Renaissance Technologies",
+        "relevance": "media",
+        "origin_phrase": "Renaissance Technologies embraces uncertainty and adapts models to changing market conditions",
+        "features": ["case_study", "adaptive_models", "quantitative_success"]
+      },
+      {
+        "id": "p_models_social",
+        "name": "Models of Social Systems",
+        "relevance": "alta",
+        "origin_phrase": "Financial models describe social systems, not physical ones",
+        "features": ["social_complexity", "reflexivity", "non_ergodic"]
+      },
+      {
+        "id": "p_academic_arrogance",
+        "name": "Academic Arrogance in Finance",
+        "relevance": "media",
+        "origin_phrase": "The academic finance establishment has awarded prizes for models that caused real-world disasters",
+        "features": ["institutional_critique", "model_hubris"]
+      },
+      {
+        "id": "p_non_gaussian",
+        "name": "Non-Gaussian Distributions",
+        "relevance": "alta",
+        "origin_phrase": "Financial returns exhibit fat tails and skewness inconsistent with normal distributions",
+        "features": ["fat_tails", "skewness", "kurtosis", "heavy_tails"]
+      },
+      {
+        "id": "p_incertidumbre",
+        "name": "Uncertainty Quantification",
+        "relevance": "alta",
+        "origin_phrase": "Quantifying uncertainty at every stage of modeling is the hallmark of PML",
+        "features": ["uncertainty", "probabilistic_outputs", "credible_intervals"]
+      },
+      {
+        "id": "p_incorporacion_conocimiento",
+        "name": "Knowledge Incorporation",
+        "relevance": "alta",
+        "origin_phrase": "PML allows the systematic incorporation of domain knowledge through prior distributions",
+        "features": ["prior_knowledge", "bayesian_priors", "expert_elicitation"]
+      },
+      {
+        "id": "p_simulacion",
+        "name": "Simulation Capability",
+        "relevance": "media",
+        "origin_phrase": "Generative models simulate plausible future scenarios for robust decision-making",
+        "features": ["monte_carlo", "generative_models", "scenario_analysis"]
+      },
+      {
+        "id": "p_robustez",
+        "name": "Model Robustness",
+        "relevance": "alta",
+        "origin_phrase": "Robust models acknowledge their own limitations and quantify their uncertainty",
+        "features": ["robustness", "model_checking", "sensitivity_analysis"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch01_01",
+        "file": "ch01_credit_card_binomial.ipynb",
+        "description_es": "Ejemplo de tasas de tarjetas de credito modeladas con distribucion binomial para cuantificar incertidumbre",
+        "description_en": "Credit card rate example modeled with binomial distribution to quantify uncertainty"
+      },
+      {
+        "id": "nb_ch01_02",
+        "file": "ch01_trifecta_errors_demo.ipynb",
+        "description_es": "Demostracion interactiva de los tres tipos de errores de modelado en datos financieros sinteticos",
+        "description_en": "Interactive demonstration of the three types of modeling errors on synthetic financial data"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch01_01",
+        "type": "comparison_chart",
+        "description": "Side-by-side comparison of LTCM vs Renaissance Technologies returns, highlighting model adaptation"
+      },
+      {
+        "id": "viz_ch01_02",
+        "type": "error_taxonomy",
+        "description": "Diagram of the trifecta of modeling errors with financial examples for each type"
+      }
+    ],
+    "keywords": [
+      "trifecta of errors",
+      "specification error",
+      "parameter error",
+      "structural adaptation",
+      "LTCM",
+      "Renaissance Technologies",
+      "non-stationarity",
+      "binomial distribution",
+      "probabilistic ML",
+      "finance is not physics",
+      "fat tails",
+      "model uncertainty"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Orrell, David & Wilmott, Paul",
+        "title": "The Money Formula",
+        "year": "2017"
+      },
+      {
+        "author": "Sekerke, Matt",
+        "title": "Bayesian Risk Management",
+        "year": "2015"
+      },
+      {
+        "author": "Thompson, Earl et al.",
+        "title": "Nobels for Nonsense",
+        "year": "2006"
+      },
+      {
+        "author": "Simons, James",
+        "title": "Model Error (lecture references)",
+        "year": "2010"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch02",
+    "chapter_number": 2,
+    "title": {
+      "es": "Analisis y Cuantificacion de la Incertidumbre",
+      "en": "Analyzing and Quantifying Uncertainty"
+    },
+    "summary_es": "El capitulo utiliza el famoso problema de Monty Hall como vehiculo pedagogico para introducir conceptos fundamentales de probabilidad y razonamiento bajo incertidumbre. Se presentan los axiomas de probabilidad y la regla de inversion de probabilidades, demostrando como nuestra intuicion frecuentemente falla ante problemas probabilisticos. A traves de simulaciones Monte Carlo del problema de Monty Hall se valida la solucion contraintuitiva. El capitulo profundiza en el significado de la probabilidad, contrastando las interpretaciones frecuentista y epistemica, argumentando que la distincion convencional entre riesgo e incertidumbre resulta inutil en la practica. Se introduce la trinidad de la incertidumbre: aleatoria (irreducible), epistemica (reducible con datos) y ontologica (desconocidos desconocidos). Los teoremas de No Free Lunch y el problema de la induccion subrayan que no existe un modelo universalmente optimo, reforzando la necesidad del enfoque probabilistico que reconoce y cuantifica todas las fuentes de incertidumbre.",
+    "summary_en": "The chapter uses the famous Monty Hall problem as a pedagogical vehicle to introduce fundamental probability concepts and reasoning under uncertainty. Probability axioms and the inverse probability rule are presented, demonstrating how our intuition frequently fails on probabilistic problems. Monte Carlo simulations of the Monty Hall problem validate the counterintuitive solution. The chapter delves into the meaning of probability, contrasting frequentist and epistemic interpretations, arguing that the conventional distinction between risk and uncertainty is useless in practice. The trinity of uncertainty is introduced: aleatory (irreducible), epistemic (reducible with data), and ontological (unknown unknowns). The No Free Lunch theorems and the problem of induction underscore that no universally optimal model exists, reinforcing the need for a probabilistic approach that acknowledges and quantifies all sources of uncertainty in financial modeling.",
+    "learning_objectives_es": [
+      "Resolver el problema de Monty Hall usando razonamiento probabilistico y simulacion",
+      "Distinguir entre las interpretaciones frecuentista y epistemica de la probabilidad",
+      "Comprender la trinidad de la incertidumbre: aleatoria, epistemica y ontologica",
+      "Aplicar los teoremas de No Free Lunch al contexto de modelos financieros"
+    ],
+    "learning_objectives_en": [
+      "Solve the Monty Hall problem using probabilistic reasoning and simulation",
+      "Distinguish between frequentist and epistemic interpretations of probability",
+      "Understand the trinity of uncertainty: aleatory, epistemic, and ontological",
+      "Apply the No Free Lunch theorems to financial modeling context"
+    ],
+    "parameters": [
+      {
+        "id": "p_incertidumbre",
+        "name": "Uncertainty Quantification",
+        "relevance": "alta",
+        "origin_phrase": "The trinity of uncertainty: aleatory, epistemic, and ontological",
+        "features": ["aleatory_uncertainty", "epistemic_uncertainty", "ontological_uncertainty"]
+      },
+      {
+        "id": "p_models_social",
+        "name": "Models of Social Systems",
+        "relevance": "media",
+        "origin_phrase": "The distinction between risk and uncertainty is useless for modeling social systems",
+        "features": ["risk_vs_uncertainty", "social_complexity"]
+      },
+      {
+        "id": "p_nonstationary",
+        "name": "Non-Stationarity",
+        "relevance": "media",
+        "origin_phrase": "Ontological uncertainty captures the non-stationary, unknowable nature of financial markets",
+        "features": ["unknown_unknowns", "regime_change"]
+      },
+      {
+        "id": "p_academic_arrogance",
+        "name": "Academic Arrogance",
+        "relevance": "media",
+        "origin_phrase": "The problem of induction undermines the certainty that conventional models claim to offer",
+        "features": ["induction_problem", "no_free_lunch", "model_humility"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch02_01",
+        "file": "ch02_monty_hall_simulation.ipynb",
+        "description_es": "Simulacion Monte Carlo del problema de Monty Hall con visualizacion de convergencia de probabilidades",
+        "description_en": "Monte Carlo simulation of the Monty Hall problem with probability convergence visualization"
+      },
+      {
+        "id": "nb_ch02_02",
+        "file": "ch02_inverse_probability.ipynb",
+        "description_es": "Demostracion de la regla de inversion de probabilidades con ejemplos financieros",
+        "description_en": "Demonstration of the inverse probability rule with financial examples"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch02_01",
+        "type": "simulation_plot",
+        "description": "Monte Carlo simulation convergence plot for Monty Hall problem showing switch vs stay strategies"
+      },
+      {
+        "id": "viz_ch02_02",
+        "type": "venn_diagram",
+        "description": "Trinity of uncertainty: aleatory, epistemic, and ontological with financial examples in each region"
+      }
+    ],
+    "keywords": [
+      "Monty Hall problem",
+      "probability axioms",
+      "inverse probability",
+      "frequentist probability",
+      "epistemic probability",
+      "aleatory uncertainty",
+      "epistemic uncertainty",
+      "ontological uncertainty",
+      "No Free Lunch theorem",
+      "problem of induction",
+      "risk vs uncertainty",
+      "Monte Carlo simulation"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch03",
+    "chapter_number": 3,
+    "title": {
+      "es": "Cuantificacion de la Incertidumbre de Salida con Simulacion Monte Carlo",
+      "en": "Quantifying Output Uncertainty with Monte Carlo Simulation"
+    },
+    "summary_es": "Este capitulo profundiza en la simulacion Monte Carlo (MCS) como herramienta fundamental para cuantificar la incertidumbre en las salidas de modelos financieros. Comienza con una prueba de concepto elegante: la estimacion del numero pi mediante MCS. Se revisan conceptos estadisticos clave -- media, varianza, valor esperado -- para luego demostrar por que la volatilidad es una medida absurda de riesgo financiero: las distribuciones de retornos del S&P 500 exhiben asimetria y curtosis incompatibles con la distribucion normal. Se analiza como la volatilidad subestima sistematicamente el riesgo financiero real debido a las colas gruesas de los retornos. La Ley de los Grandes Numeros y el Teorema Central del Limite proporcionan los fundamentos teoricos de la MCS. El capitulo concluye con una aplicacion practica: la valoracion de un proyecto de software usando flujos de caja descontados (DCF) enriquecidos con simulacion Monte Carlo para generar distribuciones de valores en lugar de estimaciones puntuales.",
+    "summary_en": "This chapter dives deep into Monte Carlo simulation (MCS) as a fundamental tool for quantifying output uncertainty in financial models. It begins with an elegant proof of concept: estimating pi using MCS. Key statistical concepts are reviewed -- mean, variance, expected value -- before demonstrating why volatility is a nonsensical measure of financial risk: S&P 500 return distributions exhibit skewness and kurtosis incompatible with the normal distribution. The chapter shows how volatility systematically underestimates real financial risk due to fat tails in returns. The Law of Large Numbers and the Central Limit Theorem provide the theoretical underpinnings of MCS. It concludes with a practical application: valuing a software project using discounted cash flows (DCF) enriched with Monte Carlo simulation to generate value distributions rather than single point estimates.",
+    "learning_objectives_es": [
+      "Implementar simulaciones Monte Carlo para estimar cantidades inciertas",
+      "Comprender por que la volatilidad es una medida inadecuada de riesgo financiero",
+      "Analizar asimetria y curtosis en distribuciones de retornos reales",
+      "Aplicar MCS a la valoracion DCF de proyectos para obtener distribuciones de valor"
+    ],
+    "learning_objectives_en": [
+      "Implement Monte Carlo simulations to estimate uncertain quantities",
+      "Understand why volatility is an inadequate measure of financial risk",
+      "Analyze skewness and kurtosis in real return distributions",
+      "Apply MCS to DCF project valuation to obtain value distributions"
+    ],
+    "parameters": [
+      {
+        "id": "p_non_gaussian",
+        "name": "Non-Gaussian Distributions",
+        "relevance": "alta",
+        "origin_phrase": "S&P 500 returns exhibit significant skewness and excess kurtosis, violating normality assumptions",
+        "features": ["fat_tails", "skewness", "kurtosis", "sp500_analysis"]
+      },
+      {
+        "id": "p_robustez",
+        "name": "Model Robustness",
+        "relevance": "alta",
+        "origin_phrase": "Monte Carlo simulation produces robust output distributions rather than fragile point estimates",
+        "features": ["distributional_output", "sensitivity_analysis", "dcf_valuation"]
+      },
+      {
+        "id": "p_incertidumbre",
+        "name": "Uncertainty Quantification",
+        "relevance": "alta",
+        "origin_phrase": "Volatility systematically underestimates financial risk in the presence of fat tails",
+        "features": ["output_uncertainty", "risk_underestimation", "tail_risk"]
+      },
+      {
+        "id": "p_simulacion",
+        "name": "Monte Carlo Simulation",
+        "relevance": "alta",
+        "origin_phrase": "MCS transforms deterministic models into probabilistic ones by sampling from input distributions",
+        "features": ["pi_estimation", "dcf_simulation", "law_large_numbers", "clt"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch03_01",
+        "file": "ch03_pi_estimation_mcs.ipynb",
+        "description_es": "Estimacion de pi mediante simulacion Monte Carlo con visualizacion del proceso de convergencia",
+        "description_en": "Pi estimation via Monte Carlo simulation with convergence process visualization"
+      },
+      {
+        "id": "nb_ch03_02",
+        "file": "ch03_sp500_fat_tails.ipynb",
+        "description_es": "Analisis de colas gruesas en retornos del S&P 500: comparacion con distribucion normal",
+        "description_en": "Fat tail analysis of S&P 500 returns: comparison with normal distribution"
+      },
+      {
+        "id": "nb_ch03_03",
+        "file": "ch03_dcf_monte_carlo.ipynb",
+        "description_es": "Valoracion DCF probabilistica de un proyecto de software usando simulacion Monte Carlo",
+        "description_en": "Probabilistic DCF valuation of a software project using Monte Carlo simulation"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch03_01",
+        "type": "histogram_overlay",
+        "description": "Histogram of S&P 500 returns overlaid with fitted normal distribution, highlighting fat tails and skewness"
+      },
+      {
+        "id": "viz_ch03_02",
+        "type": "distribution_plot",
+        "description": "DCF valuation output distribution from Monte Carlo simulation showing range of project values"
+      },
+      {
+        "id": "viz_ch03_03",
+        "type": "convergence_plot",
+        "description": "Pi estimation convergence as number of Monte Carlo samples increases"
+      }
+    ],
+    "keywords": [
+      "Monte Carlo simulation",
+      "pi estimation",
+      "volatility",
+      "skewness",
+      "kurtosis",
+      "normal distribution",
+      "fat tails",
+      "S&P 500",
+      "Law of Large Numbers",
+      "Central Limit Theorem",
+      "DCF valuation",
+      "output uncertainty",
+      "risk underestimation"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch04",
+    "chapter_number": 4,
+    "title": {
+      "es": "Peligros de las Metodologias Estadisticas Convencionales",
+      "en": "Dangers of Conventional Statistical Methodologies"
+    },
+    "summary_es": "Este capitulo expone las fallas fundamentales de las metodologias estadisticas convencionales cuando se aplican a finanzas. Comienza con la falacia inversa, donde se confunde la probabilidad de los datos dado un modelo con la probabilidad del modelo dados los datos. Luego se analiza la prueba de hipotesis nula (NHST) y la falacia del fiscal, demostrando como los p-valores son ampliamente malinterpretados. El concepto de intervalo de confianza se presenta como un juego enganoso: los intervalos de confianza frecuentistas no significan lo que la mayoria de los profesionales creen. Se implementa un modelo de mercado de un solo factor usando OLS con Statsmodels como ejemplo practico. El capitulo identifica tres tipos de errores en el uso post-data de intervalos de confianza que invalidan las inferencias convencionales. La conclusion es clara: las herramientas estadisticas frecuentistas, aunque matematicamente elegantes, producen interpretaciones erroneas que pueden llevar a decisiones financieras desastrosas.",
+    "summary_en": "This chapter exposes the fundamental flaws of conventional statistical methodologies when applied to finance. It begins with the inverse fallacy, where the probability of data given a model is confused with the probability of a model given the data. Null hypothesis significance testing (NHST) and the prosecutor's fallacy are analyzed, showing how p-values are widely misinterpreted. Confidence intervals are presented as a deceptive game: frequentist confidence intervals do not mean what most practitioners believe. A single-factor market model is implemented using OLS with Statsmodels as a practical example. The chapter identifies three types of errors in the post-data use of confidence intervals that invalidate conventional inferences. The conclusion is clear: frequentist statistical tools, while mathematically elegant, produce erroneous interpretations that can lead to disastrous financial decisions.",
+    "learning_objectives_es": [
+      "Identificar y evitar la falacia inversa en inferencia estadistica",
+      "Comprender por que los p-valores y la NHST son problematicos en finanzas",
+      "Reconocer las limitaciones reales de los intervalos de confianza frecuentistas",
+      "Implementar un modelo de mercado de un factor con OLS y analizar sus deficiencias"
+    ],
+    "learning_objectives_en": [
+      "Identify and avoid the inverse fallacy in statistical inference",
+      "Understand why p-values and NHST are problematic in finance",
+      "Recognize the real limitations of frequentist confidence intervals",
+      "Implement a single-factor market model with OLS and analyze its deficiencies"
+    ],
+    "parameters": [
+      {
+        "id": "p_academic_arrogance",
+        "name": "Academic Arrogance",
+        "relevance": "alta",
+        "origin_phrase": "NHST and p-values have been widely misused, leading to a replication crisis across disciplines",
+        "features": ["nhst_critique", "p_value_misuse", "replication_crisis"]
+      },
+      {
+        "id": "p_riesgo_no_prob",
+        "name": "Non-Probabilistic Risk Assessment",
+        "relevance": "alta",
+        "origin_phrase": "Confidence intervals do not provide the probability that the true parameter lies within the interval",
+        "features": ["confidence_interval_flaws", "frequentist_limitations"]
+      },
+      {
+        "id": "p_specification_errors",
+        "name": "Specification Errors",
+        "relevance": "media",
+        "origin_phrase": "The single-factor market model assumes a linear relationship that may not hold in practice",
+        "features": ["ols_limitations", "linear_assumption", "market_model"]
+      },
+      {
+        "id": "p_non_gaussian",
+        "name": "Non-Gaussian Distributions",
+        "relevance": "media",
+        "origin_phrase": "OLS regression assumes normally distributed errors, a condition rarely met in financial data",
+        "features": ["normality_assumption", "residual_analysis", "heteroscedasticity"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch04_01",
+        "file": "ch04_inverse_fallacy_demo.ipynb",
+        "description_es": "Demostracion interactiva de la falacia inversa y la falacia del fiscal con ejemplos financieros",
+        "description_en": "Interactive demonstration of the inverse fallacy and prosecutor's fallacy with financial examples"
+      },
+      {
+        "id": "nb_ch04_02",
+        "file": "ch04_ols_market_model.ipynb",
+        "description_es": "Modelo de mercado de un solo factor con OLS usando Statsmodels, incluyendo analisis de residuos",
+        "description_en": "Single-factor market model with OLS using Statsmodels, including residual analysis"
+      },
+      {
+        "id": "nb_ch04_03",
+        "file": "ch04_confidence_interval_pitfalls.ipynb",
+        "description_es": "Simulacion que muestra los tres tipos de errores en el uso post-data de intervalos de confianza",
+        "description_en": "Simulation showing the three types of errors in post-data use of confidence intervals"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch04_01",
+        "type": "comparison_plot",
+        "description": "Side-by-side comparison of what confidence intervals actually mean vs what practitioners assume"
+      },
+      {
+        "id": "viz_ch04_02",
+        "type": "scatter_regression",
+        "description": "OLS regression of single-factor market model with residual diagnostics highlighting normality violations"
+      }
+    ],
+    "keywords": [
+      "inverse fallacy",
+      "NHST",
+      "null hypothesis significance testing",
+      "p-value",
+      "prosecutor's fallacy",
+      "confidence intervals",
+      "OLS regression",
+      "Statsmodels",
+      "single-factor market model",
+      "post-data inference errors",
+      "frequentist statistics",
+      "replication crisis"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch05",
+    "chapter_number": 5,
+    "title": {
+      "es": "El Marco del Aprendizaje Automatico Probabilistico",
+      "en": "The Probabilistic Machine Learning Framework"
+    },
+    "summary_es": "Este capitulo presenta el marco formal del aprendizaje automatico probabilistico, construido sobre la regla de inversion de probabilidades (teorema de Bayes). Se detallan sus cuatro componentes fundamentales: la distribucion a priori P(H) que codifica el conocimiento del dominio antes de observar datos, la verosimilitud P(D|H) que describe como los datos surgen dado el modelo, la evidencia marginal P(D) que normaliza las probabilidades, y la distribucion a posteriori P(H|D) que integra conocimiento previo con evidencia empirica. Se ilustra con un ejemplo practico de estimacion de probabilidad de impago en bonos de alto rendimiento, mostrando como el marco bayesiano actualiza creencias de forma coherente. El capitulo introduce las distribuciones predictivas a priori y a posteriori, que permiten generar datos sinteticos y evaluar la capacidad predictiva del modelo. Este marco genera predicciones como distribuciones completas en lugar de estimaciones puntuales.",
+    "summary_en": "This chapter presents the formal framework of probabilistic machine learning, built on the inverse probability rule (Bayes' theorem). Its four fundamental components are detailed: the prior distribution P(H) encoding domain knowledge before observing data, the likelihood P(D|H) describing how data arise given the model, the marginal evidence P(D) normalizing probabilities, and the posterior distribution P(H|D) integrating prior knowledge with empirical evidence. A practical example of estimating debt default probability for high-yield bonds illustrates how the Bayesian framework coherently updates beliefs. The chapter introduces prior and posterior predictive distributions, which enable synthetic data generation and model predictive assessment. This framework generates predictions as full distributions rather than point estimates, fundamentally changing how uncertainty is communicated to decision-makers.",
+    "learning_objectives_es": [
+      "Comprender los cuatro componentes del teorema de Bayes aplicados a modelos financieros",
+      "Estimar probabilidades de impago usando el marco PML con datos de bonos de alto rendimiento",
+      "Diferenciar entre distribuciones predictivas a priori y a posteriori",
+      "Generar datos sinteticos usando distribuciones predictivas para validar modelos"
+    ],
+    "learning_objectives_en": [
+      "Understand the four components of Bayes' theorem applied to financial models",
+      "Estimate default probabilities using the PML framework with high-yield bond data",
+      "Differentiate between prior and posterior predictive distributions",
+      "Generate synthetic data using predictive distributions to validate models"
+    ],
+    "parameters": [
+      {
+        "id": "p_incertidumbre",
+        "name": "Uncertainty Quantification",
+        "relevance": "alta",
+        "origin_phrase": "The posterior distribution quantifies our updated uncertainty about model parameters after observing data",
+        "features": ["posterior_distribution", "parameter_uncertainty", "bayesian_updating"]
+      },
+      {
+        "id": "p_incorporacion_conocimiento",
+        "name": "Knowledge Incorporation",
+        "relevance": "alta",
+        "origin_phrase": "Prior distributions encode domain knowledge systematically before any data is observed",
+        "features": ["prior_distribution", "domain_knowledge", "expert_beliefs"]
+      },
+      {
+        "id": "p_simulacion",
+        "name": "Predictive Simulation",
+        "relevance": "alta",
+        "origin_phrase": "Predictive distributions generate new data consistent with the model and observed evidence",
+        "features": ["prior_predictive", "posterior_predictive", "data_generation"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch05_01",
+        "file": "ch05_bayes_theorem_components.ipynb",
+        "description_es": "Exploracion interactiva de los cuatro componentes del teorema de Bayes con visualizaciones dinamicas",
+        "description_en": "Interactive exploration of the four Bayes' theorem components with dynamic visualizations"
+      },
+      {
+        "id": "nb_ch05_02",
+        "file": "ch05_debt_default_estimation.ipynb",
+        "description_es": "Estimacion de probabilidad de impago en bonos de alto rendimiento usando actualizacion bayesiana",
+        "description_en": "Debt default probability estimation for high-yield bonds using Bayesian updating"
+      },
+      {
+        "id": "nb_ch05_03",
+        "file": "ch05_predictive_distributions.ipynb",
+        "description_es": "Generacion y comparacion de distribuciones predictivas a priori y a posteriori",
+        "description_en": "Generation and comparison of prior and posterior predictive distributions"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch05_01",
+        "type": "bayesian_update_plot",
+        "description": "Animated visualization showing prior being updated to posterior as data points arrive for default estimation"
+      },
+      {
+        "id": "viz_ch05_02",
+        "type": "predictive_check_plot",
+        "description": "Prior and posterior predictive distributions overlaid with observed data for model validation"
+      }
+    ],
+    "keywords": [
+      "Bayes theorem",
+      "prior distribution",
+      "likelihood",
+      "marginal evidence",
+      "posterior distribution",
+      "inverse probability rule",
+      "debt default",
+      "high-yield bonds",
+      "prior predictive",
+      "posterior predictive",
+      "Bayesian updating",
+      "PML framework"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch06",
+    "chapter_number": 6,
+    "title": {
+      "es": "Peligros de los Sistemas de IA Convencionales",
+      "en": "Dangers of Conventional AI Systems"
+    },
+    "summary_es": "Este capitulo examina las limitaciones fundamentales de los sistemas de IA convencionales, comenzando con su falta de sentido comun que los hace fragiles ante situaciones no vistas durante el entrenamiento. Se demuestra por que los modelos basados en estimacion de maxima verosimilitud (MLE) fallan en finanzas: al producir solo estimaciones puntuales, ignoran la incertidumbre de los parametros y generan falsa confianza. Se contrasta un modelo MLE con un modelo probabilistico para expectativas de ganancias corporativas, mostrando como el enfoque probabilistico revela la incertidumbre oculta. El capitulo introduce dos tecnicas computacionales esenciales: la aproximacion por grilla, un metodo exhaustivo pero limitado a pocas dimensiones, y las simulaciones de cadenas de Markov Monte Carlo (MCMC), la herramienta practica que hace viable la inferencia bayesiana en problemas complejos. Se detalla el algoritmo de muestreo de Metropolis como introduccion accesible a MCMC.",
+    "summary_en": "This chapter examines the fundamental limitations of conventional AI systems, starting with their lack of common sense that makes them brittle when facing situations unseen during training. It demonstrates why maximum likelihood estimation (MLE) models fail in finance: by producing only point estimates, they ignore parameter uncertainty and generate false confidence. An MLE model is contrasted with a probabilistic model for corporate earnings expectations, showing how the probabilistic approach reveals hidden uncertainty. The chapter introduces two essential computational techniques: grid approximation, an exhaustive method limited to few dimensions, and Markov Chain Monte Carlo (MCMC) simulations, the practical tool that makes Bayesian inference viable for complex problems. The Metropolis sampling algorithm is detailed as an accessible introduction to MCMC methods.",
+    "learning_objectives_es": [
+      "Comprender por que los sistemas de IA convencionales carecen de sentido comun y robustez",
+      "Comparar modelos MLE con modelos probabilisticos para expectativas de ganancias",
+      "Implementar aproximacion por grilla para inferencia bayesiana en problemas de baja dimension",
+      "Entender el algoritmo de Metropolis como introduccion a las simulaciones MCMC"
+    ],
+    "learning_objectives_en": [
+      "Understand why conventional AI systems lack common sense and robustness",
+      "Compare MLE models with probabilistic models for earnings expectations",
+      "Implement grid approximation for Bayesian inference in low-dimensional problems",
+      "Understand the Metropolis algorithm as an introduction to MCMC simulations"
+    ],
+    "parameters": [
+      {
+        "id": "p_riesgo_no_prob",
+        "name": "Non-Probabilistic Risk",
+        "relevance": "alta",
+        "origin_phrase": "MLE models produce point estimates that mask the true uncertainty of financial predictions",
+        "features": ["mle_limitations", "point_estimates", "false_confidence"]
+      },
+      {
+        "id": "p_academic_arrogance",
+        "name": "Academic Arrogance",
+        "relevance": "media",
+        "origin_phrase": "Conventional AI systems lack the common sense needed to operate safely in financial markets",
+        "features": ["ai_brittleness", "common_sense_gap", "overfit_models"]
+      },
+      {
+        "id": "p_incertidumbre",
+        "name": "Uncertainty Quantification",
+        "relevance": "alta",
+        "origin_phrase": "MCMC simulations make Bayesian inference tractable for complex, high-dimensional financial models",
+        "features": ["mcmc", "metropolis_sampling", "grid_approximation", "computational_bayes"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch06_01",
+        "file": "ch06_mle_vs_probabilistic.ipynb",
+        "description_es": "Comparacion entre modelo MLE y modelo probabilistico para expectativas de ganancias corporativas",
+        "description_en": "Comparison between MLE model and probabilistic model for corporate earnings expectations"
+      },
+      {
+        "id": "nb_ch06_02",
+        "file": "ch06_grid_approximation.ipynb",
+        "description_es": "Aproximacion por grilla para inferencia bayesiana con visualizacion paso a paso",
+        "description_en": "Grid approximation for Bayesian inference with step-by-step visualization"
+      },
+      {
+        "id": "nb_ch06_03",
+        "file": "ch06_metropolis_sampling.ipynb",
+        "description_es": "Implementacion del algoritmo de Metropolis para muestreo MCMC en un modelo financiero simple",
+        "description_en": "Metropolis algorithm implementation for MCMC sampling in a simple financial model"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch06_01",
+        "type": "comparison_density",
+        "description": "MLE point estimate vs full posterior distribution for earnings expectations, showing hidden uncertainty"
+      },
+      {
+        "id": "viz_ch06_02",
+        "type": "trace_plot",
+        "description": "Metropolis sampling trace plot and posterior histogram showing MCMC convergence"
+      },
+      {
+        "id": "viz_ch06_03",
+        "type": "heatmap",
+        "description": "Grid approximation heatmap showing posterior probability across parameter space"
+      }
+    ],
+    "keywords": [
+      "conventional AI",
+      "common sense",
+      "maximum likelihood estimation",
+      "MLE",
+      "earnings expectations",
+      "grid approximation",
+      "MCMC",
+      "Markov Chain Monte Carlo",
+      "Metropolis algorithm",
+      "Metropolis sampling",
+      "parameter uncertainty",
+      "computational Bayesian inference"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch07",
+    "chapter_number": 7,
+    "title": {
+      "es": "PML con Ensambles Generativos",
+      "en": "PML with Generative Ensembles"
+    },
+    "summary_es": "Este capitulo construye el flujo de trabajo completo de PML usando ensambles lineales probabilisticos (PLEs). Se comienza revisando modelos de regresion MLE y el modelo de mercado como regresion lineal para establecer la base de comparacion. Los PLEs extienden la regresion lineal al tratar todos los parametros como distribuciones, no puntos. Se detallan las distribuciones a priori, verosimilitud, marginal y a posteriori en el contexto de regresion. La implementacion practica se realiza con PyMC y ArviZ, cubriendo el flujo completo: definir metricas de rendimiento, analizar datos, desarrollar distribuciones a priori informativas, entrenar la distribucion a posteriori y testear predicciones. Se explica la diferencia fundamental entre intervalos creibles bayesianos e intervalos de confianza frecuentistas: los creibles tienen la interpretacion probabilistica directa que los profesionales asumen erroneamente para los de confianza. Este capitulo es el corazon practico del libro.",
+    "summary_en": "This chapter builds the complete PML workflow using probabilistic linear ensembles (PLEs). It begins by reviewing MLE regression models and the market model as linear regression to establish a comparison baseline. PLEs extend linear regression by treating all parameters as distributions, not points. Prior, likelihood, marginal, and posterior distributions are detailed in the regression context. Practical implementation uses PyMC and ArviZ, covering the full workflow: define performance metrics, analyze data, develop informative priors, train the posterior distribution, and test predictions. The fundamental difference between Bayesian credible intervals and frequentist confidence intervals is explained: credible intervals have the direct probabilistic interpretation that practitioners erroneously assume for confidence intervals. This chapter is the practical heart of the book.",
+    "learning_objectives_es": [
+      "Implementar ensambles lineales probabilisticos completos con PyMC y ArviZ",
+      "Ejecutar el flujo de trabajo PML de cinco pasos: metricas, datos, prior, posterior, predicciones",
+      "Comprender la diferencia entre intervalos creibles e intervalos de confianza",
+      "Desarrollar distribuciones a priori informativas basadas en conocimiento del dominio financiero"
+    ],
+    "learning_objectives_en": [
+      "Implement complete probabilistic linear ensembles with PyMC and ArviZ",
+      "Execute the five-step PML workflow: metrics, data, prior, posterior, predictions",
+      "Understand the difference between credible intervals and confidence intervals",
+      "Develop informative prior distributions based on financial domain knowledge"
+    ],
+    "parameters": [
+      {
+        "id": "p_tech_ecosystem",
+        "name": "Technology Ecosystem",
+        "relevance": "alta",
+        "origin_phrase": "PyMC and ArviZ provide the core tools for building and diagnosing probabilistic models",
+        "features": ["pymc", "arviz", "practical_implementation"]
+      },
+      {
+        "id": "p_incorporacion_conocimiento",
+        "name": "Knowledge Incorporation",
+        "relevance": "alta",
+        "origin_phrase": "Informative priors encode financial domain expertise directly into the model structure",
+        "features": ["informative_priors", "domain_expertise", "prior_elicitation"]
+      },
+      {
+        "id": "p_simulacion",
+        "name": "Generative Simulation",
+        "relevance": "alta",
+        "origin_phrase": "PLEs generate ensembles of predictions, each one a plausible model of the data",
+        "features": ["generative_ensembles", "posterior_predictive", "model_ensemble"]
+      },
+      {
+        "id": "p_transparencia",
+        "name": "Model Transparency",
+        "relevance": "alta",
+        "origin_phrase": "Every assumption in a PLE is explicit and inspectable, from priors to posterior diagnostics",
+        "features": ["explicit_assumptions", "model_diagnostics", "arviz_visualization"]
+      },
+      {
+        "id": "p_incertidumbre",
+        "name": "Uncertainty Quantification",
+        "relevance": "alta",
+        "origin_phrase": "Credible intervals have the direct probabilistic interpretation that confidence intervals lack",
+        "features": ["credible_intervals", "posterior_uncertainty", "predictive_intervals"]
+      },
+      {
+        "id": "p_robustez",
+        "name": "Model Robustness",
+        "relevance": "alta",
+        "origin_phrase": "The five-step workflow ensures systematic model checking and robust predictions",
+        "features": ["model_checking", "five_step_workflow", "posterior_predictive_checks"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch07_01",
+        "file": "ch07_ple_pymc_full_workflow.ipynb",
+        "description_es": "Flujo de trabajo completo de PLE con PyMC: desde priors hasta predicciones con modelo de mercado",
+        "description_en": "Complete PLE workflow with PyMC: from priors to predictions with market model"
+      },
+      {
+        "id": "nb_ch07_02",
+        "file": "ch07_credible_vs_confidence.ipynb",
+        "description_es": "Comparacion visual y conceptual entre intervalos creibles bayesianos e intervalos de confianza frecuentistas",
+        "description_en": "Visual and conceptual comparison between Bayesian credible intervals and frequentist confidence intervals"
+      },
+      {
+        "id": "nb_ch07_03",
+        "file": "ch07_arviz_diagnostics.ipynb",
+        "description_es": "Diagnosticos de modelos probabilisticos con ArviZ: trace plots, forest plots, posterior predictive checks",
+        "description_en": "Probabilistic model diagnostics with ArviZ: trace plots, forest plots, posterior predictive checks"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch07_01",
+        "type": "regression_ensemble",
+        "description": "Ensemble of regression lines from posterior samples showing parameter uncertainty in market model"
+      },
+      {
+        "id": "viz_ch07_02",
+        "type": "forest_plot",
+        "description": "ArviZ forest plot showing posterior distributions of regression coefficients with credible intervals"
+      },
+      {
+        "id": "viz_ch07_03",
+        "type": "posterior_predictive_check",
+        "description": "Posterior predictive check comparing generated data distribution against observed data"
+      }
+    ],
+    "keywords": [
+      "probabilistic linear ensemble",
+      "PLE",
+      "PyMC",
+      "ArviZ",
+      "market model",
+      "linear regression",
+      "informative priors",
+      "posterior distribution",
+      "credible intervals",
+      "confidence intervals",
+      "five-step workflow",
+      "posterior predictive check",
+      "generative ensemble",
+      "model diagnostics"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  },
+  {
+    "chapter_id": "ch08",
+    "chapter_number": 8,
+    "title": {
+      "es": "Toma de Decisiones Probabilisticas",
+      "en": "Making Probabilistic Decisions"
+    },
+    "summary_es": "Este capitulo cierra el ciclo del PML conectando la inferencia probabilistica con la toma de decisiones financieras reales. Se presenta el marco de inferencia y prediccion probabilistica, seguido del marco de toma de decisiones que integra funciones de perdida personalizadas para cada contexto. La subjetividad se incorpora explicitamente, reconociendo que las decisiones financieras nunca son puramente objetivas. En gestion de riesgo se analizan el Valor en Riesgo (VaR), el Expected Shortfall y el riesgo de cola, mostrando como las distribuciones posteriores permiten estimaciones mas honestas. Se introduce el concepto de ergodicidad, fundamental para entender por que los promedios de ensamble difieren de los promedios temporales individuales. En asignacion de capital se examinan la ruina del apostador, la ruina del maximizador de valor esperado, la critica a la Teoria Moderna de Portafolios y el Criterio de Kelly como alternativa probabilistica superior para dimensionar posiciones bajo incertidumbre.",
+    "summary_en": "This chapter closes the PML cycle by connecting probabilistic inference with real financial decision-making. The probabilistic inference and prediction framework is presented, followed by the decision-making framework that integrates customized loss functions for each context. Subjectivity is explicitly incorporated, recognizing that financial decisions are never purely objective. In risk management, Value at Risk (VaR), Expected Shortfall, and tail risk are analyzed, showing how posterior distributions enable more honest estimates. The concept of ergodicity is introduced, fundamental to understanding why ensemble averages differ from individual time averages. In capital allocation, the gambler's ruin, expected value maximizer's ruin, Modern Portfolio Theory critique, and the Kelly Criterion are examined as a superior probabilistic alternative for sizing positions under uncertainty.",
+    "learning_objectives_es": [
+      "Construir marcos de decision que integren funciones de perdida con distribuciones posteriores",
+      "Calcular VaR y Expected Shortfall usando distribuciones predictivas completas",
+      "Comprender la ergodicidad y sus implicaciones para la toma de decisiones financieras individuales",
+      "Aplicar el Criterio de Kelly como alternativa probabilistica a la Teoria Moderna de Portafolios"
+    ],
+    "learning_objectives_en": [
+      "Build decision frameworks that integrate loss functions with posterior distributions",
+      "Calculate VaR and Expected Shortfall using full predictive distributions",
+      "Understand ergodicity and its implications for individual financial decision-making",
+      "Apply the Kelly Criterion as a probabilistic alternative to Modern Portfolio Theory"
+    ],
+    "parameters": [
+      {
+        "id": "p_incertidumbre",
+        "name": "Uncertainty in Decisions",
+        "relevance": "alta",
+        "origin_phrase": "Probabilistic decisions integrate full posterior uncertainty rather than relying on point estimates",
+        "features": ["decision_uncertainty", "loss_functions", "posterior_decisions"]
+      },
+      {
+        "id": "p_simulacion",
+        "name": "Simulation for Decisions",
+        "relevance": "alta",
+        "origin_phrase": "Simulating thousands of portfolio paths reveals the true distribution of outcomes including ruin",
+        "features": ["portfolio_simulation", "ruin_probability", "kelly_simulation"]
+      },
+      {
+        "id": "p_riesgo_no_prob",
+        "name": "Non-Probabilistic Risk Critique",
+        "relevance": "alta",
+        "origin_phrase": "VaR as conventionally used gives a false sense of security by ignoring tail risk beyond the threshold",
+        "features": ["var_critique", "expected_shortfall", "tail_risk"]
+      },
+      {
+        "id": "p_nonstationary",
+        "name": "Non-Stationarity and Ergodicity",
+        "relevance": "alta",
+        "origin_phrase": "Non-ergodic systems make ensemble averages misleading for individual decision-makers over time",
+        "features": ["ergodicity", "time_average", "ensemble_average"]
+      },
+      {
+        "id": "p_models_social",
+        "name": "Social System Models",
+        "relevance": "media",
+        "origin_phrase": "Modern Portfolio Theory assumes ergodicity and normality, both violated in real financial markets",
+        "features": ["mpt_critique", "kelly_criterion", "gamblers_ruin"]
+      }
+    ],
+    "recommended_notebooks": [
+      {
+        "id": "nb_ch08_01",
+        "file": "ch08_var_expected_shortfall.ipynb",
+        "description_es": "Calculo de VaR y Expected Shortfall usando distribuciones posteriores completas vs metodos convencionales",
+        "description_en": "VaR and Expected Shortfall calculation using full posterior distributions vs conventional methods"
+      },
+      {
+        "id": "nb_ch08_02",
+        "file": "ch08_ergodicity_simulation.ipynb",
+        "description_es": "Simulacion de ergodicidad: comparacion entre promedios de ensamble y promedios temporales individuales",
+        "description_en": "Ergodicity simulation: comparison between ensemble averages and individual time averages"
+      },
+      {
+        "id": "nb_ch08_03",
+        "file": "ch08_kelly_criterion.ipynb",
+        "description_es": "Implementacion del Criterio de Kelly con simulaciones de trayectorias de portafolio y analisis de ruina",
+        "description_en": "Kelly Criterion implementation with portfolio path simulations and ruin analysis"
+      },
+      {
+        "id": "nb_ch08_04",
+        "file": "ch08_decision_framework.ipynb",
+        "description_es": "Marco de decision probabilistico completo con funciones de perdida personalizadas",
+        "description_en": "Complete probabilistic decision framework with customized loss functions"
+      }
+    ],
+    "recommended_visualizations": [
+      {
+        "id": "viz_ch08_01",
+        "type": "risk_distribution",
+        "description": "VaR and Expected Shortfall on a full return distribution showing tail risk beyond the VaR threshold"
+      },
+      {
+        "id": "viz_ch08_02",
+        "type": "trajectory_fan",
+        "description": "Fan chart of simulated portfolio trajectories showing ensemble average vs individual path divergence (ergodicity)"
+      },
+      {
+        "id": "viz_ch08_03",
+        "type": "kelly_optimal_plot",
+        "description": "Kelly Criterion growth rate curve showing optimal bet fraction and ruin probability at various leverage levels"
+      }
+    ],
+    "keywords": [
+      "probabilistic decisions",
+      "loss functions",
+      "Value at Risk",
+      "VaR",
+      "Expected Shortfall",
+      "tail risk",
+      "ergodicity",
+      "ensemble average",
+      "time average",
+      "gambler's ruin",
+      "Kelly Criterion",
+      "Modern Portfolio Theory",
+      "capital allocation",
+      "position sizing",
+      "subjectivity in decisions"
+    ],
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-27",
+    "references": [
+      {
+        "author": "Kanungo, Deepak K.",
+        "title": "Probabilistic Machine Learning for Finance and Investing",
+        "year": "2023"
+      }
+    ]
+  }
+]

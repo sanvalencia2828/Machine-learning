@@ -1,0 +1,82 @@
+{
+  "module_id": "mod02e_induction_problem",
+  "module_number": "2E",
+  "title": {
+    "es": "El Problema de la Induccion en Finanzas",
+    "en": "The Problem of Induction in Finance"
+  },
+  "summary_es": "Este modulo aborda el problema filosofico mas profundo de la modelacion financiera: la induccion. Usando la metafora del pavo de Russell, se demuestra que la evidencia historica acumulada no garantiza resultados futuros. Se conecta el falsacionismo de Popper con la practica financiera: buscar refutar estrategias en lugar de confirmarlas. Se compara como los enfoques frecuentista y bayesiano manejan la fragilidad inductiva, mostrando que el bayesiano acota su confianza mediante priors mientras el frecuentista la expande sin limite. Se implementan herramientas practicas: deteccion de cambio de regimen con ventana deslizante, stress testing inductivo para cuantificar perdidas bajo escenarios de falla, y tests falsacionistas para evaluar la robustez de estrategias de trading.",
+  "summary_en": "This module addresses the deepest philosophical problem in financial modeling: induction. Using Russell's turkey metaphor, it demonstrates that accumulated historical evidence does not guarantee future results. Popper's falsificationism is connected to financial practice: seeking to refute strategies rather than confirm them. Frequentist and Bayesian approaches to inductive fragility are compared, showing that Bayesian bounds its confidence through priors while frequentist expands it without limit. Practical tools are implemented: regime change detection with sliding windows, inductive stress testing to quantify losses under failure scenarios, and falsificationist tests to evaluate trading strategy robustness.",
+  "learning_objectives_es": [
+    "Entender el problema de la induccion de Hume y su impacto en modelos financieros",
+    "Simular el pavo de Russell con datos financieros sinteticos",
+    "Comparar fragilidad inductiva de modelos frecuentistas vs bayesianos",
+    "Implementar deteccion de cambio de regimen con ventana deslizante",
+    "Aplicar stress testing inductivo para cuantificar riesgo de falla"
+  ],
+  "learning_objectives_en": [
+    "Understand Hume's problem of induction and its impact on financial models",
+    "Simulate Russell's turkey with synthetic financial data",
+    "Compare inductive fragility of frequentist vs Bayesian models",
+    "Implement regime change detection with sliding windows",
+    "Apply inductive stress testing to quantify failure risk"
+  ],
+  "video_duration_min": 40,
+  "video_script": "hotmart/scripts_video/script_mod02e_induction_problem.md",
+  "notebook": "notebooks/notebook_ch02e_induction_problem.md",
+  "visualization": "hotmart/viz_induction_problem.py",
+  "visualization_output": "hotmart/induction_problem.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod02e_induction.md",
+  "exercises_count": 6,
+  "src_script": "src/induction_problem_demo.py",
+  "hotmart_tier": "basico",
+  "prerequisites": ["mod02_uncertainty", "mod02b_relative_probability"],
+  "keywords": [
+    "problem of induction",
+    "Hume",
+    "Popper",
+    "falsificationism",
+    "Russell's turkey",
+    "black swan",
+    "Taleb",
+    "regime change",
+    "stress testing",
+    "sliding window",
+    "Bayesian updating",
+    "inductive fragility"
+  ],
+  "parameters": [
+    {
+      "id": "p_incertidumbre",
+      "name": "Uncertainty Quantification",
+      "relevance": "alta",
+      "origin_phrase": "Induction cannot prove future outcomes; only quantify uncertainty about them"
+    },
+    {
+      "id": "p_nonstationary",
+      "name": "Non-Stationarity",
+      "relevance": "alta",
+      "origin_phrase": "Financial processes change structurally, breaking all inductive assumptions"
+    },
+    {
+      "id": "p_riesgo_no_prob",
+      "name": "Non-Probabilistic Risk Flaws",
+      "relevance": "alta",
+      "origin_phrase": "Frequentist confidence grows without bound, masking inductive fragility"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Model Robustness",
+      "relevance": "alta",
+      "origin_phrase": "Stress testing quantifies what induction ignores"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Knowledge Integration",
+      "relevance": "media",
+      "origin_phrase": "Skeptical priors encode awareness that past patterns may break"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

@@ -1,0 +1,76 @@
+{
+  "module_id": "mod05_pml_framework",
+  "module_number": 5,
+  "title": {
+    "es": "El Framework de ML Probabilistico",
+    "en": "The Probabilistic ML Framework"
+  },
+  "summary_es": "Este modulo construye el framework completo de ML probabilistico investigando cada termino de la regla de probabilidad inversa: prior (conocimiento previo), likelihood (compatibilidad datos-parametro), marginal likelihood (normalizacion) y posterior (conocimiento actualizado). Se aplica el framework completo a estimar la probabilidad de default de bonos corporativos high-yield, demostrando actualizacion secuencial trimestral donde el modelo aprende dinamicamente. Se introducen distribuciones predictivas prior y posterior: la prior predictive verifica la plausibilidad del modelo antes de ver datos, y la posterior predictive genera predicciones que propagan la incertidumbre parametrica. Se compara con NHST para mostrar que el enfoque bayesiano responde directamente la pregunta del inversor.",
+  "summary_en": "This module builds the complete probabilistic ML framework by investigating each term of the inverse probability rule: prior (pre-data knowledge), likelihood (data-parameter compatibility), marginal likelihood (normalization), and posterior (updated knowledge). The framework is applied to estimating corporate high-yield bond default probability, demonstrating sequential quarterly updating where the model learns dynamically. Prior and posterior predictive distributions are introduced: prior predictive checks model plausibility before seeing data, and posterior predictive generates predictions that propagate parametric uncertainty. Comparison with NHST shows the Bayesian approach directly answers the investor's question.",
+  "learning_objectives_es": [
+    "Investigar cada termino de la regla de probabilidad inversa con significado financiero",
+    "Estimar P(default) de bonos corporativos con actualizacion secuencial bayesiana",
+    "Generar distribuciones predictivas prior y posterior para verificar y predecir",
+    "Comparar el framework bayesiano con NHST para decisiones financieras",
+    "Calcular P(default > umbral) directamente desde el posterior"
+  ],
+  "learning_objectives_en": [
+    "Investigate each inverse probability rule term with financial meaning",
+    "Estimate bond default P(default) with sequential Bayesian updating",
+    "Generate prior and posterior predictive distributions for checking and predicting",
+    "Compare the Bayesian framework with NHST for financial decisions",
+    "Calculate P(default > threshold) directly from the posterior"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod05_pml_framework.md",
+  "notebook": "notebooks/notebook_ch05_pml_framework.md",
+  "visualization": "hotmart/viz_debt_default_updating.py",
+  "visualization_output": "hotmart/pml_framework.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod05_pml_framework.md",
+  "exercises_count": 6,
+  "src_script": "src/mcmc_inverse_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod04_nhst_dangers"],
+  "keywords": [
+    "inverse probability rule",
+    "Bayes theorem",
+    "prior",
+    "likelihood",
+    "posterior",
+    "marginal likelihood",
+    "Beta-Binomial",
+    "sequential updating",
+    "prior predictive",
+    "posterior predictive",
+    "bond default",
+    "high-yield"
+  ],
+  "parameters": [
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Knowledge Integration via Priors",
+      "relevance": "alta",
+      "origin_phrase": "Priors encode personal, empirical, and institutional knowledge into the model"
+    },
+    {
+      "id": "p_generative_ai",
+      "name": "Generative Predictive Distributions",
+      "relevance": "alta",
+      "origin_phrase": "Posterior predictive generates plausible future scenarios with uncertainty"
+    },
+    {
+      "id": "p_transparencia",
+      "name": "Transparent Inference",
+      "relevance": "alta",
+      "origin_phrase": "Every assumption is explicit: prior, likelihood, posterior are all inspectable"
+    },
+    {
+      "id": "p_incertidumbre",
+      "name": "Uncertainty Propagation",
+      "relevance": "alta",
+      "origin_phrase": "Predictive distributions propagate parameter uncertainty into predictions"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-01"
+}

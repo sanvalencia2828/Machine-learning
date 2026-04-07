@@ -1,0 +1,57 @@
+{
+  "type": "ebook",
+  "title": {
+    "es": "Ebook: Introducción a ML Probabilístico para Finanzas",
+    "en": "Ebook: Introduction to Probabilistic ML for Finance"
+  },
+  "description": {
+    "es": "Descarga digital del Prefacio en PDF y EPUB, con glosario bilingüe integrado",
+    "en": "Digital download of Preface in PDF and EPUB, with integrated bilingual glossary"
+  },
+  "formats": [
+    "pdf",
+    "epub",
+    "html"
+  ],
+  "languages": [
+    "es",
+    "en"
+  ],
+  "deliverables": [
+    {
+      "name": "Preface PDF ES",
+      "format": "pdf",
+      "pages": 1
+    },
+    {
+      "name": "Preface EPUB ES",
+      "format": "epub"
+    },
+    {
+      "name": "Preface PDF EN",
+      "format": "pdf",
+      "pages": 1
+    },
+    {
+      "name": "Preface EPUB EN",
+      "format": "epub"
+    },
+    {
+      "name": "Glossary ES",
+      "format": "pdf"
+    },
+    {
+      "name": "Glossary EN",
+      "format": "pdf"
+    }
+  ],
+  "parameters_included": [
+    "probabilistic_ml",
+    "transparency"
+  ],
+  "price_range": {
+    "min": 9.99,
+    "max": 19.99
+  },
+  "variant": "free-entry"
+}

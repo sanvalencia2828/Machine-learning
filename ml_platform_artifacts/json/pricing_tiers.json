@@ -1,0 +1,151 @@
+{
+  "tier_0_intro": {
+    "name": "Intro",
+    "level": 0,
+    "price_range": {
+      "min": 0,
+      "max": 50
+    },
+    "products_included": [
+      "ebook_001"
+    ],
+    "parameters_activated": [
+      "probabilistic_ml",
+      "transparency"
+    ],
+    "features_activated": [
+      "ebook_download_pdf",
+      "ebook_download_epub",
+      "glossary_access",
+      "bilingual_content"
+    ],
+    "resources": {
+      "hours": 0.5,
+      "support_level": "none",
+      "access_days": 365
+    },
+    "target_audience": "Curious learners and casual readers",
+    "cta": "Start Learning - Free or $9.99"
+  },
+  "tier_1_professional": {
+    "name": "Professional",
+    "level": 1,
+    "price_range": {
+      "min": 50,
+      "max": 200
+    },
+    "products_included": [
+      "ebook_001",
+      "course_001"
+    ],
+    "parameters_activated": [
+      "probabilistic_ml",
+      "transparency",
+      "uncertainty_quantification",
+      "counterfactual_simulation"
+    ],
+    "features_activated": [
+      "ebook_download",
+      "glossary_access",
+      "interactive_notebooks",
+      "course_exercises",
+      "assessments_quizzes",
+      "code_repositories",
+      "email_support"
+    ],
+    "resources": {
+      "hours": 14,
+      "support_level": "email",
+      "access_days": 365,
+      "datasets": 5
+    },
+    "target_audience": "Data scientists and ML practitioners",
+    "cta": "Unlock Professional Access - $79.99"
+  },
+  "tier_2_premium": {
+    "name": "Premium",
+    "level": 2,
+    "price_range": {
+      "min": 200,
+      "max": 600
+    },
+    "products_included": [
+      "ebook_001",
+      "course_001",
+      "mentoring_001"
+    ],
+    "parameters_activated": [
+      "probabilistic_ml",
+      "transparency",
+      "uncertainty_quantification",
+      "counterfactual_simulation",
+      "institutional_knowledge",
+      "robustness"
+    ],
+    "features_activated": [
+      "ebook_download",
+      "glossary_access",
+      "interactive_notebooks",
+      "course_exercises",
+      "mentoring_sessions_5",
+      "personalized_notebooks",
+      "email_support",
+      "priority_support",
+      "monthly_group_calls"
+    ],
+    "resources": {
+      "hours": 19,
+      "support_level": "priority",
+      "access_days": 180,
+      "mentoring_sessions": 5,
+      "datasets": 10
+    },
+    "target_audience": "Finance professionals and advanced practitioners",
+    "cta": "Get Premium Mentoring - $399.99"
+  },
+  "tier_3_enterprise": {
+    "name": "Enterprise",
+    "level": 3,
+    "price_range": {
+      "min": 600,
+      "max": 5000
+    },
+    "products_included": [
+      "ebook_001",
+      "course_001",
+      "mentoring_001"
+    ],
+    "parameters_activated": [
+      "probabilistic_ml",
+      "transparency",
+      "uncertainty_quantification",
+      "counterfactual_simulation",
+      "institutional_knowledge",
+      "robustness",
+      "non_probabilistic_risks"
+    ],
+    "features_activated": [
+      "ebook_download",
+      "glossary_access",
+      "interactive_notebooks",
+      "course_exercises",
+      "mentoring_sessions_10",
+      "personalized_notebooks",
+      "custom_simulations",
+      "regulatory_documentation",
+      "audit_reports",
+      "24_7_support",
+      "dedicated_mentor"
+    ],
+    "resources": {
+      "hours": 24,
+      "support_level": "dedicated",
+      "access_days": 365,
+      "mentoring_sessions": 10,
+      "datasets": 20,
+      "custom_development": true
+    },
+    "target_audience": "Financial institutions and large teams",
+    "cta": "Custom Enterprise Solution"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "type": "mentoring",
+  "title": {
+    "es": "Mentoría: ML Probabilístico Personalizado",
+    "en": "Mentoring: Personalized Probabilistic ML"
+  },
+  "description": {
+    "es": "10 sesiones de mentoría 1:1 con análisis contrafactuales y documentación regulatoria",
+    "en": "10 one-on-one mentoring sessions with counterfactual analysis and regulatory documentation"
+  },
+  "sessions": 10,
+  "session_duration_minutes": 60,
+  "deliverables": [
+    {
+      "name": "10x 1-hour Mentoring Sessions",
+      "type": "live_call"
+    },
+    {
+      "name": "Personalized Jupyter Notebooks",
+      "type": "jupyter",
+      "count": 5
+    },
+    {
+      "name": "Counterfactual Simulations",
+      "type": "analysis",
+      "count": 3
+    },
+    {
+      "name": "Regulatory Compliance Report",
+      "type": "documentation"
+    },
+    {
+      "name": "Model Explainability Audit",
+      "type": "audit_report"
+    },
+    {
+      "name": "Institutional Knowledge Integration",
+      "type": "custom_config"
+    },
+    {
+      "name": "Robustness Testing Framework",
+      "type": "code"
+    }
+  ],
+  "parameters_included": [
+    "probabilistic_ml",
+    "transparency",
+    "uncertainty_quantification",
+    "counterfactual_simulation",
+    "institutional_knowledge",
+    "robustness",
+    "non_probabilistic_risks"
+  ],
+  "price_range": {
+    "min": 299.99,
+    "max": 599.99
+  },
+  "variant": "premium",
+  "access_duration_months": 6
+}

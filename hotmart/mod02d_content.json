@@ -1,0 +1,82 @@
+{
+  "module_id": "mod02d_bias_variance_nfl",
+  "module_number": "2D",
+  "title": {
+    "es": "Bias-Variance Tradeoff y Teoremas No Free Lunch",
+    "en": "Bias-Variance Tradeoff and No Free Lunch Theorems"
+  },
+  "summary_es": "Este modulo descompone el error de prediccion en sus tres componentes fundamentales: bias al cuadrado, varianza y ruido irreducible. Se demuestra visualmente el espectro de underfitting a overfitting usando polinomios de grado creciente en datos sinteticos financieros. Se presenta el teorema No Free Lunch de Wolpert (1996) que demuestra que ningun algoritmo es universalmente optimo y que el conocimiento del dominio es obligatorio para seleccionar modelos efectivos. Se conecta la regularizacion Ridge con priors bayesianos, mostrando que PML formaliza la integracion de conocimiento financiero como herramienta para navegar el tradeoff. Se aplican los conceptos a modelos financieros desde CAPM hasta redes neuronales.",
+  "summary_en": "This module decomposes prediction error into its three fundamental components: squared bias, variance, and irreducible noise. The underfitting-to-overfitting spectrum is visually demonstrated using polynomials of increasing degree on synthetic financial data. Wolpert's No Free Lunch theorem (1996) is presented, proving that no algorithm is universally optimal and that domain knowledge is mandatory for effective model selection. Ridge regularization is connected to Bayesian priors, showing that PML formalizes financial knowledge integration as a tool for navigating the tradeoff. Concepts are applied to financial models from CAPM to neural networks.",
+  "learning_objectives_es": [
+    "Descomponer el error de prediccion en bias^2, varianza y ruido irreducible",
+    "Visualizar underfitting y overfitting con polinomios de complejidad creciente",
+    "Demostrar el teorema No Free Lunch con multiples algoritmos y problemas",
+    "Conectar regularizacion Ridge con priors bayesianos de PML",
+    "Aplicar bias-variance a la seleccion de modelos financieros"
+  ],
+  "learning_objectives_en": [
+    "Decompose prediction error into bias^2, variance, and irreducible noise",
+    "Visualize underfitting and overfitting with polynomials of increasing complexity",
+    "Demonstrate the No Free Lunch theorem with multiple algorithms and problems",
+    "Connect Ridge regularization with PML Bayesian priors",
+    "Apply bias-variance to financial model selection"
+  ],
+  "video_duration_min": 45,
+  "video_script": "hotmart/scripts_video/script_mod02d_bias_variance_nfl.md",
+  "notebook": "notebooks/notebook_ch02d_bias_variance_nfl.md",
+  "visualization": "hotmart/viz_bias_variance_nfl.py",
+  "visualization_output": "hotmart/bias_variance_nfl.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod02d_bias_variance_nfl.md",
+  "exercises_count": 6,
+  "src_script": "src/bias_variance_nfl_demo.py",
+  "hotmart_tier": "basico",
+  "prerequisites": ["mod02_uncertainty"],
+  "keywords": [
+    "bias-variance tradeoff",
+    "underfitting",
+    "overfitting",
+    "No Free Lunch",
+    "Wolpert",
+    "regularization",
+    "Ridge regression",
+    "Bayesian priors",
+    "model selection",
+    "irreducible noise",
+    "backtesting",
+    "domain knowledge"
+  ],
+  "parameters": [
+    {
+      "id": "p_trifecta_errors",
+      "name": "Trifecta of Modeling Errors",
+      "relevance": "alta",
+      "origin_phrase": "Bias-variance decomposition reveals the fundamental tradeoff in all models"
+    },
+    {
+      "id": "p_specification_errors",
+      "name": "Specification Errors",
+      "relevance": "alta",
+      "origin_phrase": "High bias models are misspecified; high variance models overfit noise"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Knowledge Integration",
+      "relevance": "alta",
+      "origin_phrase": "NFL theorems prove domain knowledge is mandatory, not optional"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Model Robustness",
+      "relevance": "alta",
+      "origin_phrase": "Priors reduce variance without destroying signal, improving robustness"
+    },
+    {
+      "id": "p_academic_arrogance",
+      "name": "Academic Arrogance",
+      "relevance": "media",
+      "origin_phrase": "Belief in a universally best algorithm ignores NFL theorems"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

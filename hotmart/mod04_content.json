@@ -1,0 +1,76 @@
+{
+  "module_id": "mod04_nhst_dangers",
+  "module_number": 4,
+  "title": {
+    "es": "Peligros de la Estadistica Convencional",
+    "en": "Dangers of Conventional Statistical Methods"
+  },
+  "summary_es": "Este modulo expone las falacias fundamentales de NHST (Null Hypothesis Significance Testing) y su impacto en las finanzas. Se demuestra la falacia inversa: confundir P(datos|H0) con P(H0|datos), el error central de los p-values. Se aplica la falacia del fiscal al backtesting financiero, mostrando que con 200 estrategias nulas, se esperan ~10 falsos positivos con p<0.05. Se demuestra p-hacking con grados de libertad del investigador. Se explican los 3 errores de interpretacion de intervalos de confianza. Se construye un modelo OLS sintetico y se ejecutan tests diagnosticos (Jarque-Bera, Durbin-Watson) que demuestran que los supuestos de OLS se violan con datos financieros, invalidando los p-values. Se presenta la alternativa bayesiana como solucion.",
+  "summary_en": "This module exposes the fundamental fallacies of NHST (Null Hypothesis Significance Testing) and their impact on finance. The inverse fallacy is demonstrated: confusing P(data|H0) with P(H0|data), the central error of p-values. The prosecutor's fallacy is applied to financial backtesting, showing that with 200 null strategies, ~10 false positives with p<0.05 are expected. P-hacking with researcher degrees of freedom is demonstrated. Three confidence interval interpretation errors are explained. A synthetic OLS model is built and diagnostic tests (Jarque-Bera, Durbin-Watson) show that OLS assumptions are violated with financial data, invalidating p-values. The Bayesian alternative is presented as the solution.",
+  "learning_objectives_es": [
+    "Explicar la falacia inversa que subyace en NHST y p-values",
+    "Demostrar la falacia del fiscal en backtesting con multiples estrategias",
+    "Identificar p-hacking y los grados de libertad del investigador",
+    "Interpretar correctamente intervalos de confianza y sus 3 errores",
+    "Ejecutar tests diagnosticos de OLS y entender cuando los p-values mienten"
+  ],
+  "learning_objectives_en": [
+    "Explain the inverse fallacy underlying NHST and p-values",
+    "Demonstrate the prosecutor's fallacy in backtesting with multiple strategies",
+    "Identify p-hacking and researcher degrees of freedom",
+    "Correctly interpret confidence intervals and their 3 errors",
+    "Run OLS diagnostic tests and understand when p-values lie"
+  ],
+  "video_duration_min": 55,
+  "video_script": "hotmart/scripts_video/script_mod04_nhst_dangers.md",
+  "notebook": "notebooks/notebook_ch04_nhst_dangers.md",
+  "visualization": "hotmart/viz_prosecutor_fallacy.py",
+  "visualization_output": "hotmart/nhst_dangers.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod04_nhst.md",
+  "exercises_count": 6,
+  "src_script": "src/nhst_dangers_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod03_monte_carlo"],
+  "keywords": [
+    "NHST",
+    "p-value",
+    "inverse fallacy",
+    "prosecutor fallacy",
+    "defense attorney fallacy",
+    "confidence interval",
+    "p-hacking",
+    "multiple testing",
+    "Bonferroni",
+    "OLS diagnostics",
+    "Jarque-Bera",
+    "Bayesian alternative"
+  ],
+  "parameters": [
+    {
+      "id": "p_nhst_fallacies",
+      "name": "NHST Fallacies",
+      "relevance": "alta",
+      "origin_phrase": "P-values confuse P(data|H0) with P(H0|data) -- the inverse fallacy"
+    },
+    {
+      "id": "p_specification_errors",
+      "name": "Model Assumption Violations",
+      "relevance": "alta",
+      "origin_phrase": "OLS p-values are invalid when residuals violate normality assumptions"
+    },
+    {
+      "id": "p_academic_arrogance",
+      "name": "False Discovery",
+      "relevance": "alta",
+      "origin_phrase": "Most published NHST findings are false due to multiple testing and low base rates"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Bayesian Alternative",
+      "relevance": "alta",
+      "origin_phrase": "Bayesian inference answers the right question: P(H|data) not P(data|H)"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

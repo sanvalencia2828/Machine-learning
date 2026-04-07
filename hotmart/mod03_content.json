@@ -1,0 +1,82 @@
+{
+  "module_id": "mod03_monte_carlo",
+  "module_number": 3,
+  "title": {
+    "es": "Simulacion Monte Carlo para Incertidumbre",
+    "en": "Monte Carlo Simulation for Uncertainty"
+  },
+  "summary_es": "Este modulo cubre la simulacion Monte Carlo (MCS) como herramienta fundamental para propagar incertidumbre en modelos financieros. Se revisan los cuatro momentos estadisticos y se demuestra por que la volatilidad es una medida absurda de riesgo que subestima eventos extremos. Se analizan retornos sinteticos tipo S&P 500 para mostrar que no siguen una distribucion normal: tienen colas pesadas (curtosis alta) y asimetria negativa. Se explican la Ley de Grandes Numeros y el Teorema Central del Limite como fundamentos teoricos de MCS. Se aplica MCS a la valoracion de un proyecto de software con multiples factores de riesgo, obteniendo distribuciones completas de NPV, probabilidad de exito y VaR del proyecto.",
+  "summary_en": "This module covers Monte Carlo simulation (MCS) as the fundamental tool for propagating uncertainty in financial models. The four statistical moments are reviewed and volatility is shown to be a nonsensical risk measure that underestimates extreme events. Synthetic S&P 500-like returns are analyzed to demonstrate non-normality: fat tails (high kurtosis) and negative skewness. Law of Large Numbers and Central Limit Theorem are explained as MCS theoretical foundations. MCS is applied to value a software project with multiple risk factors, obtaining complete NPV distributions, success probability, and project VaR.",
+  "learning_objectives_es": [
+    "Demostrar que los retornos financieros tienen colas pesadas incompatibles con la Normal",
+    "Explicar por que la volatilidad subestima el riesgo financiero real",
+    "Implementar simulacion Monte Carlo desde estimar Pi hasta valorar proyectos",
+    "Aplicar LGN y TLC como fundamentos teoricos de MCS",
+    "Construir distribuciones de NPV con multiples factores de riesgo"
+  ],
+  "learning_objectives_en": [
+    "Demonstrate that financial returns have fat tails incompatible with the Normal distribution",
+    "Explain why volatility underestimates real financial risk",
+    "Implement Monte Carlo simulation from estimating Pi to project valuation",
+    "Apply LLN and CLT as theoretical foundations of MCS",
+    "Build NPV distributions with multiple risk factors"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod03_monte_carlo.md",
+  "notebook": "notebooks/notebook_ch03_monte_carlo_finance.md",
+  "visualization": "hotmart/viz_sp500_fat_tails.py",
+  "visualization_output": "hotmart/mcs_fat_tails.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod03_monte_carlo.md",
+  "exercises_count": 6,
+  "src_script": "src/mcs_forward_demo.py",
+  "hotmart_tier": "basico",
+  "prerequisites": ["mod02_uncertainty"],
+  "keywords": [
+    "Monte Carlo simulation",
+    "MCS",
+    "fat tails",
+    "kurtosis",
+    "skewness",
+    "volatility critique",
+    "Law of Large Numbers",
+    "Central Limit Theorem",
+    "NPV",
+    "project valuation",
+    "VaR",
+    "forward propagation"
+  ],
+  "parameters": [
+    {
+      "id": "p_simulacion",
+      "name": "Monte Carlo Simulation",
+      "relevance": "alta",
+      "origin_phrase": "MCS propagates uncertainty through models to generate outcome distributions"
+    },
+    {
+      "id": "p_non_gaussian",
+      "name": "Non-Gaussian Distributions",
+      "relevance": "alta",
+      "origin_phrase": "Financial returns exhibit fat tails and negative skewness incompatible with Normal"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Model Robustness",
+      "relevance": "alta",
+      "origin_phrase": "Volatility is a nonsensical risk measure that underestimates financial risk"
+    },
+    {
+      "id": "p_incertidumbre",
+      "name": "Uncertainty Quantification",
+      "relevance": "alta",
+      "origin_phrase": "MCS provides complete distributions rather than point estimates"
+    },
+    {
+      "id": "p_trifecta_errors",
+      "name": "Trifecta of Errors",
+      "relevance": "media",
+      "origin_phrase": "Assuming normality is a specification error revealed by moment analysis"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

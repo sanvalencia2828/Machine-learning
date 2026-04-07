@@ -1,0 +1,51 @@
+# requirements.txt
+# Probabilistic Machine Learning for Finance & Investing
+# Chapters 1-8 | Source: turn0browsertab744690698
+# Python 3.9+ | Updated: 2026-03-27
+
+# ========== CORE DEPENDENCIES ==========
+# Data & numerical computing
+numpy>=1.23.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Visualization
+matplotlib>=3.5.3
+seaborn>=0.12.0
+plotly>=5.13.0
+
+# Bayesian inference & probabilistic models
+pymc>=5.0.0
+arviz>=0.15.0
+xarray>=2023.0.0
+
+# Machine Learning
+scikit-learn>=1.2.2
+
+# Jupyter & notebook ecosystem
+jupyter>=1.0.0
+jupyterlab>=3.5.0
+jupytext>=1.14.0
+ipywidgets>=8.0.0
+ipython>=8.0.0
+nbformat>=5.8.0
+nbconvert>=7.0.0
+
+# Statistical tools
+statsmodels>=0.14.0
+
+# ========== OPTIONAL: Development & Testing ==========
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=23.0.0
+flake8>=5.0.0
+mypy>=1.0.0
+isort>=5.12.0
+
+# ========== OPTIONAL: Documentation ==========
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.2.0
+
+# ========== OPTIONAL: Finance Data ==========
+yfinance>=0.2.28
+

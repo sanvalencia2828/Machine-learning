@@ -1,0 +1,68 @@
+{
+  "module_id": "mod06b_zyx_mle_failure",
+  "module_number": "6B",
+  "title": {
+    "es": "MLE Falla con Pocos Datos: El Caso ZYX",
+    "en": "MLE Fails with Small Data: The ZYX Case"
+  },
+  "summary_es": "Este modulo demuestra el problema central de MLE con datasets pequenos usando el caso ZYX: una empresa con 3 trimestres de earnings beats donde MLE estima P(beat)=100% con certeza total. Se construye el posterior Beta-Binomial con priors uniforme y esceptico, mostrando que PML da 80% con incertidumbre honesta (HDI 38-99%). Se implementa actualizacion secuencial con 8 trimestres incluyendo un 'miss' en Q6, mostrando que MLE cae bruscamente 17pp mientras PML cae suavemente 11pp. Se generan distribuciones predictivas para los proximos 4 trimestres, comparando la sobreconfianza de MLE con el realismo de PML. Se analiza la sensibilidad al prior con pocos datos y su desaparicion con muchos.",
+  "summary_en": "This module demonstrates MLE's core problem with small datasets using the ZYX case: a company with 3 quarters of earnings beats where MLE estimates P(beat)=100% with total certainty. The Beta-Binomial posterior is built with uniform and skeptical priors, showing PML gives 80% with honest uncertainty (HDI 38-99%). Sequential updating over 8 quarters including a Q6 'miss' shows MLE drops sharply by 17pp while PML drops smoothly by 11pp. Predictive distributions for the next 4 quarters compare MLE's overconfidence with PML's realism. Prior sensitivity with small data and its disappearance with large data is analyzed.",
+  "learning_objectives_es": [
+    "Demostrar que MLE produce p=1 con 3/3 datos (absurdo estadistico)",
+    "Construir el posterior Beta-Binomial como alternativa con incertidumbre",
+    "Implementar actualizacion secuencial y cuantificar el impacto de un miss",
+    "Comparar distribuciones predictivas MLE vs PML para decisiones futuras",
+    "Analizar sensibilidad al prior con pocos datos"
+  ],
+  "learning_objectives_en": [
+    "Demonstrate that MLE produces p=1 with 3/3 data (statistical absurdity)",
+    "Build the Beta-Binomial posterior as an alternative with uncertainty",
+    "Implement sequential updating and quantify the impact of a miss",
+    "Compare MLE vs PML predictive distributions for future decisions",
+    "Analyze prior sensitivity with small datasets"
+  ],
+  "video_duration_min": 40,
+  "video_script": "hotmart/scripts_video/script_mod06b_zyx_mle_failure.md",
+  "notebook": "notebooks/notebook_ch06b_zyx_mle_failure.md",
+  "visualization": "hotmart/viz_zyx_mle_failure.py",
+  "visualization_output": "hotmart/zyx_mle_failure.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod06b_zyx.md",
+  "exercises_count": 6,
+  "src_script": "src/zyx_mle_failure_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod06_mle_vs_pml"],
+  "keywords": [
+    "MLE failure",
+    "small dataset",
+    "earnings beat",
+    "Beta-Binomial",
+    "sequential updating",
+    "prior sensitivity",
+    "predictive distribution",
+    "overconfidence",
+    "startup valuation",
+    "IPO analysis"
+  ],
+  "parameters": [
+    {
+      "id": "p_specification_errors",
+      "name": "MLE Small Sample Absurdity",
+      "relevance": "alta",
+      "origin_phrase": "MLE estimates P(beat)=100% with only 3 data points"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Prior as Protection",
+      "relevance": "alta",
+      "origin_phrase": "Even a uniform prior reduces MLE's absurd 100% to a realistic 80%"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Robustness to Outliers",
+      "relevance": "alta",
+      "origin_phrase": "PML absorbs a miss smoothly (11pp) while MLE drops sharply (17pp)"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

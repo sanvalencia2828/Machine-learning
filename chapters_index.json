@@ -1,0 +1,148 @@
+{
+  "book_title": {
+    "es": "ML Probabilístico para Finanzas e Inversión",
+    "en": "Probabilistic ML for Finance and Investing"
+  },
+  "author": "Deepak K. Kanungo",
+  "publisher": "O'Reilly Media",
+  "year": 2023,
+  "isbn": "978-1-492-09767-9",
+  "source_ref": "turn0browsertab744690698",
+  "chapters": [
+    {
+      "id": "preface",
+      "number": 0,
+      "title_en": "Preface",
+      "title_es": "Prefacio",
+      "pages": "ix-xv",
+      "params_count": 8,
+      "notebooks": 0
+    },
+    {
+      "id": "ch01",
+      "number": 1,
+      "title_en": "The Need for Probabilistic Machine Learning",
+      "title_es": "La necesidad del aprendizaje automático probabilístico",
+      "pages": "1-22",
+      "params_count": 14,
+      "notebooks": 1,
+      "key_topics": [
+        "trifecta of errors",
+        "LTCM",
+        "binomial model",
+        "PML characteristics"
+      ]
+    },
+    {
+      "id": "ch02",
+      "number": 2,
+      "title_en": "Analyzing and Quantifying Uncertainty",
+      "title_es": "Análisis y cuantificación de la incertidumbre",
+      "pages": "23-62",
+      "params_count": 4,
+      "notebooks": 1,
+      "key_topics": [
+        "Monty Hall",
+        "probability axioms",
+        "frequentist vs epistemic",
+        "NFL theorems",
+        "problem of induction"
+      ]
+    },
+    {
+      "id": "ch03",
+      "number": 3,
+      "title_en": "Quantifying Output Uncertainty with Monte Carlo Simulation",
+      "title_es": "Cuantificación de incertidumbre de salida con simulación Monte Carlo",
+      "pages": "63-85",
+      "params_count": 4,
+      "notebooks": 1,
+      "key_topics": [
+        "MCS",
+        "LLN",
+        "CLT",
+        "fat tails",
+        "DCF valuation"
+      ]
+    },
+    {
+      "id": "ch04",
+      "number": 4,
+      "title_en": "The Dangers of Conventional Statistical Methodologies",
+      "title_es": "Los peligros de las metodologías estadísticas convencionales",
+      "pages": "87-112",
+      "params_count": 4,
+      "notebooks": 1,
+      "key_topics": [
+        "inverse fallacy",
+        "NHST",
+        "confidence intervals",
+        "market model"
+      ]
+    },
+    {
+      "id": "ch05",
+      "number": 5,
+      "title_en": "The Probabilistic Machine Learning Framework",
+      "title_es": "El marco del aprendizaje automático probabilístico",
+      "pages": "113-128",
+      "params_count": 3,
+      "notebooks": 1,
+      "key_topics": [
+        "inverse probability rule",
+        "debt default",
+        "predictive distributions"
+      ]
+    },
+    {
+      "id": "ch06",
+      "number": 6,
+      "title_en": "The Dangers of Conventional AI Systems",
+      "title_es": "Los peligros de los sistemas de IA convencionales",
+      "pages": "129-150",
+      "params_count": 3,
+      "notebooks": 1,
+      "key_topics": [
+        "MLE flaws",
+        "earnings expectations",
+        "MCMC",
+        "Metropolis"
+      ]
+    },
+    {
+      "id": "ch07",
+      "number": 7,
+      "title_en": "Probabilistic Machine Learning with Generative Ensembles",
+      "title_es": "ML probabilístico con ensambles generativos",
+      "pages": "151-189",
+      "params_count": 6,
+      "notebooks": 1,
+      "key_topics": [
+        "PyMC",
+        "ArviZ",
+        "PLE",
+        "credible intervals",
+        "market model"
+      ]
+    },
+    {
+      "id": "ch08",
+      "number": 8,
+      "title_en": "Making Probabilistic Decisions with Generative Ensembles",
+      "title_es": "Toma de decisiones probabilísticas con ensambles generativos",
+      "pages": "191-232",
+      "params_count": 5,
+      "notebooks": 1,
+      "key_topics": [
+        "ergodicity",
+        "VaR",
+        "Kelly criterion",
+        "capital allocation",
+        "MPT critique"
+      ]
+    }
+  ],
+  "total_parameters": 20,
+  "total_notebooks": 8,
+  "last_updated": "2026-03-27"
+}

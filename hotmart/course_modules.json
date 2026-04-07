@@ -1,0 +1,236 @@
+[
+  {
+    "module_id": "mod00_preface",
+    "module_number": 0,
+    "title": {"es": "Bienvenida: Por que ML Probabilistico para Finanzas", "en": "Welcome: Why Probabilistic ML for Finance"},
+    "summary_es": "Introduccion al curso. El ML probabilistico es un tipo de IA generativa ideal para finanzas e inversion. A diferencia de las redes neuronales profundas, estos modelos no son cajas negras y permiten inferir causas de efectos de manera transparente. Tambien permiten codificar conocimiento personal, empirico e institucional en los modelos. Los modelos probabilisticos son generativos: conocen sus limitaciones y expresan su ignorancia ampliando los rangos de sus inferencias. Este modulo presenta al autor, la estructura del curso y los requisitos previos.",
+    "summary_en": "Course introduction. Probabilistic ML is a type of generative AI ideally suited for finance and investing. Unlike deep neural networks, these models are not black boxes and enable transparent cause-effect inference. They also allow encoding personal, empirical, and institutional knowledge into models. Probabilistic models are generative: they know their limitations and honestly express ignorance by widening prediction ranges. This module introduces the author, course structure, and prerequisites.",
+    "learning_objectives_es": [
+      "Entender por que el ML probabilistico es superior al ML convencional para finanzas",
+      "Identificar las limitaciones de ChatGPT y modelos no probabilisticos para decisiones financieras",
+      "Conocer el ecosistema tecnologico: PyMC, TensorFlow Probability, Pyro, Stan"
+    ],
+    "learning_objectives_en": [
+      "Understand why probabilistic ML is superior to conventional ML for finance",
+      "Identify limitations of ChatGPT and non-probabilistic models for financial decisions",
+      "Know the tech ecosystem: PyMC, TensorFlow Probability, Pyro, Stan"
+    ],
+    "video_duration_min": 15,
+    "notebook": "notebooks/notebook_ch00_welcome.md",
+    "visualization": null,
+    "exercises": 0,
+    "hotmart_tier": "basico",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod01_need_pml",
+    "module_number": 1,
+    "title": {"es": "La Necesidad del ML Probabilistico", "en": "The Need for Probabilistic Machine Learning"},
+    "summary_es": "Las finanzas no son fisica: los modelos financieros son aproximaciones que sufren una trifecta de errores (especificacion, parametros, no-estacionariedad). Se explora por que todos los modelos financieros son erroneos usando el ejemplo de tasas de interes con distribucion binomial. Se presenta el caso de LTCM como ejemplo de arrogancia academica y el contraste con Renaissance Technologies. Se introduce el framework de ML probabilistico con sus cinco caracteristicas: distribuciones, integracion de conocimiento, inferencia de parametros, ensambles generativos y conciencia de incertidumbre.",
+    "summary_en": "Finance is not physics: financial models are approximations subject to a trifecta of errors (specification, parameters, nonstationarity). We explore why all financial models are wrong using the interest rate binomial distribution example. LTCM is presented as a case of academic arrogance contrasted with Renaissance Technologies. The probabilistic ML framework is introduced with five characteristics: distributions, knowledge integration, parameter inference, generative ensembles, and uncertainty awareness.",
+    "learning_objectives_es": [
+      "Explicar la trifecta de errores de modelado financiero con ejemplos",
+      "Implementar un modelo binomial de tasas de credito en Python",
+      "Comparar modelos deterministas vs probabilisticos",
+      "Describir las 5 caracteristicas del ML probabilistico"
+    ],
+    "learning_objectives_en": [
+      "Explain the trifecta of financial modeling errors with examples",
+      "Implement a binomial credit rate model in Python",
+      "Compare deterministic vs probabilistic models",
+      "Describe the 5 characteristics of probabilistic ML"
+    ],
+    "video_duration_min": 45,
+    "notebook": "notebooks/notebook_ch01_trifecta_errors.md",
+    "visualization": "visualizations/plotly_credit_rates_snippet.py",
+    "exercises": 3,
+    "hotmart_tier": "basico",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod02_uncertainty",
+    "module_number": 2,
+    "title": {"es": "Analisis y Cuantificacion de Incertidumbre", "en": "Analyzing and Quantifying Uncertainty"},
+    "summary_es": "Usando el problema de Monty Hall como hilo conductor, se revisan los axiomas de probabilidad, se derivan las reglas del producto e inversion, y se exploran los tres tipos de incertidumbre: aleatoria, epistemica y ontologica. Se demuestra que la probabilidad frecuentista es un caso especial de la epistemica. Se introducen los teoremas No Free Lunch y el problema de induccion. Se simulan soluciones via Monte Carlo para verificar resultados analiticos. Se discute por que la distincion riesgo/incertidumbre es inutil en finanzas reales.",
+    "summary_en": "Using the Monty Hall problem as a thread, we review probability axioms, derive the product and inversion rules, and explore three types of uncertainty: aleatory, epistemic, and ontological. Frequentist probability is shown as a special case of epistemic. No Free Lunch theorems and the problem of induction are introduced. Monte Carlo simulations verify analytical solutions. The risk/uncertainty distinction is argued to be useless in real finance.",
+    "learning_objectives_es": [
+      "Resolver el problema de Monty Hall analitica y numericamente",
+      "Derivar la regla de probabilidad inversa desde la regla del producto",
+      "Clasificar incertidumbre en aleatoria, epistemica y ontologica",
+      "Explicar los teoremas No Free Lunch y sus implicaciones para ML",
+      "Simular soluciones probabilisticas con Monte Carlo en Python"
+    ],
+    "learning_objectives_en": [
+      "Solve the Monty Hall problem analytically and numerically",
+      "Derive the inverse probability rule from the product rule",
+      "Classify uncertainty as aleatory, epistemic, and ontological",
+      "Explain No Free Lunch theorems and implications for ML",
+      "Simulate probabilistic solutions with Monte Carlo in Python"
+    ],
+    "video_duration_min": 60,
+    "notebook": "notebooks/notebook_ch02_monty_hall_uncertainty.md",
+    "visualization": "hotmart/viz_monty_hall_mcs.py",
+    "exercises": 4,
+    "hotmart_tier": "basico",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod03_monte_carlo",
+    "module_number": 3,
+    "title": {"es": "Simulacion Monte Carlo para Incertidumbre", "en": "Monte Carlo Simulation for Uncertainty"},
+    "summary_es": "Se revisan conceptos estadisticos clave: media, varianza, valor esperado, asimetria, curtosis. Se demuestra por que la volatilidad es una medida absurda de riesgo y por que subestima el riesgo financiero real. Se analiza la distribucion de retornos del S&P 500 para demostrar que no es normal. Se explican la Ley de Grandes Numeros y el Teorema Central del Limite como fundamentos teoricos de MCS. Se aplica MCS para valorar un proyecto de software con multiples factores de riesgo.",
+    "summary_en": "Key statistical concepts are reviewed: mean, variance, expected value, skewness, kurtosis. Volatility is shown to be a nonsensical risk measure that underestimates financial risk. S&P 500 return distribution is analyzed to demonstrate non-normality. Law of Large Numbers and Central Limit Theorem are explained as MCS theoretical foundations. MCS is applied to value a software project with multiple risk factors.",
+    "learning_objectives_es": [
+      "Demostrar que los retornos del S&P 500 no son normales con Python",
+      "Explicar por que la volatilidad subestima el riesgo financiero",
+      "Aplicar simulacion Monte Carlo a valoracion de proyectos",
+      "Construir un MCS robusto con factores de riesgo no correlacionados"
+    ],
+    "learning_objectives_en": [
+      "Demonstrate S&P 500 returns are not normal using Python",
+      "Explain why volatility underestimates financial risk",
+      "Apply Monte Carlo simulation to project valuation",
+      "Build a robust MCS with uncorrelated risk factors"
+    ],
+    "video_duration_min": 50,
+    "notebook": "notebooks/notebook_ch03_monte_carlo_finance.md",
+    "visualization": "hotmart/viz_sp500_fat_tails.py",
+    "exercises": 3,
+    "hotmart_tier": "basico",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod04_nhst_dangers",
+    "module_number": 4,
+    "title": {"es": "Peligros de la Estadistica Convencional", "en": "Dangers of Conventional Statistical Methods"},
+    "summary_es": "Se expone la falacia inversa y la falacia del fiscal que subyace en NHST. Se demuestra como los p-values violan las reglas de probabilidad y por que la mayoria de hallazgos publicados en ciencias sociales son falsos. Se examinan los tres errores de usar intervalos de confianza como teoria post-datos. Se construye un modelo de mercado OLS para Apple usando Statsmodels y se analizan los tests diagnosticos que invalidan los supuestos del CAPM.",
+    "summary_en": "The inverse fallacy and prosecutor's fallacy underlying NHST are exposed. P-values are shown to violate probability rules, explaining why most published social science findings are false. Three errors of using confidence intervals as post-data theory are examined. An OLS market model for Apple is built with Statsmodels and diagnostic tests invalidating CAPM assumptions are analyzed.",
+    "learning_objectives_es": [
+      "Identificar la falacia del fiscal en NHST y p-values",
+      "Construir un modelo de mercado OLS en Python con Statsmodels",
+      "Interpretar correctamente intervalos de confianza y sus limitaciones",
+      "Explicar por que la mayoria de investigaciones con NHST son falsas"
+    ],
+    "learning_objectives_en": [
+      "Identify the prosecutor's fallacy in NHST and p-values",
+      "Build an OLS market model in Python with Statsmodels",
+      "Correctly interpret confidence intervals and their limitations",
+      "Explain why most NHST-based research findings are false"
+    ],
+    "video_duration_min": 55,
+    "notebook": "notebooks/notebook_ch04_nhst_dangers.md",
+    "visualization": "hotmart/viz_prosecutor_fallacy.py",
+    "exercises": 3,
+    "hotmart_tier": "avanzado",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod05_pml_framework",
+    "module_number": 5,
+    "title": {"es": "El Framework de ML Probabilistico", "en": "The Probabilistic ML Framework"},
+    "summary_es": "Se investiga cada termino de la regla de probabilidad inversa: prior, likelihood, marginal likelihood y posterior. Se aplica el framework completo a estimar la probabilidad de default de deuda corporativa en un fondo de cobertura. Se demuestra como el modelo aprende dinamicamente de datos nuevos. Se introducen las distribuciones predictivas prior y posterior para generar datos y propagar incertidumbre hacia adelante.",
+    "summary_en": "Each term of the inverse probability rule is investigated: prior, likelihood, marginal likelihood, and posterior. The complete framework is applied to estimating corporate debt default probability at a hedge fund. Dynamic learning from new data is demonstrated. Prior and posterior predictive distributions are introduced for data generation and forward uncertainty propagation.",
+    "learning_objectives_es": [
+      "Implementar inferencia probabilistica paso a paso con la regla inversa",
+      "Estimar probabilidad de default de bonos corporativos con PML",
+      "Generar datos sinteticos con distribuciones predictivas",
+      "Distinguir propagacion de incertidumbre forward vs inverse"
+    ],
+    "learning_objectives_en": [
+      "Implement probabilistic inference step by step with the inverse rule",
+      "Estimate corporate bond default probability with PML",
+      "Generate synthetic data with predictive distributions",
+      "Distinguish forward vs inverse uncertainty propagation"
+    ],
+    "video_duration_min": 50,
+    "notebook": "notebooks/notebook_ch05_pml_framework.md",
+    "visualization": "hotmart/viz_debt_default_updating.py",
+    "exercises": 3,
+    "hotmart_tier": "avanzado",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod06_conventional_ai",
+    "module_number": 6,
+    "title": {"es": "Peligros de la IA Convencional", "en": "Dangers of Conventional AI Systems"},
+    "summary_es": "Se demuestra que los sistemas MLE hacen predicciones absurdas con total confianza, especialmente con datasets pequeños. Se compara un modelo MLE vs probabilistico para expectativas de ganancias corporativas. Se introduce la aproximacion por grilla como alternativa numerica. Se explican Markov Chain Monte Carlo (MCMC) y el algoritmo Metropolis como metodos fundamentales para inferencia probabilistica. Se simula una distribucion t-Student con colas pesadas usando MCMC.",
+    "summary_en": "MLE systems are shown to make absurd predictions with complete confidence, especially on small datasets. An MLE vs probabilistic model comparison for corporate earnings expectations is presented. Grid approximation is introduced as a numerical alternative. MCMC and the Metropolis algorithm are explained as fundamental probabilistic inference methods. A fat-tailed Student's t-distribution is simulated using MCMC.",
+    "learning_objectives_es": [
+      "Demostrar las fallas de MLE con datasets pequeños",
+      "Implementar aproximacion por grilla para inferencia probabilistica",
+      "Explicar el algoritmo Metropolis y MCMC",
+      "Simular distribuciones con colas pesadas usando MCMC en Python"
+    ],
+    "learning_objectives_en": [
+      "Demonstrate MLE failures on small datasets",
+      "Implement grid approximation for probabilistic inference",
+      "Explain the Metropolis algorithm and MCMC",
+      "Simulate fat-tailed distributions using MCMC in Python"
+    ],
+    "video_duration_min": 55,
+    "notebook": "notebooks/notebook_ch06_mle_vs_probabilistic.md",
+    "visualization": "hotmart/viz_mle_vs_probabilistic.py",
+    "exercises": 4,
+    "hotmart_tier": "avanzado",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod07_generative_ensembles",
+    "module_number": 7,
+    "title": {"es": "Ensambles Generativos con PyMC", "en": "Generative Ensembles with PyMC"},
+    "summary_es": "Se construye un ensamble lineal probabilistico (PLE) completo usando PyMC y ArviZ. Se especifican priors (Normal para alpha/beta, HalfStudentT para residuales), likelihood (StudentT v=6) y se computa el posterior via Hamiltonian Monte Carlo. Se usan intervalos de credibilidad en lugar de intervalos de confianza. Se retrodice con datos de entrenamiento y se predice con datos de test, evaluando con R-squared probabilistico. El modelo demuestra que conoce sus limitaciones al ampliar incertidumbre en extrapolaciones.",
+    "summary_en": "A complete probabilistic linear ensemble (PLE) is built using PyMC and ArviZ. Priors are specified (Normal for alpha/beta, HalfStudentT for residuals), likelihood (StudentT v=6), and posterior computed via Hamiltonian Monte Carlo. Credible intervals replace confidence intervals. Retrodiction on training data and prediction on test data are evaluated with probabilistic R-squared. The model demonstrates awareness of its limitations by widening uncertainty in extrapolations.",
+    "learning_objectives_es": [
+      "Construir un ensamble lineal probabilistico completo con PyMC",
+      "Usar intervalos de credibilidad (HDI) en lugar de intervalos de confianza",
+      "Evaluar modelos con R-squared probabilistico",
+      "Interpretar retrodiciones y predicciones de ensambles generativos"
+    ],
+    "learning_objectives_en": [
+      "Build a complete probabilistic linear ensemble with PyMC",
+      "Use credible intervals (HDI) instead of confidence intervals",
+      "Evaluate models with probabilistic R-squared",
+      "Interpret retrodictions and predictions from generative ensembles"
+    ],
+    "video_duration_min": 65,
+    "notebook": "notebooks/notebook_ch07_pymc_ensembles.md",
+    "visualization": "hotmart/viz_ensemble_hdi.py",
+    "exercises": 4,
+    "hotmart_tier": "premium",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  },
+  {
+    "module_id": "mod08_decisions",
+    "module_number": 8,
+    "title": {"es": "Decisiones Probabilisticas y Gestion de Capital", "en": "Probabilistic Decisions and Capital Management"},
+    "summary_es": "Se aplican ensambles generativos a decisiones financieras reales. Se introduce la ergodicidad y por que el valor esperado es peligroso para inversores individuales. Se computan Value at Risk generativo (GVaR), Expected Shortfall generativo (GES) y Tail Risk generativo (GTR) directamente desde distribuciones predictivas posteriores. Se demuestra la ruina del apostador, la ruina del maximizador de valor esperado, y la ruina del inversor Markowitz. Se presenta el criterio de Kelly como solucion optima para asignacion de capital.",
+    "summary_en": "Generative ensembles are applied to real financial decisions. Ergodicity is introduced explaining why expected value is dangerous for individual investors. Generative VaR (GVaR), Generative Expected Shortfall (GES), and Generative Tail Risk (GTR) are computed directly from posterior predictive distributions. Gambler's ruin, expected value maximizer's ruin, and Markowitz investor's ruin are demonstrated. The Kelly criterion is presented as optimal capital allocation.",
+    "learning_objectives_es": [
+      "Calcular GVaR, GES y GTR desde distribuciones predictivas posteriores",
+      "Demostrar por que el valor esperado no funciona en procesos no-ergodicos",
+      "Implementar el criterio de Kelly para asignacion optima de capital",
+      "Comparar Kelly vs Markowitz con simulaciones Monte Carlo"
+    ],
+    "learning_objectives_en": [
+      "Calculate GVaR, GES, and GTR from posterior predictive distributions",
+      "Demonstrate why expected value fails in non-ergodic processes",
+      "Implement the Kelly criterion for optimal capital allocation",
+      "Compare Kelly vs Markowitz with Monte Carlo simulations"
+    ],
+    "video_duration_min": 60,
+    "notebook": "notebooks/notebook_ch08_kelly_capital_allocation.md",
+    "visualization": "hotmart/viz_kelly_vs_markowitz.py",
+    "exercises": 4,
+    "hotmart_tier": "premium",
+    "source_ref": "turn0browsertab744690698",
+    "last_updated": "2026-03-30"
+  }
+]

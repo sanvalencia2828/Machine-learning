@@ -1,0 +1,70 @@
+{
+  "module_id": "mod04c_ci_capm_alpha",
+  "module_number": "4C",
+  "title": {
+    "es": "Intervalos de Confianza, CAPM y la Trampa de Alpha",
+    "en": "Confidence Intervals, CAPM, and the Alpha Trap"
+  },
+  "summary_es": "Este modulo profundiza en los intervalos de confianza aplicados al CAPM (modelo de mercado). Se estiman alpha y beta de Apple vs S&P 500 con OLS, se analizan sus IC 95% y se demuestra que el IC de alpha es demasiado ancho para detectar alphas reales en la practica. Se distingue entre IC del parametro (precision de la estimacion) e IC de la prediccion (rango del proximo retorno), mostrando que el segundo es practicamente inutil. Se demuestran los 3 errores clasicos de interpretacion de IC. Se compara el IC frecuentista con el intervalo credible bayesiano, mostrando que solo el bayesiano puede responder P(alpha > 0) directamente. Se presenta la 'trampa de alpha': la combinacion de IC anchos, multiples tests y base rates bajos hace que la mayoria de 'descubrimientos de alpha' sean espejismos estadisticos.",
+  "summary_en": "This module dives deep into confidence intervals applied to CAPM (market model). Apple vs S&P 500 alpha and beta are estimated with OLS, their 95% CIs analyzed, showing alpha CI is too wide to detect real alphas in practice. Parameter CI (estimation precision) is distinguished from prediction CI (next return range), showing the latter is practically useless. The 3 classic CI interpretation errors are demonstrated. Frequentist CI is compared with Bayesian credible interval, showing only Bayesian can directly answer P(alpha > 0). The 'alpha trap' is presented: the combination of wide CIs, multiple testing, and low base rates makes most 'alpha discoveries' statistical mirages.",
+  "learning_objectives_es": [
+    "Estimar alpha y beta con OLS (Statsmodels) e interpretar sus IC 95%",
+    "Distinguir IC del parametro vs IC de la prediccion y sus limitaciones",
+    "Demostrar los 3 errores de interpretacion de intervalos de confianza",
+    "Comparar IC frecuentista vs intervalo credible bayesiano para alpha",
+    "Explicar por que la busqueda de alpha con NHST es una trampa estadistica"
+  ],
+  "learning_objectives_en": [
+    "Estimate alpha and beta with OLS (Statsmodels) and interpret their 95% CIs",
+    "Distinguish parameter CI from prediction CI and their limitations",
+    "Demonstrate the 3 confidence interval interpretation errors",
+    "Compare frequentist CI vs Bayesian credible interval for alpha",
+    "Explain why alpha hunting with NHST is a statistical trap"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod04c_ci_capm_alpha.md",
+  "notebook": "notebooks/notebook_ch04c_ci_capm_alpha.md",
+  "visualization": "hotmart/viz_ci_capm.py",
+  "visualization_output": "hotmart/ci_capm_alpha.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod04c_ci_capm.md",
+  "exercises_count": 6,
+  "src_script": "src/ci_capm_alpha_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod04_nhst_dangers"],
+  "keywords": [
+    "confidence interval",
+    "CAPM",
+    "alpha",
+    "beta",
+    "OLS",
+    "Statsmodels",
+    "prediction interval",
+    "credible interval",
+    "Bayesian",
+    "alpha trap",
+    "market model",
+    "coverage"
+  ],
+  "parameters": [
+    {
+      "id": "p_nhst_fallacies",
+      "name": "CI Interpretation Errors",
+      "relevance": "alta",
+      "origin_phrase": "A 95% CI does NOT mean 95% probability that the parameter is in the interval"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Bayesian Alternative",
+      "relevance": "alta",
+      "origin_phrase": "Only Bayesian credible intervals can directly answer P(alpha > 0)"
+    },
+    {
+      "id": "p_academic_arrogance",
+      "name": "Alpha Trap",
+      "relevance": "alta",
+      "origin_phrase": "Wide CIs, multiple testing, and low base rates make most alpha discoveries mirages"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-01"
+}

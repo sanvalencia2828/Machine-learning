@@ -1,0 +1,80 @@
+{
+  "module_id": "mod02b_relative_probability",
+  "module_number": "2B",
+  "title": {
+    "es": "Probabilidades Relativas y Critica a Riesgo vs Incertidumbre",
+    "en": "Relative Probabilities and the Risk vs Uncertainty Critique"
+  },
+  "summary_es": "Este modulo demuestra que toda probabilidad es condicional a la informacion disponible: P(A) = P(A|I). Se critica la distincion clasica de Knight (1921) entre riesgo medible e incertidumbre no medible, argumentando que esta dicotomia es inutil en la practica financiera. Se comparan las interpretaciones frecuentista y epistemica de la probabilidad, demostrando que la primera es un caso especial de la segunda. Se implementa actualizacion bayesiana secuencial para mostrar como el modelo aprende con cada dato nuevo y cuantifica su propia ignorancia ampliando intervalos cuando tiene poca informacion. Se aplica al portafolio financiero comparando VaR parametrico normal vs Student-t con colas pesadas.",
+  "summary_en": "This module demonstrates that all probability is conditional on available information: P(A) = P(A|I). Knight's classic (1921) distinction between measurable risk and unmeasurable uncertainty is critiqued as useless in financial practice. Frequentist and epistemic probability interpretations are compared, showing the former is a special case of the latter. Sequential Bayesian updating is implemented to show how the model learns with each new datum and quantifies its own ignorance by widening intervals when information is scarce. The approach is applied to portfolio management comparing parametric normal VaR vs fat-tailed Student-t.",
+  "learning_objectives_es": [
+    "Entender que toda probabilidad es condicional: P(A) = P(A|I)",
+    "Criticar la distincion de Knight entre riesgo e incertidumbre con ejemplos financieros",
+    "Comparar inferencia frecuentista vs epistemica con datasets pequenos",
+    "Implementar actualizacion bayesiana secuencial Beta-Binomial en Python",
+    "Evaluar riesgo de portafolio con VaR normal vs Student-t"
+  ],
+  "learning_objectives_en": [
+    "Understand that all probability is conditional: P(A) = P(A|I)",
+    "Critique Knight's risk vs uncertainty distinction with financial examples",
+    "Compare frequentist vs epistemic inference on small datasets",
+    "Implement sequential Bayesian updating (Beta-Binomial) in Python",
+    "Evaluate portfolio risk with normal VaR vs Student-t"
+  ],
+  "video_duration_min": 45,
+  "video_script": "hotmart/scripts_video/script_mod02b_relative_prob.md",
+  "notebook": "notebooks/notebook_ch02_relative_probability.md",
+  "visualization": "hotmart/viz_relative_probability.py",
+  "visualization_output": "hotmart/relative_probability.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod02b_relative_prob.md",
+  "exercises_count": 5,
+  "src_script": "src/relative_probability_demo.py",
+  "hotmart_tier": "basico",
+  "prerequisites": ["mod02_uncertainty"],
+  "keywords": [
+    "relative probability",
+    "conditional probability",
+    "Knight uncertainty",
+    "risk vs uncertainty",
+    "frequentist vs epistemic",
+    "Bayesian updating",
+    "Beta-Binomial",
+    "VaR",
+    "fat tails",
+    "Student-t"
+  ],
+  "parameters": [
+    {
+      "id": "p_incertidumbre",
+      "name": "Uncertainty Quantification",
+      "relevance": "alta",
+      "origin_phrase": "Probabilities are always relative to information: P(A|I)"
+    },
+    {
+      "id": "p_riesgo_no_prob",
+      "name": "Risk vs Uncertainty Critique",
+      "relevance": "alta",
+      "origin_phrase": "The risk/uncertainty distinction is useless in real finance"
+    },
+    {
+      "id": "p_models_social",
+      "name": "Finance as Social Science",
+      "relevance": "media",
+      "origin_phrase": "Financial probabilities depend on human behavior and information asymmetry"
+    },
+    {
+      "id": "p_non_gaussian",
+      "name": "Non-Gaussian Distributions",
+      "relevance": "alta",
+      "origin_phrase": "Fat-tailed Student-t distributions capture financial reality better than Normal"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Knowledge Integration",
+      "relevance": "alta",
+      "origin_phrase": "Prior knowledge shapes probability estimates through Bayesian updating"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-30"
+}

@@ -1,0 +1,60 @@
+{
+  "type": "course",
+  "title": {
+    "es": "Curso: ML Probabilístico Aplicado",
+    "en": "Course: Applied Probabilistic ML"
+  },
+  "description": {
+    "es": "Curso modular con 5 capítulos, notebooks interactivos, ejercicios y quizzes",
+    "en": "Modular course with 5 chapters, interactive notebooks, exercises and quizzes"
+  },
+  "chapters": [
+    "Chapter 1: Probabilistic Foundations (2h)",
+    "Chapter 2: Bayesian Inference (3h)",
+    "Chapter 3: Uncertainty Quantification (3h)",
+    "Chapter 4: Causal Inference Basics (2.5h)",
+    "Chapter 5: Applications in Finance (3.5h)"
+  ],
+  "deliverables": [
+    {
+      "name": "5x Interactive Notebooks",
+      "type": "jupyter",
+      "languages": [
+        "es",
+        "en"
+      ]
+    },
+    {
+      "name": "Example Code Repositories",
+      "type": "github"
+    },
+    {
+      "name": "20x Practical Exercises",
+      "type": "problem_sets"
+    },
+    {
+      "name": "5x Quizzes + 1x Final Project",
+      "type": "assessments"
+    },
+    {
+      "name": "Visualization Templates (matplotlib/plotly)",
+      "type": "code"
+    },
+    {
+      "name": "Resource Bibliography",
+      "type": "pdf"
+    }
+  ],
+  "parameters_included": [
+    "probabilistic_ml",
+    "transparency",
+    "uncertainty_quantification",
+    "counterfactual_simulation"
+  ],
+  "price_range": {
+    "min": 49.99,
+    "max": 99.99
+  },
+  "variant": "professional",
+  "duration_hours": 14
+}

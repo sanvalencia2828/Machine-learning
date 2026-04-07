@@ -1,0 +1,70 @@
+{
+  "module_id": "mod06c_grid_mcmc",
+  "module_number": "6C",
+  "title": {
+    "es": "Grid Approximation, Markov Chains y MCMC Metropolis",
+    "en": "Grid Approximation, Markov Chains and MCMC Metropolis"
+  },
+  "summary_es": "Este modulo cubre los tres niveles de inferencia computacional bayesiana. Grid approximation discretiza el posterior en una grilla y funciona perfectamente para 1-2 parametros, pero sufre la maldicion de dimensionalidad con mas. Las Markov chains se introducen con estados de mercado (bear/stagnant/bull), demostrando convergencia a distribucion estacionaria. MCMC Metropolis se implementa desde cero para estimar los grados de libertad (nu) de una Student-t en retornos financieros, incluyendo diagnosticos completos: trace plots, tasa de aceptacion, autocorrelacion y convergencia. Se comparan las tres tecnicas y se conecta con HMC/NUTS (PyMC) como siguiente paso.",
+  "summary_en": "This module covers three levels of Bayesian computational inference. Grid approximation discretizes the posterior on a grid, working perfectly for 1-2 parameters but suffering dimensionality curse beyond that. Markov chains are introduced with market states (bear/stagnant/bull), demonstrating convergence to stationary distribution. MCMC Metropolis is implemented from scratch to estimate Student-t degrees of freedom (nu) in financial returns, including complete diagnostics: trace plots, acceptance rate, autocorrelation, and convergence. The three techniques are compared and connected to HMC/NUTS (PyMC) as the next step.",
+  "learning_objectives_es": [
+    "Implementar grid approximation y entender la maldicion de dimensionalidad",
+    "Simular Markov chains de estados de mercado con convergencia estacionaria",
+    "Implementar MCMC Metropolis desde cero para posteriors no-analiticos",
+    "Evaluar diagnosticos de MCMC: trace plots, aceptacion, autocorrelacion",
+    "Comparar grid, Metropolis y HMC como pipeline de complejidad creciente"
+  ],
+  "learning_objectives_en": [
+    "Implement grid approximation and understand dimensionality curse",
+    "Simulate market state Markov chains with stationary convergence",
+    "Implement MCMC Metropolis from scratch for non-analytical posteriors",
+    "Evaluate MCMC diagnostics: trace plots, acceptance, autocorrelation",
+    "Compare grid, Metropolis, and HMC as an increasing complexity pipeline"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod06c_grid_mcmc.md",
+  "notebook": "notebooks/notebook_ch06c_grid_mcmc.md",
+  "visualization": "hotmart/viz_grid_mcmc.py",
+  "visualization_output": "hotmart/grid_mcmc.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod06c_grid_mcmc.md",
+  "exercises_count": 6,
+  "src_script": "src/grid_mcmc_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod06_mle_vs_pml"],
+  "keywords": [
+    "grid approximation",
+    "Markov chain",
+    "MCMC",
+    "Metropolis",
+    "Metropolis-Hastings",
+    "HMC",
+    "NUTS",
+    "trace plot",
+    "acceptance rate",
+    "autocorrelation",
+    "market regimes",
+    "Student-t"
+  ],
+  "parameters": [
+    {
+      "id": "p_simulacion",
+      "name": "Computational Bayesian Inference",
+      "relevance": "alta",
+      "origin_phrase": "Grid, Metropolis, and HMC form a pipeline of increasing computational power"
+    },
+    {
+      "id": "p_non_gaussian",
+      "name": "Fat Tails via MCMC",
+      "relevance": "alta",
+      "origin_phrase": "MCMC estimates Student-t nu directly from data without analytical formulas"
+    },
+    {
+      "id": "p_transparencia",
+      "name": "Diagnostic Transparency",
+      "relevance": "alta",
+      "origin_phrase": "Trace plots and acceptance rates make MCMC behavior inspectable"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

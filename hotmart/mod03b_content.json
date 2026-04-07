@@ -1,0 +1,76 @@
+{
+  "module_id": "mod03b_stat_concepts",
+  "module_number": "3B",
+  "title": {
+    "es": "Conceptos Estadisticos y Critica a la Volatilidad",
+    "en": "Statistical Concepts and the Volatility Critique"
+  },
+  "summary_es": "Este modulo profundiza en los cuatro momentos estadisticos fundamentales para finanzas: media, varianza (volatilidad), asimetria (skewness) y curtosis. Se demuestra con datos sinteticos que tres distribuciones con volatilidad identica pueden tener riesgos reales drasticamente diferentes cuando difieren en skewness y curtosis. Se explica por que la volatilidad es una medida absurda de riesgo: trata subidas y bajadas como iguales, asume simetria y subestima eventos extremos. Se introduce la no-ergodicidad para mostrar que el valor esperado positivo no garantiza ganancias individuales. Se implementan medidas alternativas de riesgo: VaR, Expected Shortfall, downside deviation y semi-varianza.",
+  "summary_en": "This module dives deep into the four fundamental statistical moments for finance: mean, variance (volatility), skewness, and kurtosis. Synthetic data demonstrates that three distributions with identical volatility can have drastically different real risks when they differ in skewness and kurtosis. Volatility is shown to be a nonsensical risk measure: it treats gains and losses equally, assumes symmetry, and underestimates extreme events. Non-ergodicity is introduced to show that positive expected value does not guarantee individual gains. Alternative risk measures are implemented: VaR, Expected Shortfall, downside deviation, and semi-variance.",
+  "learning_objectives_es": [
+    "Calcular e interpretar los 4 momentos: media, varianza, skewness, curtosis",
+    "Demostrar que distribuciones con misma volatilidad tienen riesgo real diferente",
+    "Explicar por que la volatilidad es insuficiente como medida de riesgo",
+    "Distinguir valor esperado de experiencia individual (no-ergodicidad)",
+    "Implementar VaR, Expected Shortfall y downside deviation en Python"
+  ],
+  "learning_objectives_en": [
+    "Calculate and interpret the 4 moments: mean, variance, skewness, kurtosis",
+    "Demonstrate that distributions with same volatility have different real risk",
+    "Explain why volatility is insufficient as a risk measure",
+    "Distinguish expected value from individual experience (non-ergodicity)",
+    "Implement VaR, Expected Shortfall, and downside deviation in Python"
+  ],
+  "video_duration_min": 45,
+  "video_script": "hotmart/scripts_video/script_mod03b_stat_concepts.md",
+  "notebook": "notebooks/notebook_ch03b_stat_concepts.md",
+  "visualization": "hotmart/viz_stat_concepts.py",
+  "visualization_output": "hotmart/stat_concepts.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod03b_stat_concepts.md",
+  "exercises_count": 6,
+  "src_script": "src/stat_concepts_demo.py",
+  "hotmart_tier": "basico",
+  "prerequisites": ["mod03_monte_carlo"],
+  "keywords": [
+    "statistical moments",
+    "mean",
+    "variance",
+    "volatility",
+    "skewness",
+    "kurtosis",
+    "fat tails",
+    "VaR",
+    "Expected Shortfall",
+    "downside deviation",
+    "non-ergodicity",
+    "expected value"
+  ],
+  "parameters": [
+    {
+      "id": "p_non_gaussian",
+      "name": "Non-Gaussian Distributions",
+      "relevance": "alta",
+      "origin_phrase": "Same volatility, drastically different risk when skewness and kurtosis differ"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Volatility Critique",
+      "relevance": "alta",
+      "origin_phrase": "Volatility is a nonsensical measure of risk that treats gains and losses equally"
+    },
+    {
+      "id": "p_incertidumbre",
+      "name": "Uncertainty Quantification",
+      "relevance": "alta",
+      "origin_phrase": "Four moments provide a more complete picture than variance alone"
+    },
+    {
+      "id": "p_riesgo_no_prob",
+      "name": "Risk Measurement Flaws",
+      "relevance": "alta",
+      "origin_phrase": "Non-ergodicity means positive expected value does not guarantee individual gains"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-31"
+}

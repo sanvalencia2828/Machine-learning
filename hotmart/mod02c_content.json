@@ -1,0 +1,89 @@
+{
+  "module_id": "mod02c_bsm_uncertainty_trinity",
+  "module_number": "2C",
+  "title": {
+    "es": "Black-Scholes y la Trinidad de la Incertidumbre",
+    "en": "Black-Scholes and the Uncertainty Trinity"
+  },
+  "summary_es": "Este modulo examina la formula de Black-Scholes-Merton, sus cinco supuestos criticos y por que cada uno falla en mercados financieros reales. Cada falla se mapea a uno de los tres tipos de incertidumbre: la aleatoria (retornos con colas pesadas en lugar de Gaussianos), la epistemica (volatilidad desconocida y cambiante, no constante) y la ontologica (saltos, cambios de regimen y eventos sin precedente). Se implementa BSM en Python, se construye un volatility smile sintetico usando simulacion Monte Carlo con Student-t, y se cuantifica como cada tipo de incertidumbre afecta el pricing de opciones. El modulo demuestra que BSM es un benchmark util pero peligroso si se usa sin entender sus limitaciones fundamentales.",
+  "summary_en": "This module examines the Black-Scholes-Merton formula, its five critical assumptions, and why each fails in real financial markets. Each failure maps to one of three uncertainty types: aleatory (fat-tailed returns instead of Gaussian), epistemic (unknown and changing volatility rather than constant), and ontological (jumps, regime changes, and unprecedented events). BSM is implemented in Python, a synthetic volatility smile is built using Monte Carlo simulation with Student-t, and the pricing impact of each uncertainty type is quantified. The module demonstrates that BSM is a useful benchmark but dangerous if used without understanding its fundamental limitations.",
+  "learning_objectives_es": [
+    "Implementar Black-Scholes para opciones europeas y verificar paridad put-call",
+    "Demostrar que retornos financieros tienen colas pesadas incompatibles con BSM",
+    "Construir un volatility smile sintetico con simulacion Monte Carlo Student-t",
+    "Clasificar fallas de BSM segun la trinidad de incertidumbre (aleatoria, epistemica, ontologica)",
+    "Cuantificar el impacto de cada tipo de incertidumbre en pricing de opciones"
+  ],
+  "learning_objectives_en": [
+    "Implement Black-Scholes for European options and verify put-call parity",
+    "Demonstrate that financial returns have fat tails incompatible with BSM",
+    "Build a synthetic volatility smile with Student-t Monte Carlo simulation",
+    "Classify BSM failures according to the uncertainty trinity (aleatory, epistemic, ontological)",
+    "Quantify the pricing impact of each uncertainty type on options"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod02c_bsm_uncertainty.md",
+  "notebook": "notebooks/notebook_ch02c_bsm_uncertainty_trinity.md",
+  "visualization": "hotmart/viz_bsm_uncertainty_trinity.py",
+  "visualization_output": "hotmart/bsm_uncertainty_trinity.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod02c_bsm_uncertainty.md",
+  "exercises_count": 6,
+  "src_script": "src/bsm_uncertainty_demo.py",
+  "hotmart_tier": "avanzado",
+  "prerequisites": ["mod02_uncertainty", "mod02b_relative_probability"],
+  "keywords": [
+    "Black-Scholes",
+    "BSM",
+    "options pricing",
+    "volatility smile",
+    "fat tails",
+    "Student-t",
+    "aleatory uncertainty",
+    "epistemic uncertainty",
+    "ontological uncertainty",
+    "uncertainty trinity",
+    "jump-diffusion",
+    "regime change",
+    "Monte Carlo"
+  ],
+  "parameters": [
+    {
+      "id": "p_incertidumbre",
+      "name": "Uncertainty Trinity",
+      "relevance": "alta",
+      "origin_phrase": "Three types of uncertainty: aleatory, epistemic, and ontological"
+    },
+    {
+      "id": "p_non_gaussian",
+      "name": "Non-Gaussian Distributions",
+      "relevance": "alta",
+      "origin_phrase": "Financial returns exhibit fat tails inconsistent with Gaussian assumptions"
+    },
+    {
+      "id": "p_specification_errors",
+      "name": "Model Specification Errors",
+      "relevance": "alta",
+      "origin_phrase": "BSM's five assumptions are each a specification error"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Model Robustness",
+      "relevance": "alta",
+      "origin_phrase": "Robust models must account for fat tails, parameter uncertainty, and regime changes"
+    },
+    {
+      "id": "p_riesgo_no_prob",
+      "name": "Non-Probabilistic Risk Flaws",
+      "relevance": "media",
+      "origin_phrase": "BSM treats all uncertainty as aleatory, ignoring epistemic and ontological risks"
+    },
+    {
+      "id": "p_academic_arrogance",
+      "name": "Academic Arrogance",
+      "relevance": "media",
+      "origin_phrase": "LTCM's collapse demonstrated the danger of blind faith in elegant models"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-03-30"
+}

@@ -1,0 +1,108 @@
+{
+  "chapter_id": "ch01",
+  "chapter_number": 1,
+  "title": {
+    "es": "La necesidad del aprendizaje probabilístico",
+    "en": "The Need for Probabilistic Machine Learning"
+  },
+  "summary_es": "El capítulo formaliza la tríada de errores (especificación, parámetros, cambios estructurales), documenta la no-Gaussianidad de retornos y muestra ejemplos prácticos (p. ej., binomial para tasas) que ilustran la sensibilidad de las predicciones a supuestos de parámetros y a la falta de adaptación a cambios estructurales.",
+  "summary_en": "The chapter formalizes the trifecta of errors (specification, parameters, structural change), documents return non-Gaussianity, and provides practical examples (e.g., binomial for rates) illustrating prediction sensitivity to parameter assumptions and failure to adapt to structural change.",
+  "parameters": [
+    {
+      "id": "p_trifecta_errors",
+      "name_es": "Tríada de errores de modelado",
+      "name_en": "Trifecta of modeling errors",
+      "relevance": "alta",
+      "origin_phrase": "inappropriate functional form; inaccurate parameters; failing to adapt to structural changes",
+      "description_es": "Combinación de tres errores sistemáticos: especificación incorrecta, estimación inaccurada de parámetros y falta de adaptación a cambios en el régimen de datos.",
+      "description_en": "Combination of three systematic errors: incorrect specification, inaccurate parameter estimation, and failure to adapt to regime changes.",
+      "features": ["diagnostic_notebook", "error_checklist"]
+    },
+    {
+      "id": "p_specification_errors",
+      "name_es": "Errores de especificación (supuesto Gaussiano)",
+      "name_en": "Specification errors (Gaussian assumption)",
+      "relevance": "alta",
+      "origin_phrase": "Almost all financial theories use the Gaussian or normal distribution",
+      "description_es": "Crítica del uso generalizado de la distribución normal en teoría financiera; demostración empírica de colas gruesas y asimetría en retornos.",
+      "description_en": "Critique of widespread use of normal distribution in financial theory; empirical demonstration of fat tails and skewness in returns.",
+      "features": ["fat_tail_tests", "model_spec_report"]
+    },
+    {
+      "id": "p_parameter_errors",
+      "name_es": "Errores de estimación de parámetros",
+      "name_en": "Parameter estimation errors",
+      "relevance": "alta",
+      "origin_phrase": "parameters are generally estimated from past data, which may not represent current market conditions",
+      "description_es": "Los parámetros estimados del pasado histórico pueden ser obsoletos; necesidad de cuantificar incertidumbre en los parámetros mismos.",
+      "description_en": "Parameters estimated from historical data may be obsolete; need to quantify uncertainty in the parameters themselves.",
+      "features": ["parameter_uncertainty_simulator", "sensitivity_dashboard"]
+    },
+    {
+      "id": "p_nonstationary",
+      "name_es": "No-estacionariedad y ergodicidad",
+      "name_en": "Non-stationarity and ergodicity",
+      "relevance": "alta",
+      "origin_phrase": "the underlying data-generating stochastic process may vary over time — i.e., the process is not stationary ergodic",
+      "description_es": "Distribuciones y parámetros pueden cambiar a lo largo del tiempo; invalidación de supuestos clásicos de estacionariedad.",
+      "description_en": "Distributions and parameters may change over time; invalidation of classical stationarity assumptions.",
+      "features": ["ergodicity_diagnostics", "regime_detection"]
+    },
+    {
+      "id": "p_binomial_example",
+      "name_es": "Ejemplo binomial: reuniones de la Fed",
+      "name_en": "Binomial Fed meetings example",
+      "relevance": "media",
+      "origin_phrase": "use the binomial distribution to model your credit card's interest rate",
+      "description_es": "Caso práctico: modelar tasas de tarjeta de crédito como suma de eventos Bernoulli (posibles subidas de tasas en reuniones de la Fed).",
+      "description_en": "Practical case: model credit card rates as sum of Bernoulli events (possible Fed rate hikes at meetings).",
+      "features": ["binomial_simulator_notebook", "figure_1_2_repro"]
+    },
+    {
+      "id": "p_trinomial_adapt",
+      "name_es": "Adaptación a cambio estructural (trinomial)",
+      "name_en": "Adaptation to structural change (trinomial)",
+      "relevance": "media",
+      "origin_phrase": "change the binomial probability distribution in our model to a trinomial distribution",
+      "description_es": "Extensión del modelo binomial a trinomial tras detectar shock: permite movimientos en tres direcciones (bajadas, neutral, subidas).",
+      "description_en": "Extension of binomial model to trinomial after detecting shock: allows three-direction moves (cuts, neutral, hikes).",
+      "features": ["trinomial_converter", "scenario_generator"]
+    }
+  ],
+  "keywords": [
+    "trifecta errors",
+    "parameter uncertainty",
+    "non-stationarity",
+    "fat tails",
+    "binomial example",
+    "trinomial adaptation",
+    "structural change detection"
+  ],
+  "learning_objectives": [
+    {
+      "objective_es": "Comprender la tríada de errores sistemáticos en modelado financiero.",
+      "objective_en": "Understand the trifecta of systematic errors in financial modeling."
+    },
+    {
+      "objective_es": "Aplicar distribuciones discretas (binomial, trinomial) a ejemplos reales de tasas.",
+      "objective_en": "Apply discrete distributions (binomial, trinomial) to real rate examples."
+    },
+    {
+      "objective_es": "Cuantificar sensibilidad de predicciones a incertidumbre paramétrica.",
+      "objective_en": "Quantify prediction sensitivity to parameter uncertainty."
+    },
+    {
+      "objective_es": "Detectar y adaptar modelos a cambios estructurales.",
+      "objective_en": "Detect and adapt models to structural changes."
+    }
+  ],
+  "associated_files": {
+    "python_module": "src/binomial_credit_rate_timevary.py",
+    "notebook_template": "notebooks/notebook_ch01_parameter_uncertainty.md",
+    "interactive_viz": "notebooks/plotly_interactive_credit_rates.py",
+    "figure_reproduction": "Figure 1-2 (credit card rate distribution binomial)"
+  },
+  "source_ref": "turn0browsertab744690698",
+  "created_date": "2026-03-27",
+  "last_updated": "2026-03-27"
+}
