@@ -17,7 +17,24 @@
       "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/\"*mod06c* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/scripts_video/\"*mod06c* \"c:/Users/santi/OneDrive/Desktop/Machine learning/notebooks/\"*ch06c* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*markov* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*grid_mcmc*)",
       "Bash(python src/grid_mcmc_demo.py)",
       "Bash(python hotmart/viz_grid_mcmc.py)",
-      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod06c_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")"
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod06c_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/\"*mod07* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/scripts_video/\"*mod07* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/ejercicios/\"*mod07* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/viz_ensemble\"*)",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/notebooks/\"*ch07*)",
+      "Bash(python src/pymc_ensembles_demo.py)",
+      "Bash(python hotmart/viz_ensemble_hdi.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod07_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")",
+      "Bash(python src/ple_applied_demo.py)",
+      "Bash(python hotmart/viz_ple_applied.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod07b_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")",
+      "Bash(python src/retrodiction_eval_demo.py)",
+      "Bash(python hotmart/viz_retrodiction_eval.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod07c_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/\"*mod08* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/scripts_video/\"*mod08* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/ejercicios/\"*mod08* \"c:/Users/santi/OneDrive/Desktop/Machine learning/hotmart/viz_kelly\"*)",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/notebooks/\"*ch08*)",
+      "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*kelly* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*var* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*decision*)",
+      "Bash(python src/decisions_kelly_demo.py)",
+      "Bash(python hotmart/viz_kelly_vs_markowitz.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod08_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")"
     ]
   }
 }

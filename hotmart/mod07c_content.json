@@ -1,0 +1,70 @@
+{
+  "module_id": "mod07c_retrodiction_eval",
+  "module_number": "7C",
+  "title": {
+    "es": "Retrodiccion, HMC y Evaluacion de PLEs",
+    "en": "Retrodiction, HMC and PLE Evaluation"
+  },
+  "summary_es": "Este modulo cubre el pipeline completo de verificacion y evaluacion de un Probabilistic Linear Ensemble. Se implementa prior predictive check para validar que los priors generan datos plausibles antes del entrenamiento. Se explica HMC/NUTS como motor de inferencia mas eficiente que Metropolis. Se ejecuta posterior predictive check para verificar que el modelo ajusta correctamente (~95% cobertura). Se demuestra que el PLE ensancha intervalos de prediccion en extrapolacion (3.5-6.5x mas anchos fuera de muestra), revelando incertidumbre que OLS oculta. Se calcula R-squared probabilistico como distribucion en vez de punto unico.",
+  "summary_en": "This module covers the complete verification and evaluation pipeline for a Probabilistic Linear Ensemble. Prior predictive check validates that priors generate plausible data before training. HMC/NUTS is explained as a more efficient inference engine than Metropolis. Posterior predictive check verifies model fit (~95% coverage). The PLE is shown to widen prediction intervals during extrapolation (3.5-6.5x wider out-of-sample), revealing uncertainty OLS hides. Probabilistic R-squared is calculated as a distribution rather than single point.",
+  "learning_objectives_es": [
+    "Ejecutar prior predictive check para validar priors antes de entrenar",
+    "Entender HMC/NUTS como motor de inferencia eficiente",
+    "Verificar ajuste del modelo con posterior predictive check y cobertura",
+    "Demostrar ensanchamiento de intervalos en extrapolacion",
+    "Calcular R-squared probabilistico como distribucion"
+  ],
+  "learning_objectives_en": [
+    "Run prior predictive check to validate priors before training",
+    "Understand HMC/NUTS as efficient inference engine",
+    "Verify model fit with posterior predictive check and coverage",
+    "Demonstrate interval widening during extrapolation",
+    "Calculate probabilistic R-squared as distribution"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod07c_retrodiction_eval.md",
+  "notebook": "notebooks/notebook_ch07_pymc_ensembles.md",
+  "visualization": "hotmart/viz_retrodiction_eval.py",
+  "visualization_output": "hotmart/retrodiction_eval.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod07c_retrodiction.md",
+  "exercises_count": 6,
+  "src_script": "src/retrodiction_eval_demo.py",
+  "hotmart_tier": "premium",
+  "prerequisites": ["mod07_pymc_ensembles"],
+  "keywords": [
+    "retrodiction",
+    "prior predictive",
+    "posterior predictive",
+    "HMC",
+    "NUTS",
+    "coverage",
+    "extrapolation",
+    "interval widening",
+    "probabilistic R-squared",
+    "model evaluation",
+    "ArviZ",
+    "Rhat"
+  ],
+  "parameters": [
+    {
+      "id": "p_incertidumbre",
+      "name": "Extrapolation Awareness",
+      "relevance": "alta",
+      "origin_phrase": "PLE widens intervals 3.5-6.5x when extrapolating beyond training data"
+    },
+    {
+      "id": "p_transparencia",
+      "name": "Model Verification Pipeline",
+      "relevance": "alta",
+      "origin_phrase": "Prior/posterior predictive checks make model quality transparent"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Coverage Calibration",
+      "relevance": "alta",
+      "origin_phrase": "95% coverage confirms model is well-calibrated"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}
