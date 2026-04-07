@@ -7,11 +7,10 @@ import { authMiddleware, AuthRequest } from '../middleware/auth.middleware';
 const router = Router();
 
 function signToken(user: { id: string; email: string; plan: string }): string {
-  return jwt.sign(
-    { userId: user.id, email: user.email, plan: user.plan },
-    process.env.JWT_SECRET || 'dev-secret',
-    { expiresIn: process.env.JWT_EXPIRATION || '24h' }
-  );
+  const secret = (process.env.JWT_SECRET || 'dev-secret') as jwt.Secret;
+  const expires = process.env.JWT_EXPIRATION || '24h';
+  const options: jwt.SignOptions = { expiresIn: expires as unknown as jwt.SignOptions['expiresIn'] };
+  return jwt.sign({ userId: user.id, email: user.email, plan: user.plan }, secret, options);
 }
 
 // POST /api/auth/register
