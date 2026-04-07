@@ -3,6 +3,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '../lib/prisma';
 import { authMiddleware, AuthRequest } from '../middleware/auth.middleware';
+import { validateSchemas } from '../middleware/validate.middleware';
+import { registerSchema, loginSchema, updatePlanSchema } from '../schemas/auth.schema';
 
 const router = Router();
 
@@ -14,7 +16,7 @@ function signToken(user: { id: string; email: string; plan: string }): string {
 }
 
 // POST /api/auth/register
-router.post('/register', async (req: Request, res: Response) => {
+router.post('/register', validateSchemas({ body: registerSchema }), async (req: Request, res: Response) => {
   try {
     const { email, password, name } = req.body;
 
@@ -45,7 +47,7 @@ router.post('/register', async (req: Request, res: Response) => {
 });
 
 // POST /api/auth/login
-router.post('/login', async (req: Request, res: Response) => {
+router.post('/login', validateSchemas({ body: loginSchema }), async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
@@ -96,7 +98,7 @@ router.get('/me', authMiddleware, async (req: AuthRequest, res: Response) => {
 });
 
 // PATCH /api/auth/plan
-router.patch('/plan', authMiddleware, async (req: AuthRequest, res: Response) => {
+router.patch('/plan', authMiddleware, validateSchemas({ body: updatePlanSchema }), async (req: AuthRequest, res: Response) => {
   try {
     const { plan } = req.body;
     const validPlans = ['FREE', 'BASICO', 'AVANZADO', 'PREMIUM'];

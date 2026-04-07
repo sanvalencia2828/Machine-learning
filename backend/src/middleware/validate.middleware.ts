@@ -4,23 +4,40 @@ import { ParsedQs } from 'qs';
 import logger from '../lib/logger';
 import { ValidationError } from '../types/errors';
 
+type SchemaMap = {
+  body?: ZodSchema;
+  query?: ZodSchema;
+  params?: ZodSchema;
+};
+
 /**
- * Validación middleware genérico para body
- * Uso: router.post('/path', validate(schema), handler)
+ * Generic validation interceptor that can validate body, query and params.
+ * Usage: router.post('/path', validateSchemas({ body: schema }), handler)
  */
-export const validate = (schema: ZodSchema) => {
+export const validateSchemas = (schemas: SchemaMap) => {
   return async (req: Request, _res: Response, next: NextFunction) => {
     try {
-      // Validar body
-      if (req.body) {
-        req.body = await schema.parseAsync(req.body);
+      // Validate body
+      if (schemas.body) {
+        req.body = await schemas.body.parseAsync(req.body);
       }
 
-      next();
+      // Validate query
+      if (schemas.query) {
+        const validatedQuery = await schemas.query.parseAsync(req.query);
+        req.query = validatedQuery as unknown as ParsedQs;
+      }
+
+      // Validate params
+      if (schemas.params) {
+        req.params = await schemas.params.parseAsync(req.params);
+      }
+
+      return next();
     } catch (error) {
       if (error instanceof ZodError) {
         const details = error.errors.reduce((acc, err) => {
-          const path = err.path.join('.');
+          const path = err.path.join('.') || (err.path[0] ?? '');
           acc[path] = err.message;
           return acc;
         }, {} as Record<string, string>);
@@ -28,76 +45,18 @@ export const validate = (schema: ZodSchema) => {
         logger.warn('Validation error', {
           details,
           path: req.path,
-          method: req.method
+          method: req.method,
         });
 
-        return next(new ValidationError(
-          'Validation failed',
-          details
-        ));
+        return next(new ValidationError('Validation failed', details));
       }
 
-      next(error);
+      return next(error);
     }
   };
 };
 
-/**
- * Validación middleware para query parameters
- * Uso: router.get('/path', validateQuery(schema), handler)
- */
-export const validateQuery = (schema: ZodSchema) => {
-  return async (req: Request, _res: Response, next: NextFunction) => {
-    try {
-      const validated = await schema.parseAsync(req.query);
-      req.query = validated as unknown as ParsedQs;
-      next();
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const details = error.errors.reduce((acc, err) => {
-          acc[err.path.join('.')] = err.message;
-          return acc;
-        }, {} as Record<string, string>);
-
-        logger.warn('Query validation error', {
-          details,
-          query: req.query
-        });
-
-        return next(new ValidationError(
-          'Query validation failed',
-          details
-        ));
-      }
-
-      next(error);
-    }
-  };
-};
-
-/**
- * Validación middleware para params
- * Uso: router.get('/path/:id', validateParams(schema), handler)
- */
-export const validateParams = (schema: ZodSchema) => {
-  return async (req: Request, _res: Response, next: NextFunction) => {
-    try {
-      req.params = await schema.parseAsync(req.params);
-      next();
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const details = error.errors.reduce((acc, err) => {
-          acc[err.path.join('.')] = err.message;
-          return acc;
-        }, {} as Record<string, string>);
-
-        return next(new ValidationError(
-          'Params validation failed',
-          details
-        ));
-      }
-
-      next(error);
-    }
-  };
-};
+// Backwards-compatible exports for simple use-cases
+export const validate = (schema: ZodSchema) => validateSchemas({ body: schema });
+export const validateQuery = (schema: ZodSchema) => validateSchemas({ query: schema });
+export const validateParams = (schema: ZodSchema) => validateSchemas({ params: schema });
