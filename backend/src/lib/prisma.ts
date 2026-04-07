@@ -24,21 +24,21 @@ export const prisma =
 
 // Log Prisma queries in development
 if (process.env.NODE_ENV !== 'production') {
-  prisma.$on('query', (e: { query: string; duration: number; params?: string }) => {
+  const p = prisma as unknown as { $on: (...args: unknown[]) => void };
+  p.$on('query', (e: { query: string; duration: number; params?: string }) => {
     logger.debug('Database query', {
       query: e.query,
       duration: `${e.duration}ms`,
       params: e.params
     });
   });
-}
-
-prisma.$on('error', (e: { message: string; target?: unknown }) => {
-  logger.error('Prisma error', {
-    message: e.message,
-    target: e.target
+  p.$on('error', (e: { message: string; target?: unknown }) => {
+    logger.error('Prisma error', {
+      message: e.message,
+      target: (e as unknown as { target?: unknown }).target
+    });
   });
-});
+}
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
