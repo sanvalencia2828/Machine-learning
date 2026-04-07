@@ -12,17 +12,13 @@ import { generalLimiter, authLimiter } from './middleware/rate-limit.middleware'
 import healthRouter from './routes/health.routes';
 import { asyncHandler } from './utils/async-handler';
 
-// TO BE ADDED IN LATER PHASES:
-// import authRoutes from './routes/auth.routes';
-// import userRoutes from './routes/user.routes';
-// import courseRoutes from './routes/course.routes';
-// import uploadRoutes from './routes/upload.routes';
-// import { authMiddleware } from './middleware/auth.middleware';
+import authRoutes from './routes/auth.routes';
+import modulesRoutes from './routes/modules.routes';
 
 config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 logger.info('Starting application', {
   environment: process.env.NODE_ENV || 'development',
@@ -74,7 +70,7 @@ app.use('/api/auth/forgot-password', authLimiter);
 app.use('/health', healthRouter);
 
 // ============ STATUS ENDPOINT ============
-app.get('/status', asyncHandler(async (req: Request, res: Response) => {
+app.get('/status', asyncHandler(async (_req: Request, res: Response) => {
   res.json({
     status: 'running',
     environment: process.env.NODE_ENV || 'development',
@@ -88,11 +84,11 @@ app.get('/status', asyncHandler(async (req: Request, res: Response) => {
 app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
   logger.info('Test endpoint called', {
     path: req.path,
-    correlationId: req.id
+    correlationId: (req as unknown as { id?: string }).id
   });
   res.json({
     message: 'API is working! ✅',
-    correlationId: req.id,
+    correlationId: (req as unknown as { id?: string }).id,
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
     features: {
@@ -105,12 +101,9 @@ app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
   });
 }));
 
-// ============ APPLICATION ROUTES (To be added) ============
-// app.use('/api/v1', apiLimiter);
-// app.use('/api/v1/auth', authRoutes);
-// app.use('/api/v1/users', userRoutes);
-// app.use('/api/v1/courses', courseRoutes);
-// app.use('/api/v1/upload', uploadRoutes);
+// ============ APPLICATION ROUTES ============
+app.use('/api/auth', authRoutes);
+app.use('/api/modules', modulesRoutes);
 
 // ============ 404 & ERROR HANDLING ============
 app.use(notFoundHandler);

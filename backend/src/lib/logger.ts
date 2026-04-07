@@ -17,9 +17,14 @@ const combinedFormat = winston.format.combine(
 const consoleFormat = winston.format.combine(
   winston.format.colorize(),
   combinedFormat,
-  winston.format.printf(({ timestamp, level, message, metadata }) => {
-    const meta = Object.keys(metadata).length > 0 
-      ? `\n  ${JSON.stringify(metadata, null, 2)}` 
+  winston.format.printf((info: Record<string, unknown>) => {
+    const infoObj = info as Record<string, unknown>;
+    const timestamp = String(infoObj.timestamp ?? '');
+    const level = String(infoObj.level ?? '');
+    const message = String(infoObj.message ?? '');
+    const metaObj = infoObj.metadata as Record<string, unknown> | undefined;
+    const meta = metaObj && Object.keys(metaObj).length > 0
+      ? `\n  ${JSON.stringify(metaObj, null, 2)}`
       : '';
     return `${timestamp} [${level}]: ${message}${meta}`;
   })
@@ -68,7 +73,7 @@ export const logger = winston.createLogger({
 
 // Hacer disponible globalmente
 if (process.env.NODE_ENV !== 'production') {
-  (global as any).logger = logger;
+  (global as unknown as { logger?: typeof logger }).logger = logger;
 }
 
 export default logger;

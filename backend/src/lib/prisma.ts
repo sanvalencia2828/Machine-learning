@@ -24,7 +24,7 @@ export const prisma =
 
 // Log Prisma queries in development
 if (process.env.NODE_ENV !== 'production') {
-  prisma.$on('query', (e) => {
+  prisma.$on('query', (e: { query: string; duration: number; params?: string }) => {
     logger.debug('Database query', {
       query: e.query,
       duration: `${e.duration}ms`,
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-prisma.$on('error', (e) => {
+prisma.$on('error', (e: { message: string; target?: unknown }) => {
   logger.error('Prisma error', {
     message: e.message,
     target: e.target

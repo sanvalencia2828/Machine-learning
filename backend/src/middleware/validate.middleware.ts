@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodSchema, ZodError } from 'zod';
+import { ParsedQs } from 'qs';
 import logger from '../lib/logger';
 import { ValidationError } from '../types/errors';
 
@@ -8,7 +9,7 @@ import { ValidationError } from '../types/errors';
  * Uso: router.post('/path', validate(schema), handler)
  */
 export const validate = (schema: ZodSchema) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       // Validar body
       if (req.body) {
@@ -46,10 +47,10 @@ export const validate = (schema: ZodSchema) => {
  * Uso: router.get('/path', validateQuery(schema), handler)
  */
 export const validateQuery = (schema: ZodSchema) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       const validated = await schema.parseAsync(req.query);
-      req.query = validated as any;
+      req.query = validated as unknown as ParsedQs;
       next();
     } catch (error) {
       if (error instanceof ZodError) {
@@ -79,7 +80,7 @@ export const validateQuery = (schema: ZodSchema) => {
  * Uso: router.get('/path/:id', validateParams(schema), handler)
  */
 export const validateParams = (schema: ZodSchema) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       req.params = await schema.parseAsync(req.params);
       next();

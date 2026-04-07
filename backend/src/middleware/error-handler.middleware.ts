@@ -5,7 +5,7 @@ import { AppError, ResponseCode } from '../types/errors';
 export interface ErrorResponse {
   code: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   meta: {
     timestamp: string;
     correlationId: string;
@@ -26,14 +26,15 @@ export const errorHandler = (
   const timestamp = new Date().toISOString();
 
   // Si es error de Prisma
-  if (error.name === 'PrismaClientKnownRequestError' || error.name === 'PrismaClientValidationError') {
-    logger.error('Database error', {
-      correlationId,
-      error: error.message,
-      code: (error as any).code,
-      path: req.path,
-      method: req.method
-    });
+  if (error && (error as Error).name === 'PrismaClientKnownRequestError' || (error as Error).name === 'PrismaClientValidationError') {
+      const errObj = error as unknown as { code?: string };
+      logger.error('Database error', {
+        correlationId,
+        error: (error as Error).message,
+        code: errObj.code,
+        path: req.path,
+        method: req.method
+      });
 
     const response: ErrorResponse = {
       code: ResponseCode.DATABASE_ERROR,
@@ -52,16 +53,17 @@ export const errorHandler = (
 
   // Si es AppError
   if (error instanceof AppError) {
-    logger.warn('Application error', {
-      code: error.code,
-      statusCode: error.statusCode,
-      message: error.message,
-      details: error.details,
-      path: req.path,
-      method: req.method,
-      correlationId,
-      userId: (req as any).user?.id
-    });
+      const userCtx = req as unknown as { user?: { id?: string } };
+      logger.warn('Application error', {
+        code: error.code,
+        statusCode: error.statusCode,
+        message: error.message,
+        details: error.details,
+        path: req.path,
+        method: req.method,
+        correlationId,
+        userId: userCtx.user?.id
+      });
 
     const response: ErrorResponse = {
       code: error.code,
@@ -86,7 +88,7 @@ export const errorHandler = (
     path: req.path,
     method: req.method,
     correlationId,
-    userId: (req as any).user?.id,
+      userId: (req as unknown as { user?: { id?: string } }).user?.id,
     headers: req.headers
   });
 

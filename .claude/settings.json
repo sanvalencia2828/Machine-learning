@@ -34,7 +34,29 @@
       "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*kelly* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*var* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*decision*)",
       "Bash(python src/decisions_kelly_demo.py)",
       "Bash(python hotmart/viz_kelly_vs_markowitz.py)",
-      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod08_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")"
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod08_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")",
+      "Bash(python src/loss_volatility_demo.py)",
+      "Bash(python hotmart/viz_loss_volatility.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod08b_content.json'\\)\\); print\\('OK:', d['module_id'], len\\(d['learning_objectives_es']\\), 'obj'\\)\")",
+      "Bash(python src/gvar_ges_gtr_demo.py)",
+      "Bash(python hotmart/viz_gvar_ges_gtr.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod08c_content.json'\\)\\); print\\('OK:', d['module_id']\\)\")",
+      "Bash(python src/mpt_capm_critique_demo.py)",
+      "Bash(python hotmart/viz_mpt_critique.py)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('hotmart/mod08d_content.json'\\)\\); print\\('OK:', d['module_id']\\)\")",
+      "Bash(ls hotmart/*.html)",
+      "Bash(python -c \"import json; mods = json.load\\(open\\('hotmart/course_modules.json'\\)\\); print\\(len\\(mods\\)\\); [print\\(f'{m[\\\\\"module_number\\\\\"]:>3} | {m[\\\\\"title\\\\\"][\\\\\"es\\\\\"][:60]}'\\) for m in mods]\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/viz/monty_hall_mcs.html)",
+      "Bash(npx next:*)",
+      "Bash(npx prisma:*)",
+      "Bash(curl -s -X POST http://localhost:3001/api/auth/register -H \"Content-Type: application/json\" -d '{\"email\":\"test@test.com\",\"password\":\"test123\",\"name\":\"Santiago\"}')",
+      "Bash(curl -s http://localhost:3001/api/modules -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbW5vaTlpN2gwMDAwajZ6NDdubm9oMXV0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicGxhbiI6IkZSRUUiLCJpYXQiOjE3NzU1NTk0NjgsImV4cCI6MTc3NTY0NTg2OH0.mNZLy_8XedvvLLrlIrrhdaOjL8pXK5FaWGwlYFzY2lY')",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d['stats'],indent=2\\)\\); [print\\(f'{m[\\\\\"id\\\\\"]:>8} | {m[\\\\\"unlocked\\\\\"]} | {m[\\\\\"tier\\\\\"]}'\\) for m in d['modules'][:5]]\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\santi\\OneDrive\\Desktop\\Machine learning\\hotmart"
     ]
   }
 }

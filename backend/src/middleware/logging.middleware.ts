@@ -15,7 +15,7 @@ export const loggingMiddleware = (
   const startTime = Date.now();
   const originalJson = res.json.bind(res);
 
-  res.json = function(data: any) {
+  res.json = function(data: unknown) {
     const duration = Date.now() - startTime;
     const contentLength = JSON.stringify(data).length;
 
@@ -32,7 +32,7 @@ export const loggingMiddleware = (
       path: req.path,
       query: req.query,
       ...metrics,
-      userId: (req as any).user?.id,
+      userId: (req as unknown as { user?: { id?: string } }).user?.id,
       ip: req.ip,
       userAgent: req.get('user-agent')?.substring(0, 100)
     });
