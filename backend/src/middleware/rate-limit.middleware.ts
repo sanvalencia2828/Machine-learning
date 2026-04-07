@@ -24,13 +24,20 @@ export const createRateLimiter = (
       // Usar user ID si está autenticado, sino IP
       return (req as any).user?.id || req.ip || 'unknown';
     },
-    onLimitReached: (req, res, options) => {
+    handler: (req: any, res: any, _next: any, options: any) => {
       logger.warn(`Rate limit reached: ${name}`, {
         ip: req.ip,
         path: req.path,
         userId: (req as any).user?.id,
-        limit: options.max
+        limit: options?.max
       });
+      // Send standard 429 response
+      try {
+        res.status(429).json({ error: message });
+      } catch (err) {
+        // fallback: end response
+        try { res.statusCode = 429; res.end(); } catch (e) { /* ignore */ }
+      }
     }
   });
 };

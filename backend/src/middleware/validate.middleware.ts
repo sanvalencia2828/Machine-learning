@@ -8,7 +8,7 @@ import { ValidationError } from '../types/errors';
  * Uso: router.post('/path', validate(schema), handler)
  */
 export const validate = (schema: ZodSchema) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       // Validar body
       if (req.body) {
@@ -46,7 +46,7 @@ export const validate = (schema: ZodSchema) => {
  * Uso: router.get('/path', validateQuery(schema), handler)
  */
 export const validateQuery = (schema: ZodSchema) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       const validated = await schema.parseAsync(req.query);
       req.query = validated as any;
@@ -79,7 +79,7 @@ export const validateQuery = (schema: ZodSchema) => {
  * Uso: router.get('/path/:id', validateParams(schema), handler)
  */
 export const validateParams = (schema: ZodSchema) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, _res: Response, next: NextFunction) => {
     try {
       req.params = await schema.parseAsync(req.params);
       next();

@@ -8,7 +8,7 @@ const router = Router();
  * Simple liveness probe
  * GET /health
  */
-router.get('/', asyncHandler(async (req: Request, res: Response) => {
+router.get('/', asyncHandler(async (_req: Request, res: Response) => {
   res.json({ 
     status: 'ok', 
     timestamp: new Date().toISOString(),
@@ -20,7 +20,7 @@ router.get('/', asyncHandler(async (req: Request, res: Response) => {
  * Detailed readiness probe
  * GET /health/ready
  */
-router.get('/ready', asyncHandler(async (req: Request, res: Response) => {
+router.get('/ready', asyncHandler(async (_req: Request, res: Response) => {
   const health = await healthService.check();
   const statusCode = health.status === 'healthy' ? 200 : 503;
   res.status(statusCode).json(health);
@@ -30,7 +30,7 @@ router.get('/ready', asyncHandler(async (req: Request, res: Response) => {
  * Kubernetes liveness probe
  * GET /health/live
  */
-router.get('/live', asyncHandler(async (req: Request, res: Response) => {
+router.get('/live', asyncHandler(async (_req: Request, res: Response) => {
   res.json({ status: 'alive' });
 }));
 

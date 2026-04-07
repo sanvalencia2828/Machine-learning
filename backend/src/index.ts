@@ -8,7 +8,7 @@ import logger from './lib/logger';
 import { correlationIdMiddleware } from './middleware/correlation-id.middleware';
 import { loggingMiddleware } from './middleware/logging.middleware';
 import { errorHandler, notFoundHandler } from './middleware/error-handler.middleware';
-import { generalLimiter, authLimiter, apiLimiter } from './middleware/rate-limit.middleware';
+import { generalLimiter, authLimiter } from './middleware/rate-limit.middleware';
 import healthRouter from './routes/health.routes';
 import { asyncHandler } from './utils/async-handler';
 
@@ -74,7 +74,7 @@ app.use('/api/auth/forgot-password', authLimiter);
 app.use('/health', healthRouter);
 
 // ============ STATUS ENDPOINT ============
-app.get('/status', asyncHandler(async (req: Request, res: Response) => {
+app.get('/status', asyncHandler(async (_req: Request, res: Response) => {
   res.json({
     status: 'running',
     environment: process.env.NODE_ENV || 'development',
@@ -88,7 +88,7 @@ app.get('/status', asyncHandler(async (req: Request, res: Response) => {
 app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
   logger.info('Test endpoint called', {
     path: req.path,
-    correlationId: req.id
+    correlationId: (req as any).id
   });
   res.json({
     message: 'API is working! ✅',

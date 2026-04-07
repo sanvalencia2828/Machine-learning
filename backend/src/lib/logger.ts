@@ -17,9 +17,11 @@ const combinedFormat = winston.format.combine(
 const consoleFormat = winston.format.combine(
   winston.format.colorize(),
   combinedFormat,
-  winston.format.printf(({ timestamp, level, message, metadata }) => {
-    const meta = Object.keys(metadata).length > 0 
-      ? `\n  ${JSON.stringify(metadata, null, 2)}` 
+  winston.format.printf((info) => {
+    const { timestamp, level, message, metadata } = info as any;
+    const metaObj = metadata as any;
+    const meta = metaObj && Object.keys(metaObj).length > 0
+      ? `\n  ${JSON.stringify(metaObj, null, 2)}`
       : '';
     return `${timestamp} [${level}]: ${message}${meta}`;
   })

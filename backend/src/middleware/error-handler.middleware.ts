@@ -18,8 +18,8 @@ export const errorHandler = (
   error: Error | AppError,
   req: Request,
   res: Response,
-  next: NextFunction
-) => {
+  _next: NextFunction
+): void => {
   const correlationId = req.id || 'unknown';
   const timestamp = new Date().toISOString();
 
@@ -44,7 +44,8 @@ export const errorHandler = (
       }
     };
 
-    return res.status(500).json(response);
+    res.status(500).json(response);
+    return;
   }
 
   // Si es AppError
@@ -72,7 +73,8 @@ export const errorHandler = (
       }
     };
 
-    return res.status(error.statusCode).json(response);
+    res.status(error.statusCode).json(response);
+    return;
   }
 
   // Unexpected error
@@ -106,7 +108,7 @@ export const errorHandler = (
 export const notFoundHandler = (
   req: Request,
   res: Response
-) => {
+): void => {
   const response: ErrorResponse = {
     code: ResponseCode.NOT_FOUND,
     message: `Route ${req.method} ${req.path} not found`,

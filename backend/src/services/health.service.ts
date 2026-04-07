@@ -19,7 +19,6 @@ export interface HealthStatus {
 
 export const healthService = {
   async check(): Promise<HealthStatus> {
-    const startTime = Date.now();
     const checks: HealthStatus['checks'] = [];
     let overallStatus: 'healthy' | 'degraded' | 'unhealthy' = 'healthy';
     let dbStatus: 'up' | 'down' = 'up';
