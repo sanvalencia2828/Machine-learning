@@ -66,7 +66,16 @@
       "Bash(taskkill //PID 16988 //F)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/status)",
       "Bash(curl -s -X POST http://localhost:3001/api/auth/login -H \"Content-Type: application/json\" -d '{\"email\":\"xiima7716@gmail.com\",\"password\":\"pml2024\"}')",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(curl -s http://localhost:3001/api/test)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2\\)\\)\")",
+      "Bash(curl -s http://localhost:3001/api/nonexistent)",
+      "Bash(psql --version)",
+      "Bash(powershell -Command \"Get-Service -Name 'postgresql*' -ErrorAction SilentlyContinue | Select-Object Name, Status\")",
+      "Bash(powershell -Command \"Test-NetConnection -ComputerName localhost -Port 5432 -WarningAction SilentlyContinue | Select-Object TcpTestSucceeded\")",
+      "Bash(docker --version)",
+      "Bash(docker compose:*)",
+      "Bash(docker info:*)"
     ],
     "additionalDirectories": [
       "C:\\Users\\santi\\OneDrive\\Desktop\\Machine learning\\hotmart"

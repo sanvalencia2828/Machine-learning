@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import rTracer from 'cls-rtracer';
 import logger from '../lib/logger';
 import { AppError, ResponseCode } from '../types/errors';
 
@@ -14,6 +15,15 @@ export interface ErrorResponse {
   };
 }
 
+function buildMeta(req: Request): ErrorResponse['meta'] {
+  return {
+    timestamp: new Date().toISOString(),
+    correlationId: String(rTracer.id() || 'unknown'),
+    path: req.path,
+    method: req.method,
+  };
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler = (
   error: Error | AppError,
@@ -21,109 +31,77 @@ export const errorHandler = (
   res: Response,
   _next: NextFunction
 ): void => {
-  void _next;
-  const correlationId = req.id || 'unknown';
-  const timestamp = new Date().toISOString();
+  const meta = buildMeta(req);
+  const userId = (req as unknown as { user?: { id?: string } }).user?.id;
 
-  // Si es error de Prisma
-  if (error && (error as Error).name === 'PrismaClientKnownRequestError' || (error as Error).name === 'PrismaClientValidationError') {
-      const errObj = error as unknown as { code?: string };
-      logger.error('Database error', {
-        correlationId,
-        error: (error as Error).message,
-        code: errObj.code,
-        path: req.path,
-        method: req.method
-      });
+  // Prisma errors
+  const isPrismaError =
+    error.name === 'PrismaClientKnownRequestError' ||
+    error.name === 'PrismaClientValidationError';
 
-    const response: ErrorResponse = {
+  if (isPrismaError) {
+    const errObj = error as unknown as { code?: string };
+    logger.error('Database error', {
+      error: error.message,
+      prismaCode: errObj.code,
+      path: req.path,
+      method: req.method,
+      userId,
+    });
+
+    res.status(500).json({
       code: ResponseCode.DATABASE_ERROR,
       message: 'Database operation failed',
-      meta: {
-        timestamp,
-        correlationId,
-        path: req.path,
-        method: req.method
-      }
-    };
-
-    res.status(500).json(response);
+      meta,
+    } satisfies ErrorResponse);
     return;
   }
 
-  // Si es AppError
+  // Known application errors
   if (error instanceof AppError) {
-      const userCtx = req as unknown as { user?: { id?: string } };
-      logger.warn('Application error', {
-        code: error.code,
-        statusCode: error.statusCode,
-        message: error.message,
-        details: error.details,
-        path: req.path,
-        method: req.method,
-        correlationId,
-        userId: userCtx.user?.id
-      });
+    logger.warn('Application error', {
+      code: error.code,
+      statusCode: error.statusCode,
+      message: error.message,
+      details: error.details,
+      path: req.path,
+      method: req.method,
+      userId,
+    });
 
-    const response: ErrorResponse = {
+    res.status(error.statusCode).json({
       code: error.code,
       message: error.message,
       details: error.details,
-      meta: {
-        timestamp,
-        correlationId,
-        path: req.path,
-        method: req.method
-      }
-    };
-
-    res.status(error.statusCode).json(response);
+      meta,
+    } satisfies ErrorResponse);
     return;
   }
 
-  // Unexpected error
+  // Unexpected errors — hide details in production
   logger.error('Unhandled error', {
     message: error.message,
     stack: error.stack,
     path: req.path,
     method: req.method,
-    correlationId,
-      userId: (req as unknown as { user?: { id?: string } }).user?.id,
-    headers: req.headers
+    userId,
   });
 
-  const response: ErrorResponse = {
+  res.status(500).json({
     code: ResponseCode.INTERNAL_ERROR,
-    message: process.env.NODE_ENV === 'production' 
-      ? 'An unexpected error occurred' 
-      : error.message,
-    meta: {
-      timestamp,
-      correlationId,
-      path: req.path,
-      method: req.method
-    }
-  };
-
-  res.status(500).json(response);
-  return;
+    message:
+      process.env.NODE_ENV === 'production'
+        ? 'An unexpected error occurred'
+        : error.message,
+    meta,
+  } satisfies ErrorResponse);
 };
 
-// Capturar rutas no encontradas
-export const notFoundHandler = (
-  req: Request,
-  res: Response
-) => {
-  const response: ErrorResponse = {
+// 404 handler
+export const notFoundHandler = (req: Request, res: Response) => {
+  res.status(404).json({
     code: ResponseCode.NOT_FOUND,
     message: `Route ${req.method} ${req.path} not found`,
-    meta: {
-      timestamp: new Date().toISOString(),
-      correlationId: req.id || 'unknown',
-      path: req.path,
-      method: req.method
-    }
-  };
-
-  res.status(404).json(response);
+    meta: buildMeta(req),
+  } satisfies ErrorResponse);
 };

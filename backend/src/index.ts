@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import compression from 'compression';
+import rTracer from 'cls-rtracer';
 import { config } from 'dotenv';
 
 import logger from './lib/logger';
@@ -84,11 +85,11 @@ app.get('/status', asyncHandler(async (_req: Request, res: Response) => {
 app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
   logger.info('Test endpoint called', {
     path: req.path,
-    correlationId: (req as unknown as { id?: string }).id
+    correlationId: rTracer.id()
   });
   res.json({
-    message: 'API is working! ✅',
-    correlationId: (req as unknown as { id?: string }).id,
+    message: 'API is working!',
+    correlationId: rTracer.id(),
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
     features: {
