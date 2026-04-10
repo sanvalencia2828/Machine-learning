@@ -75,7 +75,13 @@
       "Bash(powershell -Command \"Test-NetConnection -ComputerName localhost -Port 5432 -WarningAction SilentlyContinue | Select-Object TcpTestSucceeded\")",
       "Bash(docker --version)",
       "Bash(docker compose:*)",
-      "Bash(docker info:*)"
+      "Bash(docker info:*)",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 3001 -State Listen -ErrorAction SilentlyContinue | Select-Object OwningProcess\")",
+      "Bash(npx tsc:*)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(npm run:*)",
+      "Bash(echo \"TSC_EXIT: $?\")",
+      "Bash(echo \"BUILD_EXIT: $?\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\santi\\OneDrive\\Desktop\\Machine learning\\hotmart"
