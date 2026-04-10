@@ -2,27 +2,24 @@ import express, { Request, Response } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import compression from 'compression';
+import rTracer from 'cls-rtracer';
 import { config } from 'dotenv';
 
-import logger from './lib/logger';
-import { correlationIdMiddleware } from './middleware/correlation-id.middleware';
-import { loggingMiddleware } from './middleware/logging.middleware';
-import { errorHandler, notFoundHandler } from './middleware/error-handler.middleware';
-import { generalLimiter, authLimiter } from './middleware/rate-limit.middleware';
-import healthRouter from './routes/health.routes';
-import { asyncHandler } from './utils/async-handler';
+import logger from './lib/logger.js';
+import { correlationIdMiddleware } from './middleware/correlation-id.middleware.js';
+import { loggingMiddleware } from './middleware/logging.middleware.js';
+import { errorHandler, notFoundHandler } from './middleware/error-handler.middleware.js';
+import { generalLimiter, authLimiter } from './middleware/rate-limit.middleware.js';
+import healthRouter from './routes/health.routes.js';
+import { asyncHandler } from './utils/async-handler.js';
 
-// TO BE ADDED IN LATER PHASES:
-// import authRoutes from './routes/auth.routes';
-// import userRoutes from './routes/user.routes';
-// import courseRoutes from './routes/course.routes';
-// import uploadRoutes from './routes/upload.routes';
-// import { authMiddleware } from './middleware/auth.middleware';
+import authRoutes from './routes/auth.routes.js';
+import modulesRoutes from './routes/modules.routes.js';
 
 config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 logger.info('Starting application', {
   environment: process.env.NODE_ENV || 'development',
@@ -46,10 +43,24 @@ app.use(helmet({
 }));
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3001',
+  origin: (origin, callback) => {
+    const whitelist = [
+      process.env.FRONTEND_URL,
+      'http://localhost:3000',
+      'http://localhost:3001',
+    ].filter(Boolean);
+
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin || whitelist.some((w) => origin.startsWith(w!))) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Correlation-ID'],
+  exposedHeaders: ['X-Correlation-ID', 'X-RateLimit-Limit', 'X-RateLimit-Remaining'],
   maxAge: 86400
 }));
 
@@ -64,11 +75,14 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(correlationIdMiddleware);
 app.use(loggingMiddleware);
 
+// ============ ROUTE PREFIX ============
+const prefix = '/api';
+
 // ============ RATE LIMITING ============
-app.use('/api/', generalLimiter);
-app.use('/api/auth/login', authLimiter);
-app.use('/api/auth/register', authLimiter);
-app.use('/api/auth/forgot-password', authLimiter);
+app.use(`${prefix}/`, generalLimiter);
+app.use(`${prefix}/auth/login`, authLimiter);
+app.use(`${prefix}/auth/register`, authLimiter);
+app.use(`${prefix}/auth/forgot-password`, authLimiter);
 
 // ============ HEALTH CHECK ROUTES ============
 app.use('/health', healthRouter);
@@ -85,14 +99,14 @@ app.get('/status', asyncHandler(async (_req: Request, res: Response) => {
 }));
 
 // ============ TEST ENDPOINT ============
-app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
+app.get(`${prefix}/test`, asyncHandler(async (req: Request, res: Response) => {
   logger.info('Test endpoint called', {
     path: req.path,
-    correlationId: (req as any).id
+    correlationId: rTracer.id()
   });
   res.json({
-    message: 'API is working! ✅',
-    correlationId: req.id,
+    message: 'API is working!',
+    correlationId: rTracer.id(),
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
     features: {
@@ -105,12 +119,9 @@ app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
   });
 }));
 
-// ============ APPLICATION ROUTES (To be added) ============
-// app.use('/api/v1', apiLimiter);
-// app.use('/api/v1/auth', authRoutes);
-// app.use('/api/v1/users', userRoutes);
-// app.use('/api/v1/courses', courseRoutes);
-// app.use('/api/v1/upload', uploadRoutes);
+// ============ APPLICATION ROUTES ============
+app.use(`${prefix}/auth`, authRoutes);
+app.use(`${prefix}/modules`, modulesRoutes);
 
 // ============ 404 & ERROR HANDLING ============
 app.use(notFoundHandler);

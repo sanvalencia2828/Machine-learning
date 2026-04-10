@@ -1,0 +1,70 @@
+{
+  "module_id": "mod07b_ple_applied",
+  "module_number": "7B",
+  "title": {
+    "es": "PLE Aplicado: Jensen's Alpha, Cross-Hedging y CAPM Probabilistico",
+    "en": "Applied PLE: Jensen's Alpha, Cross-Hedging and Probabilistic CAPM"
+  },
+  "summary_es": "Este modulo aplica el Probabilistic Linear Ensemble a 4 preguntas financieras que OLS no puede responder directamente. Jensen's alpha se evalua como P(alpha > 0) en vez de un test binario. El hedge ratio optimo se obtiene como distribucion con HDI para cross-hedging con incertidumbre. La neutralidad de mercado se testea como P(|beta| < umbral). El costo de capital (CAPM) se calcula como distribucion, revelando incertidumbre que afecta valuaciones DCF en 15-25%. Se muestra la formulacion completa del modelo PyMC con priors informativos, likelihood Student-t, y analisis del posterior con ArviZ.",
+  "summary_en": "This module applies the Probabilistic Linear Ensemble to 4 financial questions OLS cannot directly answer. Jensen's alpha is evaluated as P(alpha > 0) instead of a binary test. The optimal hedge ratio is obtained as a distribution with HDI for cross-hedging with uncertainty. Market neutrality is tested as P(|beta| < threshold). Cost of equity (CAPM) is calculated as a distribution, revealing uncertainty affecting DCF valuations by 15-25%. The full PyMC model formulation with informative priors, Student-t likelihood, and posterior analysis with ArviZ is shown.",
+  "learning_objectives_es": [
+    "Calcular P(alpha > 0) para evaluar skill de un gestor con PLE",
+    "Obtener hedge ratio con incertidumbre via distribucion posterior de beta",
+    "Testear neutralidad de mercado como P(|beta| < umbral)",
+    "Calcular CAPM cost of equity como distribucion para DCF probabilistico",
+    "Usar ArviZ para diagnosticos y visualizacion del posterior"
+  ],
+  "learning_objectives_en": [
+    "Calculate P(alpha > 0) to evaluate fund manager skill with PLE",
+    "Obtain hedge ratio with uncertainty via beta posterior distribution",
+    "Test market neutrality as P(|beta| < threshold)",
+    "Calculate CAPM cost of equity as distribution for probabilistic DCF",
+    "Use ArviZ for posterior diagnostics and visualization"
+  ],
+  "video_duration_min": 55,
+  "video_script": "hotmart/scripts_video/script_mod07b_ple_applied.md",
+  "notebook": "notebooks/notebook_ch07_pymc_ensembles.md",
+  "visualization": "hotmart/viz_ple_applied.py",
+  "visualization_output": "hotmart/ple_applied.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod07b_ple_applied.md",
+  "exercises_count": 6,
+  "src_script": "src/ple_applied_demo.py",
+  "hotmart_tier": "premium",
+  "prerequisites": ["mod07_pymc_ensembles"],
+  "keywords": [
+    "Jensen's alpha",
+    "cross-hedging",
+    "market neutral",
+    "cost of equity",
+    "CAPM",
+    "ArviZ",
+    "PyMC",
+    "posterior analysis",
+    "HDI",
+    "hedge ratio",
+    "DCF",
+    "probabilistic valuation"
+  ],
+  "parameters": [
+    {
+      "id": "p_generative_ai",
+      "name": "PLE Applications",
+      "relevance": "alta",
+      "origin_phrase": "One model answers 4 questions that OLS cannot"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Informative Priors",
+      "relevance": "alta",
+      "origin_phrase": "Skeptical alpha prior and market-informed beta prior improve estimates"
+    },
+    {
+      "id": "p_transparencia",
+      "name": "ArviZ Diagnostics",
+      "relevance": "alta",
+      "origin_phrase": "Rhat, ESS, trace plots make inference quality transparent"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

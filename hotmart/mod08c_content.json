@@ -1,0 +1,70 @@
+{
+  "module_id": "mod08c_gvar_ges_gtr",
+  "module_number": "8C",
+  "title": {
+    "es": "GVaR, GES y GTR: Metricas Generativas de Riesgo",
+    "en": "GVaR, GES and GTR: Generative Risk Metrics"
+  },
+  "summary_es": "Este modulo profundiza en las tres metricas generativas de riesgo que reemplazan al VaR/ES clasico. GVaR (Generative VaR) calcula el percentil alpha directamente de la distribucion predictiva posterior, propagando incertidumbre parametrica y aleatoria. GES (Generative Expected Shortfall) mide la severidad promedio de las perdidas que exceden el GVaR. GTR (Generative Tail Risk) es el peor retorno simulado, util para stress testing de supervivencia. Se demuestra con datos tipo Apple y se comparan las 3 metricas para diferentes niveles de confianza, mostrando que el ratio GES/GVaR crece con el nivel (colas mas pesadas). Se traducen a impacto en dolares para decisiones de portafolio.",
+  "summary_en": "This module dives deep into three generative risk metrics replacing classic VaR/ES. GVaR (Generative VaR) calculates the alpha percentile directly from the posterior predictive distribution, propagating both parametric and aleatoric uncertainty. GES (Generative Expected Shortfall) measures average severity of losses exceeding GVaR. GTR (Generative Tail Risk) is the worst simulated return, useful for survival stress testing. Demonstrated with Apple-like data, the 3 metrics are compared across confidence levels, showing GES/GVaR ratio grows with level (heavier tails). Translated to dollar impact for portfolio decisions.",
+  "learning_objectives_es": [
+    "Calcular GVaR, GES y GTR desde distribuciones predictivas posteriores",
+    "Comparar metricas generativas con VaR/ES clasico (Normal)",
+    "Analizar GVaR y GES para multiples niveles de confianza",
+    "Traducir metricas de riesgo a impacto en dolares para decisiones",
+    "Usar GTR para stress testing de supervivencia de portafolio"
+  ],
+  "learning_objectives_en": [
+    "Calculate GVaR, GES, and GTR from posterior predictive distributions",
+    "Compare generative metrics with classic VaR/ES (Normal)",
+    "Analyze GVaR and GES across multiple confidence levels",
+    "Translate risk metrics to dollar impact for portfolio decisions",
+    "Use GTR for portfolio survival stress testing"
+  ],
+  "video_duration_min": 45,
+  "video_script": "hotmart/scripts_video/script_mod08c_gvar_ges_gtr.md",
+  "notebook": "notebooks/notebook_ch08_kelly_capital_allocation.md",
+  "visualization": "hotmart/viz_gvar_ges_gtr.py",
+  "visualization_output": "hotmart/gvar_ges_gtr.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod08c_gvar_ges_gtr.md",
+  "exercises_count": 6,
+  "src_script": "src/gvar_ges_gtr_demo.py",
+  "hotmart_tier": "premium",
+  "prerequisites": ["mod08_decisions_kelly"],
+  "keywords": [
+    "GVaR",
+    "GES",
+    "GTR",
+    "Generative VaR",
+    "Generative Expected Shortfall",
+    "Generative Tail Risk",
+    "posterior predictive",
+    "risk metrics",
+    "stress testing",
+    "tail risk",
+    "fat tails",
+    "capital at risk"
+  ],
+  "parameters": [
+    {
+      "id": "p_incertidumbre",
+      "name": "Generative Risk Propagation",
+      "relevance": "alta",
+      "origin_phrase": "GVaR/GES/GTR propagate both parametric and aleatoric uncertainty"
+    },
+    {
+      "id": "p_non_gaussian",
+      "name": "Fat Tail Risk Capture",
+      "relevance": "alta",
+      "origin_phrase": "GES/GVaR ratio grows with confidence level revealing fat tails"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Survival Stress Testing",
+      "relevance": "alta",
+      "origin_phrase": "GTR answers: can your portfolio survive the worst plausible scenario?"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

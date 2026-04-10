@@ -1,5 +1,6 @@
 import rateLimit from 'express-rate-limit';
-import logger from '../lib/logger';
+import logger from '../lib/logger.js';
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * Crear un rate limiter personalizado
@@ -16,26 +17,30 @@ export const createRateLimiter = (
     message,
     standardHeaders: true,
     legacyHeaders: false,
-    skip: (req) => {
+    skip: (req: Request) => {
       // Skip rate limiting para admin
-      return (req as any).user?.roles?.includes('admin');
+      const u = req as Request & { user?: { roles?: string[] } };
+      return u.user?.roles?.includes('admin') ?? false;
     },
-    keyGenerator: (req) => {
+    keyGenerator: (req: Request) => {
       // Usar user ID si está autenticado, sino IP
-      return (req as any).user?.id || req.ip || 'unknown';
+      const u = req as Request & { user?: { id?: string } };
+      return u.user?.id || req.ip || 'unknown';
     },
-    handler: (req: any, res: any, _next: any, options: any) => {
+    handler: (req: Request, res: Response, _next: NextFunction, options: unknown) => {
+      const u = req as Request & { user?: { id?: string } };
+      const opt = options as { max?: number | ((...args: unknown[]) => number) } | undefined;
+      const maxVal = opt && typeof opt.max === 'number' ? opt.max : undefined;
+
       logger.warn(`Rate limit reached: ${name}`, {
         ip: req.ip,
         path: req.path,
-        userId: (req as any).user?.id,
-        limit: options?.max
+        userId: u.user?.id,
+        limit: maxVal
       });
-      // Send standard 429 response
       try {
         res.status(429).json({ error: message });
       } catch (err) {
-        // fallback: end response
         try { res.statusCode = 429; res.end(); } catch (e) { /* ignore */ }
       }
     }

@@ -1,11 +1,12 @@
 import winston from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
+import rTracer from 'cls-rtracer';
 import path from 'path';
 
 const logsDir = path.join(process.cwd(), 'logs');
 
-// Configurar formato
-const combinedFormat = winston.format.combine(
+// Formato base con timestamp, stack traces y metadata
+const baseFormat = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSS Z' }),
   winston.format.errors({ stack: true }),
   winston.format.splat(),
@@ -14,21 +15,34 @@ const combinedFormat = winston.format.combine(
   })
 );
 
+// Console: texto legible con colores
 const consoleFormat = winston.format.combine(
   winston.format.colorize(),
-  combinedFormat,
-  winston.format.printf((info) => {
-    const { timestamp, level, message, metadata } = info as any;
-    const metaObj = metadata as any;
+  baseFormat,
+  winston.format.printf((info: Record<string, unknown>) => {
+    const timestamp = String(info.timestamp ?? '');
+    const level = String(info.level ?? '');
+    const message = String(info.message ?? '');
+    const correlationId = rTracer.id();
+    const metaObj = info.metadata as Record<string, unknown> | undefined;
     const meta = metaObj && Object.keys(metaObj).length > 0
       ? `\n  ${JSON.stringify(metaObj, null, 2)}`
       : '';
-    return `${timestamp} [${level}]: ${message}${meta}`;
+    const cid = correlationId ? ` [${correlationId}]` : '';
+    return `${timestamp} [${level}]:${cid} ${message}${meta}`;
   })
 );
 
+// Produccion/archivos: JSON estructurado con correlationId inyectado
 const jsonFormat = winston.format.combine(
-  combinedFormat,
+  baseFormat,
+  winston.format((info) => {
+    const correlationId = rTracer.id();
+    if (correlationId) {
+      info.correlationId = correlationId;
+    }
+    return info;
+  })(),
   winston.format.json()
 );
 
@@ -36,12 +50,10 @@ export const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: jsonFormat,
   transports: [
-    // Console output
     new winston.transports.Console({
       format: consoleFormat
     }),
 
-    // Error logs
     new DailyRotateFile({
       filename: path.join(logsDir, 'error-%DATE%.log'),
       datePattern: 'YYYY-MM-DD',
@@ -50,7 +62,6 @@ export const logger = winston.createLogger({
       maxFiles: '14d'
     }),
 
-    // All logs
     new DailyRotateFile({
       filename: path.join(logsDir, 'combined-%DATE%.log'),
       datePattern: 'YYYY-MM-DD',
@@ -65,12 +76,15 @@ export const logger = winston.createLogger({
       maxSize: '20m',
       maxFiles: '14d'
     })
+  ],
+  rejectionHandlers: [
+    new DailyRotateFile({
+      filename: path.join(logsDir, 'rejections-%DATE%.log'),
+      datePattern: 'YYYY-MM-DD',
+      maxSize: '20m',
+      maxFiles: '14d'
+    })
   ]
 });
-
-// Hacer disponible globalmente
-if (process.env.NODE_ENV !== 'production') {
-  (global as any).logger = logger;
-}
 
 export default logger;

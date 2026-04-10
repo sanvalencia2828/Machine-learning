@@ -1,0 +1,76 @@
+{
+  "module_id": "mod07_pymc_ensembles",
+  "module_number": 7,
+  "title": {
+    "es": "Ensambles Generativos con PyMC",
+    "en": "Generative Ensembles with PyMC"
+  },
+  "summary_es": "Este modulo construye un ensamble lineal probabilistico (PLE) completo, comparandolo con OLS/MLE. Se especifican priors (Normal para alpha/beta, HalfStudentT para sigma), likelihood Student-t con nu=6, y se computa el posterior. Se comparan intervalos de confianza frecuentistas con intervalos credibles (HDI), mostrando que solo el HDI responde P(beta > 1) directamente. Se visualiza el ensamble generativo como spaghetti plot de cientos de lineas de regresion donde la divergencia en extrapolaciones revela incertidumbre del modelo. Se implementan retrodiction (posterior predictive check) y prediction con propagacion completa de incertidumbre. Se introduce R-squared probabilistico como distribucion en vez de punto unico.",
+  "summary_en": "This module builds a complete probabilistic linear ensemble (PLE), comparing it with OLS/MLE. Priors are specified (Normal for alpha/beta, HalfStudentT for sigma), Student-t likelihood with nu=6, and the posterior is computed. Frequentist confidence intervals are compared with credible intervals (HDI), showing only HDI directly answers P(beta > 1). The generative ensemble is visualized as a spaghetti plot of hundreds of regression lines where extrapolation divergence reveals model uncertainty. Retrodiction (posterior predictive check) and prediction with full uncertainty propagation are implemented. Probabilistic R-squared is introduced as a distribution rather than single point.",
+  "learning_objectives_es": [
+    "Construir un ensamble lineal probabilistico con priors y likelihood Student-t",
+    "Comparar intervalos de confianza frecuentistas con HDI bayesianos",
+    "Visualizar el ensamble generativo y su divergencia en extrapolaciones",
+    "Implementar retrodiction y prediction con propagacion de incertidumbre",
+    "Calcular R-squared probabilistico como distribucion"
+  ],
+  "learning_objectives_en": [
+    "Build a probabilistic linear ensemble with priors and Student-t likelihood",
+    "Compare frequentist confidence intervals with Bayesian HDI",
+    "Visualize the generative ensemble and its extrapolation divergence",
+    "Implement retrodiction and prediction with uncertainty propagation",
+    "Calculate probabilistic R-squared as a distribution"
+  ],
+  "video_duration_min": 65,
+  "video_script": "hotmart/scripts_video/script_mod07_pymc_ensembles.md",
+  "notebook": "notebooks/notebook_ch07_pymc_ensembles.md",
+  "visualization": "hotmart/viz_ensemble_hdi.py",
+  "visualization_output": "hotmart/ensemble_hdi.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod07_pymc_ensembles.md",
+  "exercises_count": 6,
+  "src_script": "src/pymc_ensembles_demo.py",
+  "hotmart_tier": "premium",
+  "prerequisites": ["mod06_mle_vs_pml", "mod06c_grid_mcmc"],
+  "keywords": [
+    "PyMC",
+    "generative ensemble",
+    "probabilistic linear ensemble",
+    "HDI",
+    "credible interval",
+    "spaghetti plot",
+    "retrodiction",
+    "posterior predictive",
+    "Student-t likelihood",
+    "HMC",
+    "NUTS",
+    "probabilistic R-squared"
+  ],
+  "parameters": [
+    {
+      "id": "p_generative_ai",
+      "name": "Generative Ensembles",
+      "relevance": "alta",
+      "origin_phrase": "Hundreds of plausible regression lines reveal model uncertainty"
+    },
+    {
+      "id": "p_incorporacion_conocimiento",
+      "name": "Priors as Regularization",
+      "relevance": "alta",
+      "origin_phrase": "Priors for alpha, beta, sigma encode domain knowledge and prevent overfitting"
+    },
+    {
+      "id": "p_incertidumbre",
+      "name": "Full Uncertainty Propagation",
+      "relevance": "alta",
+      "origin_phrase": "Posterior predictive propagates both parameter and noise uncertainty"
+    },
+    {
+      "id": "p_transparencia",
+      "name": "Model Transparency",
+      "relevance": "alta",
+      "origin_phrase": "Every assumption (prior, likelihood, posterior) is explicit and inspectable"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

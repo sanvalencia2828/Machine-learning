@@ -1,0 +1,70 @@
+{
+  "module_id": "mod08b_loss_volatility",
+  "module_number": "8B",
+  "title": {
+    "es": "Loss Functions, Volatility Drag y Expected Loss",
+    "en": "Loss Functions, Volatility Drag and Expected Loss"
+  },
+  "summary_es": "Este modulo construye el framework de decisiones probabilisticas desde loss functions hasta preservacion de capital. Se definen loss matrices para decisiones de inversion (invertir, no invertir, cubrir) y se calcula expected loss integrando la distribucion posterior predictiva. Se comparan VaR y Expected Shortfall mostrando que ES captura riesgo de cola que VaR ignora. Se demuestra volatility drag: la varianza destruye riqueza incluso cuando los retornos promedian cero, con drag proporcional a sigma^2/2. Se analiza path dependence mostrando que el orden de retornos importa cuando hay flujos intermedios. Se conecta con la preservacion de capital como prioridad fundamental.",
+  "summary_en": "This module builds the probabilistic decision framework from loss functions to capital preservation. Loss matrices are defined for investment decisions (invest, hold, hedge) and expected loss is calculated integrating the posterior predictive distribution. VaR and Expected Shortfall are compared, showing ES captures tail risk that VaR ignores. Volatility drag is demonstrated: variance destroys wealth even when returns average zero, with drag proportional to sigma^2/2. Path dependence shows return order matters with intermediate cash flows. Connected to capital preservation as fundamental priority.",
+  "learning_objectives_es": [
+    "Definir loss matrices y calcular expected loss con distribuciones predictivas",
+    "Comparar VaR vs Expected Shortfall y entender por que ES es superior",
+    "Demostrar volatility drag: la varianza destruye riqueza (drag ~ sigma^2/2)",
+    "Analizar path dependence y su impacto en decisiones con flujos intermedios",
+    "Integrar loss functions con posterior predictive para decisiones optimas"
+  ],
+  "learning_objectives_en": [
+    "Define loss matrices and calculate expected loss with predictive distributions",
+    "Compare VaR vs Expected Shortfall and understand why ES is superior",
+    "Demonstrate volatility drag: variance destroys wealth (drag ~ sigma^2/2)",
+    "Analyze path dependence and its impact on decisions with intermediate flows",
+    "Integrate loss functions with posterior predictive for optimal decisions"
+  ],
+  "video_duration_min": 50,
+  "video_script": "hotmart/scripts_video/script_mod08b_loss_volatility.md",
+  "notebook": "notebooks/notebook_ch08_stress_testing.md",
+  "visualization": "hotmart/viz_loss_volatility.py",
+  "visualization_output": "hotmart/loss_volatility.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod08b_loss_volatility.md",
+  "exercises_count": 6,
+  "src_script": "src/loss_volatility_demo.py",
+  "hotmart_tier": "premium",
+  "prerequisites": ["mod08_decisions_kelly"],
+  "keywords": [
+    "loss function",
+    "expected loss",
+    "VaR",
+    "Expected Shortfall",
+    "volatility drag",
+    "capital preservation",
+    "path dependence",
+    "decision theory",
+    "risk management",
+    "ergodicity",
+    "geometric return",
+    "loss matrix"
+  ],
+  "parameters": [
+    {
+      "id": "p_incertidumbre",
+      "name": "Decision Under Uncertainty",
+      "relevance": "alta",
+      "origin_phrase": "Expected loss integrates loss function over posterior predictive distribution"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Capital Preservation",
+      "relevance": "alta",
+      "origin_phrase": "Volatility drag destroys wealth proportional to sigma^2/2"
+    },
+    {
+      "id": "p_riesgo_no_prob",
+      "name": "ES vs VaR",
+      "relevance": "alta",
+      "origin_phrase": "Expected Shortfall captures tail risk that VaR ignores"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

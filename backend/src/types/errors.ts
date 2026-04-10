@@ -16,7 +16,7 @@ export interface ApiError {
   code: ResponseCode;
   message: string;
   statusCode: number;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   timestamp: string;
   correlationId?: string;
 }
@@ -24,13 +24,13 @@ export interface ApiError {
 export class AppError extends Error {
   public readonly statusCode: number;
   public readonly code: ResponseCode;
-  public readonly details?: Record<string, any>;
+  public readonly details?: Record<string, unknown>;
 
   constructor(
     code: ResponseCode,
     message: string,
     statusCode: number,
-    details?: Record<string, any>
+    details?: Record<string, unknown>
   ) {
     super(message);
     this.code = code;
@@ -43,7 +43,7 @@ export class AppError extends Error {
 }
 
 export class ValidationError extends AppError {
-  constructor(message: string, details?: Record<string, any>) {
+  constructor(message: string, details?: Record<string, unknown>) {
     super(ResponseCode.VALIDATION_ERROR, message, 400, details);
     Object.setPrototypeOf(this, ValidationError.prototype);
   }
@@ -74,28 +74,28 @@ export class NotFoundError extends AppError {
 }
 
 export class ConflictError extends AppError {
-  constructor(message: string, details?: Record<string, any>) {
+  constructor(message: string, details?: Record<string, unknown>) {
     super(ResponseCode.CONFLICT, message, 409, details);
     Object.setPrototypeOf(this, ConflictError.prototype);
   }
 }
 
 export class BadRequestError extends AppError {
-  constructor(message: string, details?: Record<string, any>) {
+  constructor(message: string, details?: Record<string, unknown>) {
     super(ResponseCode.BAD_REQUEST, message, 400, details);
     Object.setPrototypeOf(this, BadRequestError.prototype);
   }
 }
 
 export class DatabaseError extends AppError {
-  constructor(message: string = 'Database operation failed', details?: Record<string, any>) {
+  constructor(message: string = 'Database operation failed', details?: Record<string, unknown>) {
     super(ResponseCode.DATABASE_ERROR, message, 500, details);
     Object.setPrototypeOf(this, DatabaseError.prototype);
   }
 }
 
 export class RateLimitError extends AppError {
-  constructor(message: string = 'Rate limit exceeded', details?: Record<string, any>) {
+  constructor(message: string = 'Rate limit exceeded', details?: Record<string, unknown>) {
     super(ResponseCode.RATE_LIMIT_ERROR, message, 429, details);
     Object.setPrototypeOf(this, RateLimitError.prototype);
   }

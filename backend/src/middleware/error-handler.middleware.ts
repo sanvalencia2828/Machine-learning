@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
-import logger from '../lib/logger';
-import { AppError, ResponseCode } from '../types/errors';
+import rTracer from 'cls-rtracer';
+import logger from '../lib/logger.js';
+import { AppError, ResponseCode } from '../types/errors.js';
 
 export interface ErrorResponse {
   code: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   meta: {
     timestamp: string;
     correlationId: string;
@@ -14,41 +15,49 @@ export interface ErrorResponse {
   };
 }
 
+function buildMeta(req: Request): ErrorResponse['meta'] {
+  return {
+    timestamp: new Date().toISOString(),
+    correlationId: String(rTracer.id() || 'unknown'),
+    path: req.path,
+    method: req.method,
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler = (
   error: Error | AppError,
   req: Request,
   res: Response,
   _next: NextFunction
 ): void => {
-  const correlationId = req.id || 'unknown';
-  const timestamp = new Date().toISOString();
+  const meta = buildMeta(req);
+  const userId = (req as unknown as { user?: { id?: string } }).user?.id;
 
-  // Si es error de Prisma
-  if (error.name === 'PrismaClientKnownRequestError' || error.name === 'PrismaClientValidationError') {
+  // Prisma errors
+  const isPrismaError =
+    error.name === 'PrismaClientKnownRequestError' ||
+    error.name === 'PrismaClientValidationError';
+
+  if (isPrismaError) {
+    const errObj = error as unknown as { code?: string };
     logger.error('Database error', {
-      correlationId,
       error: error.message,
-      code: (error as any).code,
+      prismaCode: errObj.code,
       path: req.path,
-      method: req.method
+      method: req.method,
+      userId,
     });
 
-    const response: ErrorResponse = {
+    res.status(500).json({
       code: ResponseCode.DATABASE_ERROR,
       message: 'Database operation failed',
-      meta: {
-        timestamp,
-        correlationId,
-        path: req.path,
-        method: req.method
-      }
-    };
-
-    res.status(500).json(response);
+      meta,
+    } satisfies ErrorResponse);
     return;
   }
 
-  // Si es AppError
+  // Known application errors
   if (error instanceof AppError) {
     logger.warn('Application error', {
       code: error.code,
@@ -57,68 +66,42 @@ export const errorHandler = (
       details: error.details,
       path: req.path,
       method: req.method,
-      correlationId,
-      userId: (req as any).user?.id
+      userId,
     });
 
-    const response: ErrorResponse = {
+    res.status(error.statusCode).json({
       code: error.code,
       message: error.message,
       details: error.details,
-      meta: {
-        timestamp,
-        correlationId,
-        path: req.path,
-        method: req.method
-      }
-    };
-
-    res.status(error.statusCode).json(response);
+      meta,
+    } satisfies ErrorResponse);
     return;
   }
 
-  // Unexpected error
+  // Unexpected errors — hide details in production
   logger.error('Unhandled error', {
     message: error.message,
     stack: error.stack,
     path: req.path,
     method: req.method,
-    correlationId,
-    userId: (req as any).user?.id,
-    headers: req.headers
+    userId,
   });
 
-  const response: ErrorResponse = {
+  res.status(500).json({
     code: ResponseCode.INTERNAL_ERROR,
-    message: process.env.NODE_ENV === 'production' 
-      ? 'An unexpected error occurred' 
-      : error.message,
-    meta: {
-      timestamp,
-      correlationId,
-      path: req.path,
-      method: req.method
-    }
-  };
-
-  res.status(500).json(response);
+    message:
+      process.env.NODE_ENV === 'production'
+        ? 'An unexpected error occurred'
+        : error.message,
+    meta,
+  } satisfies ErrorResponse);
 };
 
-// Capturar rutas no encontradas
-export const notFoundHandler = (
-  req: Request,
-  res: Response
-): void => {
-  const response: ErrorResponse = {
+// 404 handler
+export const notFoundHandler = (req: Request, res: Response) => {
+  res.status(404).json({
     code: ResponseCode.NOT_FOUND,
     message: `Route ${req.method} ${req.path} not found`,
-    meta: {
-      timestamp: new Date().toISOString(),
-      correlationId: req.id || 'unknown',
-      path: req.path,
-      method: req.method
-    }
-  };
-
-  res.status(404).json(response);
+    meta: buildMeta(req),
+  } satisfies ErrorResponse);
 };

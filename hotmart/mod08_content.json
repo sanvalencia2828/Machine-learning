@@ -1,0 +1,76 @@
+{
+  "module_id": "mod08_decisions_kelly",
+  "module_number": 8,
+  "title": {
+    "es": "Decisiones Probabilisticas y Gestion de Capital",
+    "en": "Probabilistic Decisions and Capital Management"
+  },
+  "summary_es": "Este modulo culmina el curso aplicando ensambles generativos a decisiones financieras reales. Se introduce la ergodicidad y se demuestra por que el valor esperado positivo no garantiza ganancias individuales (el 86% pierde en el juego +50%/-40%). Se computan metricas generativas de riesgo (GVaR, GES, GTR) directamente desde distribuciones predictivas posteriores, mostrando que el VaR frecuentista subestima el riesgo. Se presenta el criterio de Kelly como solucion optima para asignacion de capital que maximiza la tasa de crecimiento geometrica en vez del retorno aritmetico. Se comparan trayectorias simuladas de Kelly vs full invest vs Markowitz, demostrando que Kelly minimiza riesgo de ruina mientras mantiene crecimiento. Se demuestra la ruina del apostador, la ruina del maximizador de E[R], y la ruina del inversor Markowitz.",
+  "summary_en": "This module culminates the course by applying generative ensembles to real financial decisions. Ergodicity is introduced showing why positive expected value doesn't guarantee individual gains (86% lose in the +50%/-40% game). Generative risk metrics (GVaR, GES, GTR) are computed directly from posterior predictive distributions, showing frequentist VaR underestimates risk. The Kelly criterion is presented as optimal capital allocation maximizing geometric growth rate rather than arithmetic return. Simulated trajectories compare Kelly vs full invest vs Markowitz, demonstrating Kelly minimizes ruin risk while maintaining growth. Gambler's ruin, expected value maximizer's ruin, and Markowitz investor's ruin are all demonstrated.",
+  "learning_objectives_es": [
+    "Demostrar no-ergodicidad y por que E[R]>0 no garantiza ganancias individuales",
+    "Calcular GVaR, GES y GTR desde distribuciones predictivas posteriores",
+    "Implementar criterio de Kelly para asignacion optima de capital",
+    "Comparar Kelly vs Markowitz con simulaciones de trayectorias",
+    "Integrar el pipeline completo: PML -> posterior predictive -> decision"
+  ],
+  "learning_objectives_en": [
+    "Demonstrate non-ergodicity and why E[R]>0 doesn't guarantee individual gains",
+    "Calculate GVaR, GES, and GTR from posterior predictive distributions",
+    "Implement Kelly criterion for optimal capital allocation",
+    "Compare Kelly vs Markowitz with trajectory simulations",
+    "Integrate the complete pipeline: PML -> posterior predictive -> decision"
+  ],
+  "video_duration_min": 60,
+  "video_script": "hotmart/scripts_video/script_mod08_decisions_kelly.md",
+  "notebook": "notebooks/notebook_ch08_kelly_capital_allocation.md",
+  "visualization": "hotmart/viz_kelly_vs_markowitz.py",
+  "visualization_output": "hotmart/kelly_decisions.html",
+  "exercises": "hotmart/ejercicios/ejercicios_mod08_decisions_kelly.md",
+  "exercises_count": 6,
+  "src_script": "src/decisions_kelly_demo.py",
+  "hotmart_tier": "premium",
+  "prerequisites": ["mod07_pymc_ensembles"],
+  "keywords": [
+    "ergodicity",
+    "non-ergodic",
+    "Kelly criterion",
+    "GVaR",
+    "GES",
+    "GTR",
+    "generative risk",
+    "capital allocation",
+    "Markowitz",
+    "geometric growth",
+    "gambler ruin",
+    "posterior predictive"
+  ],
+  "parameters": [
+    {
+      "id": "p_incertidumbre",
+      "name": "Generative Risk Metrics",
+      "relevance": "alta",
+      "origin_phrase": "GVaR/GES computed from posterior predictive propagate full uncertainty"
+    },
+    {
+      "id": "p_robustez",
+      "name": "Kelly Robustness",
+      "relevance": "alta",
+      "origin_phrase": "Kelly criterion minimizes ruin risk while maintaining long-term growth"
+    },
+    {
+      "id": "p_riesgo_no_prob",
+      "name": "Ergodicity Awareness",
+      "relevance": "alta",
+      "origin_phrase": "Expected value is irrelevant for non-ergodic processes like investment"
+    },
+    {
+      "id": "p_generative_ai",
+      "name": "Decision from Distributions",
+      "relevance": "alta",
+      "origin_phrase": "Decisions use complete posterior predictive distributions, not point estimates"
+    }
+  ],
+  "source_ref": "turn0browsertab744690698",
+  "last_updated": "2026-04-07"
+}

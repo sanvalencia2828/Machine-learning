@@ -1,5 +1,5 @@
-import { prisma } from '../lib/prisma';
-import logger from '../lib/logger';
+import { prisma } from '../lib/prisma.js';
+import logger from '../lib/logger.js';
 
 export interface HealthStatus {
   status: 'healthy' | 'degraded' | 'unhealthy';
