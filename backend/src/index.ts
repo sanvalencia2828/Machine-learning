@@ -62,10 +62,7 @@ app.use(correlationIdMiddleware);
 app.use(loggingMiddleware);
 
 // ============ ROUTE PREFIX ============
-// En Vercel, routePrefix: "/api" ya antepone /api a todas las rutas,
-// asi que internamente montamos todo sin prefijo.
-// En local, necesitamos el prefijo /api manualmente.
-const prefix = process.env.VERCEL ? '' : '/api';
+const prefix = '/api';
 
 // ============ RATE LIMITING ============
 app.use(`${prefix}/`, generalLimiter);
