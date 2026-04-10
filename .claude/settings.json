@@ -81,7 +81,13 @@
       "Bash(echo \"EXIT: $?\")",
       "Bash(npm run:*)",
       "Bash(echo \"TSC_EXIT: $?\")",
-      "Bash(echo \"BUILD_EXIT: $?\")"
+      "Bash(echo \"BUILD_EXIT: $?\")",
+      "Bash(powershell -Command \"\\(Get-NetTCPConnection -LocalPort 3001 -State Listen -ErrorAction SilentlyContinue\\).OwningProcess\")",
+      "Bash(taskkill //PID 12736 //F)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Login: OK | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]}'\\)\")",
+      "Bash(curl -s -o /dev/null -w \"Dashboard: %{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(curl -s -X OPTIONS http://localhost:3001/api/auth/login -H \"Origin: http://localhost:3000\" -H \"Access-Control-Request-Method: POST\" -H \"Access-Control-Request-Headers: Content-Type\" -D - -o /dev/null)",
+      "Bash(curl -s -X POST http://localhost:3001/api/auth/login -H \"Origin: http://localhost:3000\" -H \"Content-Type: application/json\" -d '{\"email\":\"xiima7716@gmail.com\",\"password\":\"pml2024\"}' -D -)"
     ],
     "additionalDirectories": [
       "C:\\Users\\santi\\OneDrive\\Desktop\\Machine learning\\hotmart"
