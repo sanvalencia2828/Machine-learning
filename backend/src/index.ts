@@ -5,16 +5,16 @@ import compression from 'compression';
 import rTracer from 'cls-rtracer';
 import { config } from 'dotenv';
 
-import logger from './lib/logger';
-import { correlationIdMiddleware } from './middleware/correlation-id.middleware';
-import { loggingMiddleware } from './middleware/logging.middleware';
-import { errorHandler, notFoundHandler } from './middleware/error-handler.middleware';
-import { generalLimiter, authLimiter } from './middleware/rate-limit.middleware';
-import healthRouter from './routes/health.routes';
-import { asyncHandler } from './utils/async-handler';
+import logger from './lib/logger.js';
+import { correlationIdMiddleware } from './middleware/correlation-id.middleware.js';
+import { loggingMiddleware } from './middleware/logging.middleware.js';
+import { errorHandler, notFoundHandler } from './middleware/error-handler.middleware.js';
+import { generalLimiter, authLimiter } from './middleware/rate-limit.middleware.js';
+import healthRouter from './routes/health.routes.js';
+import { asyncHandler } from './utils/async-handler.js';
 
-import authRoutes from './routes/auth.routes';
-import modulesRoutes from './routes/modules.routes';
+import authRoutes from './routes/auth.routes.js';
+import modulesRoutes from './routes/modules.routes.js';
 
 config();
 
@@ -61,11 +61,17 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(correlationIdMiddleware);
 app.use(loggingMiddleware);
 
+// ============ ROUTE PREFIX ============
+// En Vercel, routePrefix: "/api" ya antepone /api a todas las rutas,
+// asi que internamente montamos todo sin prefijo.
+// En local, necesitamos el prefijo /api manualmente.
+const prefix = process.env.VERCEL ? '' : '/api';
+
 // ============ RATE LIMITING ============
-app.use('/api/', generalLimiter);
-app.use('/api/auth/login', authLimiter);
-app.use('/api/auth/register', authLimiter);
-app.use('/api/auth/forgot-password', authLimiter);
+app.use(`${prefix}/`, generalLimiter);
+app.use(`${prefix}/auth/login`, authLimiter);
+app.use(`${prefix}/auth/register`, authLimiter);
+app.use(`${prefix}/auth/forgot-password`, authLimiter);
 
 // ============ HEALTH CHECK ROUTES ============
 app.use('/health', healthRouter);
@@ -82,7 +88,7 @@ app.get('/status', asyncHandler(async (_req: Request, res: Response) => {
 }));
 
 // ============ TEST ENDPOINT ============
-app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
+app.get(`${prefix}/test`, asyncHandler(async (req: Request, res: Response) => {
   logger.info('Test endpoint called', {
     path: req.path,
     correlationId: rTracer.id()
@@ -103,8 +109,8 @@ app.get('/api/test', asyncHandler(async (req: Request, res: Response) => {
 }));
 
 // ============ APPLICATION ROUTES ============
-app.use('/api/auth', authRoutes);
-app.use('/api/modules', modulesRoutes);
+app.use(`${prefix}/auth`, authRoutes);
+app.use(`${prefix}/modules`, modulesRoutes);
 
 // ============ 404 & ERROR HANDLING ============
 app.use(notFoundHandler);
