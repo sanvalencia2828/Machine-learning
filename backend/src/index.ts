@@ -76,7 +76,9 @@ app.use(correlationIdMiddleware);
 app.use(loggingMiddleware);
 
 // ============ ROUTE PREFIX ============
-const prefix = '/api';
+// Vercel experimentalServices routePrefix "/api" prepends /api automatically,
+// so internally we mount routes without prefix. Locally we need /api.
+const prefix = process.env.VERCEL ? '' : '/api';
 
 // ============ RATE LIMITING ============
 app.use(`${prefix}/`, generalLimiter);
