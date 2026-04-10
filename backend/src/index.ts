@@ -145,23 +145,24 @@ process.on('uncaughtException', (error) => {
   process.exit(1);
 });
 
-// ============ START SERVER ============
-const server = app.listen(PORT, () => {
-  logger.info(`🚀 Server running on port ${PORT}`, {
-    environment: process.env.NODE_ENV,
-    nodeVersion: process.version,
-    url: `http://localhost:${PORT}`,
-    features: ['Logging', 'Error Handling', 'Validation', 'Rate Limiting', 'Health Checks']
+// ============ START SERVER (solo en local, no en Vercel serverless) ============
+if (!process.env.VERCEL) {
+  const server = app.listen(PORT, () => {
+    logger.info(`Server running on port ${PORT}`, {
+      environment: process.env.NODE_ENV,
+      nodeVersion: process.version,
+      url: `http://localhost:${PORT}`,
+      features: ['Logging', 'Error Handling', 'Validation', 'Rate Limiting', 'Health Checks']
+    });
   });
-});
 
-// ============ GRACEFUL SHUTDOWN ============
-process.on('SIGTERM', () => {
-  logger.info('SIGTERM received, shutting down gracefully');
-  server.close(() => {
-    logger.info('🛑 Server closed');
-    process.exit(0);
+  process.on('SIGTERM', () => {
+    logger.info('SIGTERM received, shutting down gracefully');
+    server.close(() => {
+      logger.info('Server closed');
+      process.exit(0);
+    });
   });
-});
+}
 
 export default app;
