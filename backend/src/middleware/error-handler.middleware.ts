@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import rTracer from 'cls-rtracer';
-import logger from '../lib/logger';
-import { AppError, ResponseCode } from '../types/errors';
+import logger from '../lib/logger.js';
+import { AppError, ResponseCode } from '../types/errors.js';
 
 export interface ErrorResponse {
   code: string;

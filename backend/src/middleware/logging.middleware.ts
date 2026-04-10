@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import rTracer from 'cls-rtracer';
-import logger from '../lib/logger';
+import logger from '../lib/logger.js';
 
 export const loggingMiddleware = (
   req: Request,

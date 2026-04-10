@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodSchema, ZodError } from 'zod';
 import { ParsedQs } from 'qs';
-import logger from '../lib/logger';
-import { ValidationError } from '../types/errors';
+import logger from '../lib/logger.js';
+import { ValidationError } from '../types/errors.js';
 
 type SchemaMap = {
   body?: ZodSchema;

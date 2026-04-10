@@ -1,5 +1,5 @@
 import rateLimit from 'express-rate-limit';
-import logger from '../lib/logger';
+import logger from '../lib/logger.js';
 import { Request, Response, NextFunction } from 'express';
 
 /**
