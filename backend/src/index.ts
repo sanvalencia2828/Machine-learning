@@ -51,7 +51,12 @@ app.use(cors({
     ].filter(Boolean);
 
     // Allow requests with no origin (mobile apps, curl, Postman)
-    if (!origin || whitelist.some((w) => origin.startsWith(w!))) {
+    // Allow any *.vercel.app origin for preview deployments
+    if (
+      !origin ||
+      whitelist.some((w) => origin.startsWith(w!)) ||
+      origin.endsWith('.vercel.app')
+    ) {
       callback(null, true);
     } else {
       callback(new Error(`CORS: origin ${origin} not allowed`));
@@ -76,9 +81,7 @@ app.use(correlationIdMiddleware);
 app.use(loggingMiddleware);
 
 // ============ ROUTE PREFIX ============
-// Vercel experimentalServices routePrefix "/api" prepends /api automatically,
-// so internally we mount routes without prefix. Locally we need /api.
-const prefix = process.env.VERCEL ? '' : '/api';
+const prefix = '/api';
 
 // ============ RATE LIMITING ============
 app.use(`${prefix}/`, generalLimiter);

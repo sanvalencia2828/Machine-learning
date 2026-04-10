@@ -46,45 +46,53 @@ const jsonFormat = winston.format.combine(
   winston.format.json()
 );
 
+const isServerless = !!process.env.VERCEL;
+
+const fileTransports = isServerless
+  ? []
+  : [
+      new DailyRotateFile({
+        filename: path.join(logsDir, 'error-%DATE%.log'),
+        datePattern: 'YYYY-MM-DD',
+        level: 'error',
+        maxSize: '20m',
+        maxFiles: '14d',
+      }),
+      new DailyRotateFile({
+        filename: path.join(logsDir, 'combined-%DATE%.log'),
+        datePattern: 'YYYY-MM-DD',
+        maxSize: '20m',
+        maxFiles: '30d',
+      }),
+    ];
+
 export const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: jsonFormat,
   transports: [
-    new winston.transports.Console({
-      format: consoleFormat
-    }),
-
-    new DailyRotateFile({
-      filename: path.join(logsDir, 'error-%DATE%.log'),
-      datePattern: 'YYYY-MM-DD',
-      level: 'error',
-      maxSize: '20m',
-      maxFiles: '14d'
-    }),
-
-    new DailyRotateFile({
-      filename: path.join(logsDir, 'combined-%DATE%.log'),
-      datePattern: 'YYYY-MM-DD',
-      maxSize: '20m',
-      maxFiles: '30d'
-    })
+    new winston.transports.Console({ format: consoleFormat }),
+    ...fileTransports,
   ],
-  exceptionHandlers: [
-    new DailyRotateFile({
-      filename: path.join(logsDir, 'exceptions-%DATE%.log'),
-      datePattern: 'YYYY-MM-DD',
-      maxSize: '20m',
-      maxFiles: '14d'
-    })
-  ],
-  rejectionHandlers: [
-    new DailyRotateFile({
-      filename: path.join(logsDir, 'rejections-%DATE%.log'),
-      datePattern: 'YYYY-MM-DD',
-      maxSize: '20m',
-      maxFiles: '14d'
-    })
-  ]
+  ...(isServerless
+    ? {}
+    : {
+        exceptionHandlers: [
+          new DailyRotateFile({
+            filename: path.join(logsDir, 'exceptions-%DATE%.log'),
+            datePattern: 'YYYY-MM-DD',
+            maxSize: '20m',
+            maxFiles: '14d',
+          }),
+        ],
+        rejectionHandlers: [
+          new DailyRotateFile({
+            filename: path.join(logsDir, 'rejections-%DATE%.log'),
+            datePattern: 'YYYY-MM-DD',
+            maxSize: '20m',
+            maxFiles: '14d',
+          }),
+        ],
+      }),
 });
 
 export default logger;
