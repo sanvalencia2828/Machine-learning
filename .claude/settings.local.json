@@ -11,7 +11,9 @@
       "Bash(ls -1 \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*nhst* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*pvalue* \"c:/Users/santi/OneDrive/Desktop/Machine learning/src/\"*prosecutor*)",
       "Bash(npx vercel:*)",
       "Bash(rm \"/c/Users/santi/OneDrive/Desktop/Machine learning/vercel.json\")",
-      "Bash(rm \"/c/Users/santi/OneDrive/Desktop/Machine learning/.vercelignore\")"
+      "Bash(rm \"/c/Users/santi/OneDrive/Desktop/Machine learning/.vercelignore\")",
+      "Bash(node:*)",
+      "Bash(npm uninstall:*)"
     ]
   }
 }

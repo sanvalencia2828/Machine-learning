@@ -51,7 +51,12 @@ app.use(cors({
     ].filter(Boolean);
 
     // Allow requests with no origin (mobile apps, curl, Postman)
-    if (!origin || whitelist.some((w) => origin.startsWith(w!))) {
+    // Allow any *.vercel.app origin for preview deployments
+    if (
+      !origin ||
+      whitelist.some((w) => origin.startsWith(w!)) ||
+      origin.endsWith('.vercel.app')
+    ) {
       callback(null, true);
     } else {
       callback(new Error(`CORS: origin ${origin} not allowed`));
@@ -76,9 +81,7 @@ app.use(correlationIdMiddleware);
 app.use(loggingMiddleware);
 
 // ============ ROUTE PREFIX ============
-// Vercel experimentalServices routePrefix "/api" prepends /api automatically,
-// so internally we mount routes without prefix. Locally we need /api.
-const prefix = process.env.VERCEL ? '' : '/api';
+const prefix = '/api';
 
 // ============ RATE LIMITING ============
 app.use(`${prefix}/`, generalLimiter);
@@ -145,23 +148,24 @@ process.on('uncaughtException', (error) => {
   process.exit(1);
 });
 
-// ============ START SERVER ============
-const server = app.listen(PORT, () => {
-  logger.info(`🚀 Server running on port ${PORT}`, {
-    environment: process.env.NODE_ENV,
-    nodeVersion: process.version,
-    url: `http://localhost:${PORT}`,
-    features: ['Logging', 'Error Handling', 'Validation', 'Rate Limiting', 'Health Checks']
+// ============ START SERVER (solo en local, no en Vercel serverless) ============
+if (!process.env.VERCEL) {
+  const server = app.listen(PORT, () => {
+    logger.info(`Server running on port ${PORT}`, {
+      environment: process.env.NODE_ENV,
+      nodeVersion: process.version,
+      url: `http://localhost:${PORT}`,
+      features: ['Logging', 'Error Handling', 'Validation', 'Rate Limiting', 'Health Checks']
+    });
   });
-});
 
-// ============ GRACEFUL SHUTDOWN ============
-process.on('SIGTERM', () => {
-  logger.info('SIGTERM received, shutting down gracefully');
-  server.close(() => {
-    logger.info('🛑 Server closed');
-    process.exit(0);
+  process.on('SIGTERM', () => {
+    logger.info('SIGTERM received, shutting down gracefully');
+    server.close(() => {
+      logger.info('Server closed');
+      process.exit(0);
+    });
   });
-});
+}
 
 export default app;
