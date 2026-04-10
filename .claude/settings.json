@@ -87,7 +87,17 @@
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Login: OK | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]}'\\)\")",
       "Bash(curl -s -o /dev/null -w \"Dashboard: %{http_code}\\\\n\" http://localhost:3000)",
       "Bash(curl -s -X OPTIONS http://localhost:3001/api/auth/login -H \"Origin: http://localhost:3000\" -H \"Access-Control-Request-Method: POST\" -H \"Access-Control-Request-Headers: Content-Type\" -D - -o /dev/null)",
-      "Bash(curl -s -X POST http://localhost:3001/api/auth/login -H \"Origin: http://localhost:3000\" -H \"Content-Type: application/json\" -d '{\"email\":\"xiima7716@gmail.com\",\"password\":\"pml2024\"}' -D -)"
+      "Bash(curl -s -X POST http://localhost:3001/api/auth/login -H \"Origin: http://localhost:3000\" -H \"Content-Type: application/json\" -d '{\"email\":\"xiima7716@gmail.com\",\"password\":\"pml2024\"}' -D -)",
+      "Bash(curl -s https://backend-eta-ivory-46.vercel.app/status)",
+      "Bash(curl -s https://backend-eosin-five-37.vercel.app/status)",
+      "Bash(taskkill //PID 6676 //F)",
+      "Bash(curl -s -X POST https://backend-eosin-five-37.vercel.app/api/auth/login -H \"Content-Type: application/json\" -d '{\"email\":\"xiima7716@gmail.com\",\"password\":\"pml2024\"}')",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Login: OK | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]} | Email: {d[\\\\\"user\\\\\"][\\\\\"email\\\\\"]}'\\)\")",
+      "Bash(curl -s -X POST https://backend-eosin-five-37.vercel.app/auth/login -H \"Content-Type: application/json\" -d '{\"email\":\"xiima7716@gmail.com\",\"password\":\"pml2024\"}')",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Login: {d[\\\\\"user\\\\\"][\\\\\"email\\\\\"]} | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]}'\\)\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Status: {d[\\\\\"status\\\\\"]} | Env: {d[\\\\\"environment\\\\\"]}'\\)\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://dashboard-three-lac-94.vercel.app)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{d[\\\\\"user\\\\\"][\\\\\"email\\\\\"]} | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]}'\\)\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\santi\\OneDrive\\Desktop\\Machine learning\\hotmart"
