@@ -1,13 +1,9 @@
 *.py
 *.ipynb
-requirements.txt
-etl-requirements.txt
-ml_platform_artifacts/
-visualizations/
-notebooks/
-hotmart/
-data/
-src/
+ml/
+etl/
+content/
+docs/
 qa/
 *.md
 !README.md
