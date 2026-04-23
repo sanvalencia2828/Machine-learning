@@ -1,0 +1,32 @@
+{
+  "name": "ml-course-platform",
+  "version": "1.0.0",
+  "description": "Machine Learning Course Platform with Dashboard and Backend API",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix dashboard\" \"npm run dev --prefix backend\"",
+    "build": "npm run build --prefix dashboard && npm run build --prefix backend",
+    "start": "concurrently \"npm run start --prefix dashboard\" \"npm run start --prefix backend\"",
+    "lint": "npm run lint --prefix dashboard && npm run lint --prefix backend",
+    "test": "npm run test --prefix backend",
+    "db:setup": "npm run db:setup --prefix backend",
+    "db:migrate": "npm run db:migrate --prefix backend",
+    "db:seed": "npm run db:seed --prefix backend"
+  },
+  "keywords": [
+    "machine-learning",
+    "course-platform",
+    "nextjs",
+    "express",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  },
+  "workspaces": [
+    "dashboard",
+    "backend"
+  ]
+}
