@@ -62,7 +62,7 @@ router.post('/register', async (req: Request, res: Response) => {
       ...tokens,
       user: { id: user.id, email: user.email, name: user.name, plan: user.plan },
     });
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Error al registrar usuario' });
   }
 });
@@ -107,7 +107,7 @@ router.post('/login', async (req: Request, res: Response) => {
       ...tokens,
       user: { id: user.id, email: user.email, name: user.name, plan: user.plan },
     });
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Error al iniciar sesion' });
   }
 });
@@ -151,7 +151,7 @@ router.post('/refresh', async (req: Request, res: Response) => {
       ...tokens,
       user: { id: user.id, email: user.email, name: user.name, plan: user.plan },
     });
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Error al refrescar token' });
   }
 });
@@ -186,7 +186,7 @@ router.get('/me', authMiddleware, async (req: AuthRequest, res: Response) => {
     }
 
     res.json({ user });
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Error al obtener usuario' });
   }
 });
@@ -209,7 +209,7 @@ router.patch('/plan', authMiddleware, async (req: AuthRequest, res: Response) =>
 
     const accessToken = signAccessToken(user);
     res.json({ accessToken, user });
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Error al actualizar plan' });
   }
 });

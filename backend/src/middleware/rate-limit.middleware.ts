@@ -40,8 +40,8 @@ export const createRateLimiter = (
       });
       try {
         res.status(429).json({ error: message });
-      } catch (err) {
-        try { res.statusCode = 429; res.end(); } catch (e) { /* ignore */ }
+      } catch {
+        try { res.statusCode = 429; res.end(); } catch { /* ignore */ }
       }
     }
   });

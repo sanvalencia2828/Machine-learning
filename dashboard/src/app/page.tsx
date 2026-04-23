@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { chapters, tierConfig } from "./data/modules";
-import type { Module } from "./data/modules";
 import * as api from "./lib/api";
 import PremiumOnboarding from "./components/PremiumOnboarding";
 
