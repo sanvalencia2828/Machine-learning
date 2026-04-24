@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix dashboard\" \"npm run dev --prefix backend\"",
-    "build": "npm run build --prefix dashboard && npm run build --prefix backend",
+    "build": "python prepare_docs.py && pip install mkdocs-material mkdocs-minify-plugin pymdown-extensions && mkdocs build --site-dir dashboard/public/site && npm run build --prefix dashboard",
     "start": "concurrently \"npm run start --prefix dashboard\" \"npm run start --prefix backend\"",
     "lint": "npm run lint --prefix dashboard && npm run lint --prefix backend",
     "test": "npm run test --prefix backend",
