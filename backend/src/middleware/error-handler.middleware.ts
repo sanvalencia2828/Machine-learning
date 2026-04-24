@@ -24,6 +24,7 @@ function buildMeta(req: Request): ErrorResponse['meta'] {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler = (
   error: Error | AppError,
   req: Request,
