@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000",
-    "build": "pip install -r ../requirements.txt && python ../prepare_docs.py && (cd .. && mkdocs build -d dashboard/public/site) && next build",
+    "build": "pip install -r ../requirements.txt && (cd .. && python prepare_docs.py) && mkdocs build -f ../mkdocs.yml -d public/site && next build",
     "start": "next start",
     "lint": "next lint"
   },

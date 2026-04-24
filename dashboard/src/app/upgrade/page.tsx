@@ -3,7 +3,7 @@
 import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { TIER_NAMES, TIER_PRICES, type UserTier } from '../../../lib/supabase'
+import { TIER_NAMES, TIER_PRICES, type UserTier } from '../../lib/supabase'
 
 const TIER_FEATURES: Record<UserTier, string[]> = {
   1: ['Prefacio + Capítulo 1', 'Acceso básico al contenido'],
