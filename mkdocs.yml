@@ -48,6 +48,7 @@ theme:
 # ──────────────────────────────────────────────
 nav:
   - Inicio: index.md
+  - Iniciar Sesión: login.md
   - "Capítulo 1 — La necesidad del aprendizaje automático probabilístico":
       - "Forward & Inverse Inference": notebook_ch01_forward_inverse.md
       - "Tríada de Errores": notebook_ch01_trifecta_errors.md

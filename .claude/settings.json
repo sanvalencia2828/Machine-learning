@@ -97,7 +97,11 @@
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Login: {d[\\\\\"user\\\\\"][\\\\\"email\\\\\"]} | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]}'\\)\")",
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'Status: {d[\\\\\"status\\\\\"]} | Env: {d[\\\\\"environment\\\\\"]}'\\)\")",
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://dashboard-three-lac-94.vercel.app)",
-      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{d[\\\\\"user\\\\\"][\\\\\"email\\\\\"]} | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]}'\\)\")"
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{d[\\\\\"user\\\\\"][\\\\\"email\\\\\"]} | Plan: {d[\\\\\"user\\\\\"][\\\\\"plan\\\\\"]}'\\)\")",
+      "Bash(curl -sv https://backend-eosin-five-37.vercel.app/status)",
+      "Read(//c/Users/santi/.claude/**)",
+      "Bash(tee /tmp/backend-tsc.log)",
+      "Bash(echo \"--- EXIT: $? ---\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\santi\\OneDrive\\Desktop\\Machine learning\\hotmart"

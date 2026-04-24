@@ -1,33 +1,20 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "PML Finance - Dashboard de Demos",
-  description: "ML Probabilistico para Finanzas e Inversion - Visualizaciones Interactivas",
-};
+  title: 'ML Probabilístico para Finanzas — Acceso al Curso',
+  description: 'Plataforma de aprendizaje de Machine Learning Probabilístico aplicado a finanzas e inversión.',
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="es">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body style={{ margin: 0, padding: 0, background: '#080b14' }}>
+        {children}
+      </body>
     </html>
-  );
+  )
 }
