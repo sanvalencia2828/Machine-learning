@@ -1,0 +1,72 @@
+/* ────────────────────────────────────────────────
+   Xiimalab Course Site — Custom Styles
+   ──────────────────────────────────────────────── */
+
+/* Code cells estilo Jupyter */
+.md-typeset pre > code {
+  border-left: 3px solid var(--md-accent-fg-color);
+  border-radius: 0 6px 6px 0;
+}
+
+/* Bloques # %% estilo Jupytext — resaltarlos visualmente */
+.md-typeset .highlight .c1 {
+  font-style: italic;
+  opacity: 0.75;
+}
+
+/* Outputs de código */
+.md-typeset .result {
+  background-color: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+  padding: 0.8em 1em;
+  margin-top: -0.5em;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82em;
+}
+
+/* Tablas — estilo financiero */
+.md-typeset table:not([class]) {
+  font-size: 0.85em;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 700;
+}
+
+.md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: var(--md-code-bg-color);
+}
+
+/* Admonitions personalizadas para ejercicios */
+.md-typeset .admonition.exercise,
+.md-typeset details.exercise {
+  border-color: #00bcd4;
+}
+
+.md-typeset .exercise > .admonition-title,
+.md-typeset .exercise > summary {
+  background-color: rgba(0, 188, 212, 0.1);
+}
+
+.md-typeset .exercise > .admonition-title::before,
+.md-typeset .exercise > summary::before {
+  background-color: #00bcd4;
+  -webkit-mask-image: var(--md-admonition-icon--tip);
+          mask-image: var(--md-admonition-icon--tip);
+}
+
+/* Ancho máximo del contenido */
+.md-grid {
+  max-width: 1280px;
+}
+
+/* Fórmulas matemáticas — padding */
+.arithmatex {
+  overflow-x: auto;
+  padding: 0.4em 0;
+}

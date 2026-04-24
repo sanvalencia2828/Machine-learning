@@ -1,4 +1,21 @@
+# Vercel
 .vercel
+
+# MkDocs build output (Vercel genera esto en CI)
+site/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node
 node_modules/
 **/__pycache__/
 package-lock.json
