@@ -17,5 +17,18 @@ __pycache__/
 
 # Node
 node_modules/
-**/__pycache__/
-package-lock.json
+.next/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# Documentation
+site/
+docs-processed/
+
+# Env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
