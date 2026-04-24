@@ -1,0 +1,6 @@
+# requirements-api.txt
+# Minimal dependencies for serverless API functions
+# Excludes heavy data science libraries like PyMC, ArviZ to stay within Vercel's size limits
+
+# Core Python packages (usually pre-installed)
+# json, os - part of Python standard library
