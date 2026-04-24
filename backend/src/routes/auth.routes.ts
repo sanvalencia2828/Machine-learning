@@ -43,13 +43,31 @@ router.post('/register', async (req: Request, res: Response) => {
     const { email, password, name } = req.body;
 
     if (!email || !password) {
-      res.status(400).json({ error: 'Email y password son requeridos' });
+      res.status(400).json({
+        code: ResponseCode.BAD_REQUEST,
+        message: 'Email y password son requeridos',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
     const existing = await prisma.user.findUnique({ where: { email } });
     if (existing) {
-      res.status(409).json({ error: 'Email ya registrado' });
+      res.status(409).json({
+        code: ResponseCode.CONFLICT,
+        message: 'Email ya registrado',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
@@ -64,7 +82,16 @@ router.post('/register', async (req: Request, res: Response) => {
       user: { id: user.id, email: user.email, name: user.name, plan: user.plan },
     });
   } catch (err) {
-    res.status(500).json({ error: 'Error al registrar usuario' });
+    res.status(500).json({
+      code: ResponseCode.INTERNAL_ERROR,
+      message: 'Error al registrar usuario',
+      meta: {
+        timestamp: new Date().toISOString(),
+        correlationId: 'unknown',
+        path: req.path,
+        method: req.method,
+      }
+    });
   }
 });
 
@@ -74,19 +101,46 @@ router.post('/login', async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      res.status(400).json({ error: 'Email y password son requeridos' });
+      res.status(400).json({
+        code: ResponseCode.BAD_REQUEST,
+        message: 'Email y password son requeridos',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
-      res.status(401).json({ error: 'Credenciales invalidas' });
+      res.status(401).json({
+        code: ResponseCode.AUTHENTICATION_ERROR,
+        message: 'Credenciales invalidas',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) {
-      res.status(401).json({ error: 'Credenciales invalidas' });
+      res.status(401).json({
+        code: ResponseCode.AUTHENTICATION_ERROR,
+        message: 'Credenciales invalidas',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
@@ -109,7 +163,16 @@ router.post('/login', async (req: Request, res: Response) => {
       user: { id: user.id, email: user.email, name: user.name, plan: user.plan },
     });
   } catch (err) {
-    res.status(500).json({ error: 'Error al iniciar sesion' });
+    res.status(500).json({
+      code: ResponseCode.INTERNAL_ERROR,
+      message: 'Error al iniciar sesion',
+      meta: {
+        timestamp: new Date().toISOString(),
+        correlationId: 'unknown',
+        path: req.path,
+        method: req.method,
+      }
+    });
   }
 });
 
@@ -119,7 +182,16 @@ router.post('/refresh', async (req: Request, res: Response) => {
     const { refreshToken } = req.body;
 
     if (!refreshToken) {
-      res.status(400).json({ error: 'Refresh token requerido' });
+      res.status(400).json({
+        code: ResponseCode.BAD_REQUEST,
+        message: 'Refresh token requerido',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
@@ -136,7 +208,16 @@ router.post('/refresh', async (req: Request, res: Response) => {
           data: { revoked: true },
         });
       }
-      res.status(401).json({ error: 'Refresh token invalido o expirado' });
+      res.status(401).json({
+        code: ResponseCode.AUTHENTICATION_ERROR,
+        message: 'Refresh token invalido o expirado',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
@@ -153,7 +234,16 @@ router.post('/refresh', async (req: Request, res: Response) => {
       user: { id: user.id, email: user.email, name: user.name, plan: user.plan },
     });
   } catch (err) {
-    res.status(500).json({ error: 'Error al refrescar token' });
+    res.status(500).json({
+      code: ResponseCode.INTERNAL_ERROR,
+      message: 'Error al refrescar token',
+      meta: {
+        timestamp: new Date().toISOString(),
+        correlationId: 'unknown',
+        path: req.path,
+        method: req.method,
+      }
+    });
   }
 });
 
@@ -167,9 +257,25 @@ router.post('/logout', async (req: Request, res: Response) => {
         data: { revoked: true },
       });
     }
-    res.json({ message: 'Sesion cerrada' });
+    res.json({
+      message: 'Sesion cerrada',
+      meta: {
+        timestamp: new Date().toISOString(),
+        correlationId: 'unknown',
+        path: req.path,
+        method: req.method,
+      }
+    });
   } catch {
-    res.json({ message: 'Sesion cerrada' });
+    res.json({
+      message: 'Sesion cerrada',
+      meta: {
+        timestamp: new Date().toISOString(),
+        correlationId: 'unknown',
+        path: req.path,
+        method: req.method,
+      }
+    });
   }
 });
 
@@ -182,13 +288,31 @@ router.get('/me', authMiddleware, async (req: AuthRequest, res: Response) => {
     });
 
     if (!user) {
-      res.status(404).json({ error: 'Usuario no encontrado' });
+      res.status(404).json({
+        code: ResponseCode.NOT_FOUND,
+        message: 'Usuario no encontrado',
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
     res.json({ user });
   } catch (err) {
-    res.status(500).json({ error: 'Error al obtener usuario' });
+    res.status(500).json({
+      code: ResponseCode.INTERNAL_ERROR,
+      message: 'Error al obtener usuario',
+      meta: {
+        timestamp: new Date().toISOString(),
+        correlationId: 'unknown',
+        path: req.path,
+        method: req.method,
+      }
+    });
   }
 });
 
@@ -198,7 +322,17 @@ router.patch('/plan', authMiddleware, async (req: AuthRequest, res: Response) =>
     const { plan } = req.body as { plan: Plan };
 
     if (!Object.values(Plan).includes(plan)) {
-      res.status(400).json({ error: 'Plan invalido', validPlans: Object.values(Plan) });
+      res.status(400).json({
+        code: ResponseCode.BAD_REQUEST,
+        message: 'Plan invalido',
+        validPlans: Object.values(Plan),
+        meta: {
+          timestamp: new Date().toISOString(),
+          correlationId: 'unknown',
+          path: req.path,
+          method: req.method,
+        }
+      });
       return;
     }
 
@@ -211,7 +345,16 @@ router.patch('/plan', authMiddleware, async (req: AuthRequest, res: Response) =>
     const accessToken = signAccessToken(user);
     res.json({ accessToken, user });
   } catch (err) {
-    res.status(500).json({ error: 'Error al actualizar plan' });
+    res.status(500).json({
+      code: ResponseCode.INTERNAL_ERROR,
+      message: 'Error al actualizar plan',
+      meta: {
+        timestamp: new Date().toISOString(),
+        correlationId: 'unknown',
+        path: req.path,
+        method: req.method,
+      }
+    });
   }
 });
 
