@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pip install mkdocs-material mkdocs-minify-plugin pymdown-extensions && mkdocs build",
+  "outputDirectory": "site",
+  "installCommand": "echo 'No npm install needed'",
+  "framework": null
+}

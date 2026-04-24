@@ -1,0 +1,162 @@
+site_name: "ML Probabilístico para Finanzas e Inversión"
+site_description: "Notebooks interactivos de Probabilistic ML for Finance and Investing — Deepak K. Kanungo (O'Reilly, 2023)"
+site_author: "Deepak K. Kanungo"
+site_url: "https://ml-probabilistico.vercel.app"
+docs_dir: notebooks
+site_dir: site
+
+# ──────────────────────────────────────────────
+# TEMA — Material for MkDocs
+# custom_dir apunta a docs/ para inyectar assets
+# ──────────────────────────────────────────────
+theme:
+  name: material
+  language: es
+  custom_dir: docs
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+    - scheme: default
+      primary: indigo
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+  icon:
+    repo: fontawesome/brands/github
+
+# ──────────────────────────────────────────────
+# NAVEGACIÓN — Mapeada desde chapters_index.json
+# ──────────────────────────────────────────────
+nav:
+  - Inicio: index.md
+  - "Cap. 1 — Necesidad del PML":
+      - "Forward & Inverse Inference": notebook_ch01_forward_inverse.md
+      - "Tríada de Errores": notebook_ch01_trifecta_errors.md
+  - "Cap. 2 — Cuantificando Incertidumbre":
+      - "Problema de Monty Hall": notebook_ch02_monty_hall_uncertainty.md
+      - "Análisis LTCM": notebook_ch02_ltcm_analysis.md
+      - "Probabilidad Relativa": notebook_ch02_relative_probability.md
+      - "BSM & Trinity of Uncertainty": notebook_ch02c_bsm_uncertainty_trinity.md
+      - "Bias-Variance & NFL": notebook_ch02d_bias_variance_nfl.md
+      - "El Problema de la Inducción": notebook_ch02e_induction_problem.md
+  - "Cap. 3 — Monte Carlo":
+      - "Inferencia Bayesiana": notebook_ch03_bayesian_inference.md
+      - "Monte Carlo en Finanzas": notebook_ch03_monte_carlo_finance.md
+      - "Conceptos Estadísticos": notebook_ch03b_stat_concepts.md
+      - "Normal vs Realidad": notebook_ch03c_normal_vs_reality.md
+      - "LLN, CLT & MCS": notebook_ch03d_lln_clt_mcs.md
+  - "Cap. 4 — Peligros Estadísticos":
+      - "Monte Carlo Avanzado": notebook_ch04_monte_carlo.md
+      - "Peligros del NHST": notebook_ch04_nhst_dangers.md
+      - "NHST Aplicado": notebook_ch04b_nhst_applied.md
+      - "IC y CAPM Alpha": notebook_ch04c_ci_capm_alpha.md
+  - "Cap. 5 — Framework PML":
+      - "Framework PML": notebook_ch05_pml_framework.md
+      - "Modelos de Volatilidad": notebook_ch05_volatility_models.md
+      - "High-Yield Default": notebook_ch05b_hy_default.md
+  - "Cap. 6 — Peligros de la IA Convencional":
+      - "MLE vs Probabilístico": notebook_ch06_mle_vs_probabilistic.md
+      - "Riesgos de Cola": notebook_ch06_tail_risks.md
+      - "Falla MLE en ZYX": notebook_ch06b_zyx_mle_failure.md
+      - "Grid Search & MCMC": notebook_ch06c_grid_mcmc.md
+  - "Cap. 7 — Ensambles Generativos":
+      - "ML en Finanzas": notebook_ch07_ml_finance.md
+      - "PyMC & Ensambles": notebook_ch07_pymc_ensembles.md
+  - "Cap. 8 — Decisiones Probabilísticas":
+      - "Kelly & Capital Allocation": notebook_ch08_kelly_capital_allocation.md
+      - "Stress Testing": notebook_ch08_stress_testing.md
+
+# ──────────────────────────────────────────────
+# EXTENSIONES MARKDOWN — Código + Matemáticas
+# ──────────────────────────────────────────────
+markdown_extensions:
+  # Resaltado de sintaxis con números de línea
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # Matemáticas con MathJax — activa \( \) y \[ \]
+  - pymdownx.arithmatex:
+      generic: true
+
+  # Extras de escritura
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.critic
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: En esta página
+  - tables
+
+# ──────────────────────────────────────────────
+# PLUGINS
+# ──────────────────────────────────────────────
+plugins:
+  - search:
+      lang: es
+  - minify:
+      minify_html: true
+
+# ──────────────────────────────────────────────
+# ASSETS EXTRA — MathJax + CSS custom
+# Paths relativos a docs_dir (notebooks/) para
+# extra_css/js, pero usando custom_dir (docs/)
+# ──────────────────────────────────────────────
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+# ──────────────────────────────────────────────
+# METADATA EXTRA
+# ──────────────────────────────────────────────
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/sanvalencia2828
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX  # Reemplazar con tu Google Analytics ID
